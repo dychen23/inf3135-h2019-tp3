@@ -20,10 +20,8 @@ long estParfait(long n){
 	}
 
 	//on commence a 2 car sert a rien de tester 1, vu qu’on ne peut pas ajouter lui-meme
-	for(long i = 2; i*i<=n; i++){
-	
+	for(long i = 2; i*i<=n; i++){	
 		if(n%i==0){
-			
 			if(i*i!=n){
 				somme+= i + (n/i);
 			} else {
@@ -31,7 +29,6 @@ long estParfait(long n){
 			}
 		}
 	}
-	
 	return somme == n; 
 }
 
@@ -39,23 +36,18 @@ int main(int argc, char *argv[]) {
 
 	if(argc<2){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
-	}
 
-	else if(!estCodePermanent(argv[2])){
+	} else if(!estCodePermanent(argv[2])){
 		printf("2\n");
 
 	} else {
-
 		for(long i = 0; i<= 9000; i++){
-
 			if(estParfait(i)){
 				printf("%ld",i);	
 				printf(" nb parfait\n");
 			}	
-	}
- }
+		}
+ 	}
 
-
-	
         return 0;
 }
