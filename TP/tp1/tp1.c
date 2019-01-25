@@ -37,10 +37,17 @@ int main(int argc, char *argv[]) {
 	if(argc<2){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 
-	} else if(!estCodePermanent(argv[2])){
-		printf("2\n");
+	//} else if(!estCodePermanent(argv[2])){
+	//	printf("2\n");
 
 	} else {
+
+		printf("%s\n",argv[2]);
+
+		FILE *fp = fopen("code.txt","w");
+		//fprintf(fp,("%s",argv[2]));
+		fclose(fp);
+
 		for(long i = 0; i<= 9000; i++){
 			if(estParfait(i)){
 				printf("%ld",i);	
