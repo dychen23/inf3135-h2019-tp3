@@ -1,13 +1,14 @@
-# Travail pratique 1
+﻿# Travail pratique 1
 
    ## Description
 
-   <description du projet en quelques phrases>
+   On cherche la liste des nombres parfaits qui existe dans TP1.
+   
    <mentionner le contexte (cours, sigle, université, etc.)>
 
    ## Auteur
 
-   <prénom et nom> (<code permanent>)
+   Andy Chen CHEA23099303	
 
    ## Fonctionnement
 
@@ -16,8 +17,9 @@
 
    ## Contenu du projet
 
-   <décrivez brièvement chacun des fichiers contenus dans le projet (une phrase
-   par fichier)>
+   MAKEFILE - fichier makefile pour automatiser 
+   TP1.C - le corps de notre TP1,
+   README.MD - fichier markdown
 
    ## Références
 
