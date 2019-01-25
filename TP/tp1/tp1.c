@@ -17,32 +17,29 @@ long estParfait(long n){
 	for(long i = 2; i*i<=n; i++){
 	
 		if(n%i==0){
+
 			if(i*i!=n){
-				somme = somme + i + (n/i);
+				somme+= i + (n/i);
 			} else {
-				somme = somme + i ;
+				somme+=i ;
 			}
 		}
 	}
 	
-	if(somme == n){
-		parfait =1;
-	}
-
-	return parfait; 
+	return somme == n; 
 }
 
 int main(int argc, char *argv[]) {
 	
-	for(long i = 0; i<= 137438691328; i++){
+	for(long i = 0; i<= 9000; i++){
 
-		if(estParfait(i) && i%2==0){
+		if(estParfait(i)){
 			printf("%ld",i);	
 			printf(" nb parfait\n");
 		}
 
 		else {
-			printf("%ld\n",i);
+			//printf("%ld\n",i);
 		}
 
 	}
