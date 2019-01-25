@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <string.h>
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
@@ -38,29 +38,24 @@ long estParfait(long n){
 int main(int argc, char *argv[]) {
 
 	if(argc<1){
-		printf(" i”);
+		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
+		
 	}
 
 	if(!estCodePermanent(argv[2])){
-	
 		printf("2");
+	} else {
+
+		for(long i = 0; i<= 9000; i++){
+
+			if(estParfait(i)){
+				printf("%ld",i);	
+				printf(" nb parfait\n");
+			}	
 	}
+ }
 
-	//printf("%s",argv[2]);
-	//printf("%d\n",argc);
 
-	for(long i = 0; i<= 9000; i++){
-
-		if(estParfait(i)){
-			printf("%ld",i);	
-			printf(" nb parfait\n");
-		}
-
-		else {
-			//printf("%ld\n",i);
-		}
-
-	}
 	
         return 0;
 }
