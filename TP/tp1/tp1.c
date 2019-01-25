@@ -3,8 +3,18 @@
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
-int estCodePermanent(char c[])
-{
+int argumentValide(char c[]){
+
+	int faux = 0;
+	if(strcmp(c,"-c") == 0 || strcmp(c,"-i") == 0 || strcmp(c,"-o") == 0){
+		faux = 1;
+	}
+
+	//ne peut pas retourner la comparaison directement car strcmp retourne 0 si egale
+	return faux;
+}
+
+int estCodePermanent(char c[]){
 	return strlen(c)==12;
 }
 
@@ -34,14 +44,19 @@ long estParfait(long n){
 
 int main(int argc, char *argv[]) {
 
+	
 	if(argc<2){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 
 	//} else if(!estCodePermanent(argv[2])){
 	//	printf("2\n");
 
-	} else {
+	} else if(argc>7){
+		printf("3\n");
 
+	} else if(!(argumentValide(argv[1]) && argumentValide(argv[3]) && argumentValide(argv[5]))){	
+		//printf("3 argument invalide\n");
+	} else {
 		char *codePermanent = argv[2];
 
 		FILE *fp = fopen("code.txt","w");
