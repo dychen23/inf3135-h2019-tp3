@@ -42,10 +42,10 @@ int main(int argc, char *argv[]) {
 
 	} else {
 
-		printf("%s\n",argv[2]);
+		char *codePermanent = argv[2];
 
 		FILE *fp = fopen("code.txt","w");
-		//fprintf(fp,("%s",argv[2]));
+		fprintf(fp,"%s",codePermanent);
 		fclose(fp);
 
 		for(long i = 0; i<= 9000; i++){
