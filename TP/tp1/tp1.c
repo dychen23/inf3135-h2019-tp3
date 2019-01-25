@@ -1,6 +1,12 @@
 #include <stdio.h>
+#include <string.h>
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
+
+int estCodePermanent(char c[])
+{
+	return strlen(c)==12;
+}
 
 long estParfait(long n){
 
@@ -17,7 +23,7 @@ long estParfait(long n){
 	for(long i = 2; i*i<=n; i++){
 	
 		if(n%i==0){
-
+			
 			if(i*i!=n){
 				somme+= i + (n/i);
 			} else {
@@ -30,7 +36,19 @@ long estParfait(long n){
 }
 
 int main(int argc, char *argv[]) {
+
+	if(argc<1){
+		printf(" i”);
+	}
+
+	if(!estCodePermanent(argv[2])){
 	
+		printf("2");
+	}
+
+	//printf("%s",argv[2]);
+	//printf("%d\n",argc);
+
 	for(long i = 0; i<= 9000; i++){
 
 		if(estParfait(i)){
@@ -43,7 +61,6 @@ int main(int argc, char *argv[]) {
 		}
 
 	}
-		
-
+	
         return 0;
 }
