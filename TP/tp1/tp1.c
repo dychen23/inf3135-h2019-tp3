@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
@@ -45,33 +46,43 @@ long estParfait(long n){
 int main(int argc, char *argv[]) {
 
 	
-	if(argc<2){
+	if(argc<2 || strcmp(argv[1],"-c") != 0){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 
-	//} else if(!estCodePermanent(argv[2])){
+	// } else if(!estCodePermanent(argv[2])){
 	//	printf("2\n");
-
-	} else if(argc>7){
-		printf("3\n");
 
 	//} else if(!(argumentValide(argv[1]) && argumentValide(argv[3]) && argumentValide(argv[5]))){	
 		//printf("3 argument invalide\n");
 	} else {
 
+		long n1,n2,ntemp;
+	
+		FILE *fp = fopen(argv[4],"r");
 
-		//char *codePermanent = argv[2];
+		fscanf(fp,"%ld",&n1);
+		fscanf(fp,"%ld",&n2);
+		fclose(fp);
 
-//		FILE *fp = fopen("code.txt","w");
-		printf("%s",argv[2]);
-//		fclose(fp);
+		if(fp!=NULL){
+	
+			if(n1 > n2){
+				ntemp = n2;
+				n2 = n1;
+				n1 = ntemp;
+			}
+			
+			for(long i = n1; i<= n2; i++){
+				if(estParfait(i)){
+					printf("%ld",i);	
+					printf(" nb parfait\n");
+				}	
+			}
 
-
-		for(long i = 0; i<= 9000; i++){
-			if(estParfait(i)){
-				printf("%ld",i);	
-				printf(" nb parfait\n");
-			}	
-		}
+		} else {
+			printf("fichier invalide\n");
+			
+		}	
  	}
 
         return 0;
