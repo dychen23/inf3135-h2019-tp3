@@ -54,14 +54,17 @@ int main(int argc, char *argv[]) {
 	} else if(argc>7){
 		printf("3\n");
 
-	} else if(!(argumentValide(argv[1]) && argumentValide(argv[3]) && argumentValide(argv[5]))){	
+	//} else if(!(argumentValide(argv[1]) && argumentValide(argv[3]) && argumentValide(argv[5]))){	
 		//printf("3 argument invalide\n");
 	} else {
-		char *codePermanent = argv[2];
 
-		FILE *fp = fopen("code.txt","w");
-		fprintf(fp,"%s",codePermanent);
-		fclose(fp);
+
+		//char *codePermanent = argv[2];
+
+//		FILE *fp = fopen("code.txt","w");
+		printf("%s",argv[2]);
+//		fclose(fp);
+
 
 		for(long i = 0; i<= 9000; i++){
 			if(estParfait(i)){
