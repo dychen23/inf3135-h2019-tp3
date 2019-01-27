@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
@@ -57,15 +58,10 @@ int main(int argc, char *argv[]) {
 	} else {
 
 		long n1,n2,ntemp;
-	
 		FILE *fp = fopen(argv[4],"r");
 
-		fscanf(fp,"%ld",&n1);
-		fscanf(fp,"%ld",&n2);
-		fclose(fp);
-
-		if(fp!=NULL){
-	
+		if(fp!=NULL && fscanf(fp,"%ld %ld",&n1, &n2) == 2){
+			
 			if(n1 > n2){
 				ntemp = n2;
 				n2 = n1;
@@ -84,6 +80,5 @@ int main(int argc, char *argv[]) {
 			
 		}	
  	}
-
         return 0;
 }
