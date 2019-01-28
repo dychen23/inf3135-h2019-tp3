@@ -75,7 +75,6 @@ int main(int argc, char *argv[]) {
 
 				//printf("%ld\n",i);	
 			}
-
 		fclose(fp);
 
 		} else {
