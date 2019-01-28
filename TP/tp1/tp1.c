@@ -45,9 +45,8 @@ long estParfait(long n){
 }
 
 int main(int argc, char *argv[]) {
-
 	
-	if(argc<2 || strcmp(argv[1],"-c") != 0){
+	if(argc<2 || (strcmp(argv[1],"-c") && strcmp(argv[1],"-C")) != 0){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 
 	// } else if(!estCodePermanent(argv[2])){
@@ -72,8 +71,12 @@ int main(int argc, char *argv[]) {
 				if(estParfait(i)){
 					printf("%ld",i);	
 					printf(" nb parfait\n");
-				}	
+				}
+
+				//printf("%ld\n",i);	
 			}
+
+		fclose(fp);
 
 		} else {
 			printf("fichier invalide\n");
