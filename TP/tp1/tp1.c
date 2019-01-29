@@ -40,12 +40,28 @@ long estParfait(long n){
 
 int main(int argc, char *argv[]) {
 	
+	int i = 1;
+	char a[10] = "";
+	
+	while(argv[i] != NULL){
+	
+		strcpy(a,argv[i]);
+		printf("%s\n",a);
+		i+=2;
+
+		switch((*argv)[i])
+		
+		case 'c': case 'C'
+		
+		break;
+	}
+
+	
+
 	if(argc<2 || (strcmp(argv[1],"-c") && strcmp(argv[1],"-C")) != 0){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 
 	} else {
-
-		//printf("%s",argv[2]);
 
 		long n1,n2,ntemp;
 		FILE *fp = fopen(argv[4],"r");
@@ -70,9 +86,9 @@ int main(int argc, char *argv[]) {
 		fclose(fp);
 
 		} else {
-			printf("fichier invalide\n");
-			
+			printf("fichier invalide\n");	
 		}	
  	}
+
         return 0;
 }
