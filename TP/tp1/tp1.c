@@ -2,21 +2,11 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
-int argumentValide(char c[]){
-
-	int faux = 0;
-	if(strcmp(c,"-c") == 0 || strcmp(c,"-i") == 0 || strcmp(c,"-o") == 0){
-		faux = 1;
-	}
-
-	//ne peut pas retourner la comparaison directement car strcmp retourne 0 si egale
-	return faux;
-}
-
-int estCodePermanent(char c[]){
+int cpValide(char c[]){
 	return strlen(c)==12;
 }
 
@@ -42,18 +32,26 @@ int main(int argc, char *argv[]) {
 	
 	int i = 1;
 	char a[10] = "";
-	
+
 	while(argv[i] != NULL){
 	
-		strcpy(a,argv[i]);
-		printf("%s\n",a);
-		i+=2;
+		switch(argv[i][1]){
 
-		switch((*argv)[i])
-		
-		case 'c': case 'C'
-		
-		break;
+			case 'c': case 'C':
+				if(argv[i+1] == NULL){
+					printf("1 argument pour %s n’est pas present \n",argv[i]);
+				} else if(cpValide(argv[i+1])){
+					printf("argument pour c %s\n",argv[i+1]);
+				} else {
+					printf("2 cp invalide\n");
+				}
+			break;
+
+			case 'i': case 'I':
+				
+			break;
+		}
+		i+=2;
 	}
 
 	
@@ -79,8 +77,6 @@ int main(int argc, char *argv[]) {
 					printf("%ld",i);	
 					printf(" nb parfait\n");
 				}
-
-				//printf("%ld\n",i);	
 			}
 
 		fclose(fp);
