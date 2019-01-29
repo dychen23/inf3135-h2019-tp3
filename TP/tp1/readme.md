@@ -25,6 +25,7 @@
    ## Références
 
    https://www.geeksforgeeks.org/perfect-number/
+   https://stackoverflow.com/questions/17509479/switch-case-for-parsing-options
 
    ## Statut
 
