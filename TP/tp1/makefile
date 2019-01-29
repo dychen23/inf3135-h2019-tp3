@@ -2,11 +2,6 @@ OPTIONS = -Wall -pedantic -std=c99
 
 FILE=cp.txt
 CODE = `cat $(FILE)`
-
-target:
-	echo $(CODE)
-
-$(CODE):
 		
 tp1:tp1.c
 	gcc -o tp1 tp1.c

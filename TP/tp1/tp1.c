@@ -35,7 +35,7 @@ long estParfait(long n){
 			}
 		}
 	}
-	return somme == n; 
+	return (somme == n && n!=1); 
 }
 
 int main(int argc, char *argv[]) {
