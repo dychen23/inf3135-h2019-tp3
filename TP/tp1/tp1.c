@@ -25,12 +25,6 @@ long estParfait(long n){
 	long parfait = 0;
 	long somme = 1;
 
-	//peut-on conclure qu’il n’y a pas de nombre parfait impair?
-	if(n%2!=0){
-		//printf(“bye\n");
-		return parfait;
-	}
-
 	//on commence a 2 car sert a rien de tester 1, vu qu’on ne peut pas ajouter lui-meme
 	for(long i = 2; i*i<=n; i++){	
 		if(n%i==0){
@@ -49,12 +43,9 @@ int main(int argc, char *argv[]) {
 	if(argc<2 || (strcmp(argv[1],"-c") && strcmp(argv[1],"-C")) != 0){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 
-	// } else if(!estCodePermanent(argv[2])){
-	//	printf("2\n");
-
-	//} else if(!(argumentValide(argv[1]) && argumentValide(argv[3]) && argumentValide(argv[5]))){	
-		//printf("3 argument invalide\n");
 	} else {
+
+		//printf("%s",argv[2]);
 
 		long n1,n2,ntemp;
 		FILE *fp = fopen(argv[4],"r");
@@ -75,6 +66,7 @@ int main(int argc, char *argv[]) {
 
 				//printf("%ld\n",i);	
 			}
+
 		fclose(fp);
 
 		} else {
