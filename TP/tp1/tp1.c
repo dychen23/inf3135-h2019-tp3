@@ -14,7 +14,7 @@ void message(int n){
 	exit(0);
 }
 
-
+//verifie si le fichier est valide
 int fichierValide(FILE *fp){
 	return fp && fscanf(fp,"%ld %ld",&n1, &n2) == 2;
 }
@@ -60,14 +60,13 @@ int main(int argc, char *argv[]) {
 	long ntemp;
 
 	FILE *fp=fopen(fichiertxt,"r");
-	
 	fichierValide(fp)? : message(5);
 
-	printf("%d\n",argc);
-
 	//on vérifie tous les arguments
-	while(argv[i] != NULL){
+	while(i < argc){
 		//permet de verifier ‘-’
+
+
 		switch(argv[i][1]){
 			case 'c': case 'C':
 				if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
@@ -92,11 +91,17 @@ int main(int argc, char *argv[]) {
 
 			case 'o': case 'O':
 			break;
+
+			default:
+				message(3);
+			break;
+			
 		}
+		//printf("%s\n",argv[i]);
 		i+=2;
 	}
 
-	printf("%s\n",fichiertxt);
+	//printf("%s\n",fichiertxt);
 
 	if(argc<2 || !argumentC){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
