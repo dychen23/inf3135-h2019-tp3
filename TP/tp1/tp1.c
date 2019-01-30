@@ -66,7 +66,35 @@ int main(int argc, char *argv[]) {
 	while(i < argc){
 		//permet de verifier ‘-’
 
+		if(strcmp(argv[i],"-c") == 0){
+			if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
+				argumentC =0;
+			} else if(!cpValide(argv[i+1])){
+				message(2);
+			} 
+		}
+			
+		 else if(strcmp(argv[i],"-i") == 0){
+			if(argv[i+1] == NULL){
+				message(5);
+			}
 
+			strcpy(fichiertxt,argv[i+1]);
+			fp = fopen(fichiertxt,"r");
+
+			if(!fichierValide(fp)){
+				argumentI = 0;
+			} 	
+		} else if(strcmp(argv[i],"-o") == 0){
+			
+		} else {
+			message(3);
+		}
+
+			
+		i+=2;
+
+		/*
 		switch(argv[i][1]){
 			case 'c': case 'C':
 				if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
@@ -99,6 +127,7 @@ int main(int argc, char *argv[]) {
 		}
 		//printf("%s\n",argv[i]);
 		i+=2;
+		*/
 	}
 
 	//printf("%s\n",fichiertxt);
