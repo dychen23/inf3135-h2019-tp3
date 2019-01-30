@@ -6,10 +6,17 @@
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
+long n1,n2;
+
 //affiche les messages erreurs
 void message(int n){
 	printf("message erreur %d\n",n);
 	exit(0);
+}
+
+
+int fichierValide(FILE *fp){
+	return fp && fscanf(fp,"%ld %ld",&n1, &n2) == 2;
 }
 
 //validation du code permanent
@@ -50,9 +57,11 @@ int main(int argc, char *argv[]) {
 	char fichiertxt[100] = "data.txt";
 	
 	printf("%s\n",fichiertxt);
-	long n1,n2,ntemp;
+	long ntemp;
 
-	FILE *fp;
+	FILE *fp=fopen(fichiertxt,"r");
+	
+	fichierValide(fp)? : message(5);
 
 	printf("%d\n",argc);
 
@@ -70,13 +79,13 @@ int main(int argc, char *argv[]) {
 
 			case 'i': case 'I':	
 				if(argv[i+1] == NULL){
-					argumentI = 0;
+					message(5);
 				}
 
 				strcpy(fichiertxt,argv[i+1]);
 				fp = fopen(fichiertxt,"r");
 
-				if(!fp || fscanf(fp,"%ld %ld",&n1, &n2) != 2){
+				if(!fichierValide(fp)){
 					argumentI = 0;
 				} 								
 			break;
@@ -96,12 +105,6 @@ int main(int argc, char *argv[]) {
 	} else if(!intervalleValide(n1,n2)){
 		message(4);
 	} else {
-		
-		if(argumentI){
-			fp = fopen(fichiertxt,"r");
-
-		}
-	
 		if(n1 > n2){
 			ntemp = n2;
 			n2 = n1;
@@ -112,9 +115,7 @@ int main(int argc, char *argv[]) {
 			if(estParfait(i)){
 				printf("%ld",i);	
 				printf(" nb parfait\n");
-			} else {
-			printf("%ld\n",i);
-			}
+			} 
 		}
 
 		fclose(fp);
