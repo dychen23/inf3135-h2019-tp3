@@ -6,19 +6,23 @@
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
+//affiche les messages erreurs
 void message(int n){
 	printf("message erreur %d\n",n);
 	exit(0);
 }
 
+//validation du code permanent
 int cpValide(char c[]){
 	return strlen(c)==12;
 }
 
+//validation de l’intervalle 
 int intervalleValide(long min, long max){
 	return (min>=0 && max>=0);
 }
 
+//verifie si un nombre est parfait
 long estParfait(long n){
 
 	long parfait = 0;
@@ -40,7 +44,8 @@ long estParfait(long n){
 int main(int argc, char *argv[]) {
 	
 	int i = 1;
-	int argumentC = 0;
+	int argumentC = 1;
+	int argumentI = 1;
 
 	char fichiertxt[100] = "data.txt";
 	
@@ -51,29 +56,32 @@ int main(int argc, char *argv[]) {
 
 	printf("%d\n",argc);
 
+	//on vérifie tous les arguments
 	while(argv[i] != NULL){
+		//permet de verifier ‘-’
 		switch(argv[i][1]){
 			case 'c': case 'C':
-				if(argv[i+1] == NULL){
-					fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
-					exit(0);
+				if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
+					argumentC =0;
 				} else if(!cpValide(argv[i+1])){
 					message(2);
-				} else {
-					argumentC = 1;
-				}
+				} 
 			break;
 
-			case 'i': case 'I':
-				
+			case 'i': case 'I':	
 				if(argv[i+1] == NULL){
-					message(5);
+					argumentI = 0;
 				}
-				
+
 				strcpy(fichiertxt,argv[i+1]);
 				fp = fopen(fichiertxt,"r");
 
-								
+				if(!fp || fscanf(fp,"%ld %ld",&n1, &n2) != 2){
+					argumentI = 0;
+				} 								
+			break;
+
+			case 'o': case 'O':
 			break;
 		}
 		i+=2;
@@ -81,36 +89,35 @@ int main(int argc, char *argv[]) {
 
 	printf("%s\n",fichiertxt);
 
-	if(argc<2 || argumentC==0){
+	if(argc<2 || !argumentC){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
-
+	} else if(!argumentI){
+		message(5);
+	} else if(!intervalleValide(n1,n2)){
+		message(4);
 	} else {
+		
+		if(argumentI){
+			fp = fopen(fichiertxt,"r");
+
+		}
 	
-		fp = fopen(fichiertxt,"r");
+		if(n1 > n2){
+			ntemp = n2;
+			n2 = n1;
+			n1 = ntemp;
+		}
 
-		if(fp!=NULL && fscanf(fp,"%ld %ld",&n1, &n2) == 2){
-			
-			if(n1 > n2){
-				ntemp = n2;
-				n2 = n1;
-				n1 = ntemp;
+		for(long i = n1; i<= n2; i++){
+			if(estParfait(i)){
+				printf("%ld",i);	
+				printf(" nb parfait\n");
+			} else {
+			printf("%ld\n",i);
 			}
-			
-			if(intervalleValide(n1,n2)){
-				for(long i = n1; i<= n2; i++){
-					if(estParfait(i)){
-						printf("%ld",i);	
-						printf(" nb parfait\n");
-					}
-				}
-			}
-			
+		}
 
-			fclose(fp);
-
-		} else {
-			printf("fichier invalide\n");	
-		}	
+		fclose(fp);
  	}
 
         return 0;
