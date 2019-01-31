@@ -14,22 +14,16 @@ void message(int n){
 	exit(0);
 }
 
-
-//validation des characteres d’entree
-int charValide(char *c1){
-
-	return strcmp(c1,"-c")==0 || strcmp(c1,"-C") ||
-	       strcmp(c1,"-i")==0 || strcmp(c1,"-I") ||
-	       strcmp(c1,"-o")==0 || strcmp(c1,"-O");
+int nomfichierValide(char *nom){
+	return (strcmp(nom,".txt")==0);
 }
-
 
 //validation du fichier
 int fichierValide(FILE *fp){
 	return fp && fscanf(fp,"%ld %ld",&n1, &n2) == 2;
 }
 
-//validation du code permanent
+//validation du code permanentmnsxz
 int cpValide(char c[]){
 	return strlen(c)==12;
 }
@@ -63,14 +57,17 @@ int main(int argc, char *argv[]) {
 	int i = 1;
 	int argumentC = 1;
 	int argumentI = 1;
+	int argumentO = 0;
 
 	char fichiertxt[100] = "data.txt";
 	char charactere;
 	
-	printf("%s\n",fichiertxt);
+	//printf("%s\n",fichiertxt);
 	long ntemp;
 
 	FILE *fp=fopen(fichiertxt,"r");
+	FILE *fw;
+
 	fichierValide(fp)? : message(5);
 
 	//on vérifie tous les arguments
@@ -83,9 +80,11 @@ int main(int argc, char *argv[]) {
 			} else if(!cpValide(argv[i+1])){
 				message(2);
 			} 
-		}
-			
-		 else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
+
+		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
+
+			//char *strTemp = str_split(argv[i],".txt");
+
 			if(argv[i+1] == NULL){
 				message(5);
 			}
@@ -96,51 +95,25 @@ int main(int argc, char *argv[]) {
 			if(!fichierValide(fp)){
 				argumentI = 0;
 			} 	
+
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
-			
+			if(argv[i+1]==NULL){
+				message(6);
+			}
+
+			fw = fopen(argv[i+1],"w");
+			argumentO=1;
+			/* if(!nomFichierValide())
+			if(!fichierValide(fp)){
+				argumentI = 0;
+			} 
+			*/
+
 		} else {
 			message(3);
 		}
-			
 		i+=2;
-
-		/*
-		switch(argv[i][1]){
-			case 'c': case 'C':
-				if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
-					argumentC =0;
-				} else if(!cpValide(argv[i+1])){
-					message(2);
-				} 
-			break;
-
-			case 'i': case 'I':	
-				if(argv[i+1] == NULL){
-					message(5);
-				}
-
-				strcpy(fichiertxt,argv[i+1]);
-				fp = fopen(fichiertxt,"r");
-
-				if(!fichierValide(fp)){
-					argumentI = 0;
-				} 								
-			break;
-
-			case 'o': case 'O':
-			break;
-
-			default:
-				message(3);
-			break;
-			
-		}
-		//printf("%s\n",argv[i]);
-		i+=2;
-		*/
 	}
-
-	//printf("%s\n",fichiertxt);
 
 	if(argc<2 || !argumentC){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
@@ -148,6 +121,8 @@ int main(int argc, char *argv[]) {
 		message(5);
 	} else if(!intervalleValide(n1,n2)){
 		message(4);
+	//} else if(!argumentO){
+	//	message(6);
 	} else {
 		if(n1 > n2){
 			ntemp = n2;
@@ -157,10 +132,19 @@ int main(int argc, char *argv[]) {
 
 		for(long i = n1; i<= n2; i++){
 			if(estParfait(i)){
-				printf("%ld",i);	
-				printf(" nb parfait\n");
+				printf("%ld\n",i);	
+				//printf(" nb parfait\n");
+
+				if(argumentO){
+					fwrite(&i,4,sizeof(&i),fw);
+				}
 			} 
 		}
+
+		if(argumentO){
+			printf("redirection ok\n");
+		}
+
 
 		fclose(fp);
  	}
