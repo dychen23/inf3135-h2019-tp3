@@ -62,6 +62,7 @@ int main(int argc, char *argv[]) {
 	int argumentC = 1;
 	int argumentI = 1;
 	int argumentO = 1;
+	int sansO = 1;
 
 	char input[100] = "data.txt";
 	char output[100] = "resultat.txt";
@@ -95,7 +96,9 @@ int main(int argc, char *argv[]) {
 			}
 
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
-	
+			
+			sansO = 0;
+
 			if(argv[i+1]==NULL){
 				message(6);
 			}
@@ -135,13 +138,17 @@ int main(int argc, char *argv[]) {
 			if(estParfait(i)){
 				printf("%ld\n",i);	
 				//printf(" nb parfait\n");
+				
+				if(sansO){	
+					fw = fopen(output,"w");
+				}
+				
+				fwrite(&i,4,sizeof(&i),fw);
 
-				if(argumentO){
-					fwrite(&i,4,sizeof(&i),fw);
-				} 
 			} 
 		}
 
+		
 		if(argumentO){
 			printf("redirection ok\n");
 		}
