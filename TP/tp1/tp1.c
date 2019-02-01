@@ -96,8 +96,6 @@ int main(int argc, char *argv[]) {
 			}
 
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
-			
-			sansO = 0;
 
 			if(argv[i+1]==NULL){
 				message(6);
@@ -110,6 +108,7 @@ int main(int argc, char *argv[]) {
 				argumentO=0;
 			} else {
 				fw = fopen(argv[i+1],"w");
+				sansO = 0;
 			}
 
 		} else {
