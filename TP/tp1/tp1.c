@@ -10,11 +10,15 @@ long n1,n2;
 
 //affiche les messages erreurs
 void message(int n){
-	printf("message erreur %d\n",n);
-	exit(0);
+	if(n != 0){
+		printf("message erreur %d\n",n);
+		exit(0);
+	}
+
+	printf("%d",n);
 }
 
-int nomfichierValide(char *nom){
+int nomFichierValide(char *nom){
 	return (strcmp(nom,".txt")==0);
 }
 
@@ -23,7 +27,7 @@ int fichierValide(FILE *fp){
 	return fp && fscanf(fp,"%ld %ld",&n1, &n2) == 2;
 }
 
-//validation du code permanentmnsxz
+//validation du code permanent
 int cpValide(char c[]){
 	return strlen(c)==12;
 }
@@ -83,31 +87,26 @@ int main(int argc, char *argv[]) {
 
 		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
 
-			//char *strTemp = str_split(argv[i],".txt");
-
-			if(argv[i+1] == NULL){
-				message(5);
+			fp = fopen(argv[i+1],"r");
+		
+			if(argv[i+1] == NULL || !fichierValide(fp)){
+				argumentI=0;
 			}
 
-			strcpy(fichiertxt,argv[i+1]);
-			fp = fopen(fichiertxt,"r");
-
-			if(!fichierValide(fp)){
-				argumentI = 0;
-			} 	
-
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
+	
 			if(argv[i+1]==NULL){
 				message(6);
 			}
 
 			fw = fopen(argv[i+1],"w");
 			argumentO=1;
-			/* if(!nomFichierValide())
-			if(!fichierValide(fp)){
+
+
+			if(!nomFichierValide(argv[i+1])){
 				argumentI = 0;
 			} 
-			*/
+			
 
 		} else {
 			message(3);
@@ -145,6 +144,7 @@ int main(int argc, char *argv[]) {
 			printf("redirection ok\n");
 		}
 
+		//message(0);
 
 		fclose(fp);
  	}
