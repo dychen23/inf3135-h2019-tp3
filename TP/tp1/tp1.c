@@ -61,15 +61,16 @@ int main(int argc, char *argv[]) {
 	int i = 1;
 	int argumentC = 1;
 	int argumentI = 1;
-	int argumentO = 0;
+	int argumentO = 1;
 
-	char fichiertxt[100] = "data.txt";
+	char input[100] = "data.txt";
+	char output[100] = "resultat.txt";
 	char charactere;
 	
 	//printf("%s\n",fichiertxt);
 	long ntemp;
 
-	FILE *fp=fopen(fichiertxt,"r");
+	FILE *fp=fopen(input,"r");
 	FILE *fw;
 
 	fichierValide(fp)? : message(5);
@@ -98,15 +99,15 @@ int main(int argc, char *argv[]) {
 			if(argv[i+1]==NULL){
 				message(6);
 			}
-
-			fw = fopen(argv[i+1],"w");
-			argumentO=1;
-
-
-			if(!nomFichierValide(argv[i+1])){
-				argumentO = 0;
-			} 
 			
+			char *r;
+			r=strstr(argv[i+1],".txt");
+
+			if(r==NULL){
+				argumentO=0;
+			} else {
+				fw = fopen(argv[i+1],"w");
+			}
 
 		} else {
 			message(3);
@@ -120,9 +121,10 @@ int main(int argc, char *argv[]) {
 		message(5);
 	} else if(!intervalleValide(n1,n2)){
 		message(4);
-	//} else if(!argumentO){
-	//	message(6);
+	} else if(!argumentO){
+		message(6);
 	} else {
+
 		if(n1 > n2){
 			ntemp = n2;
 			n2 = n1;
@@ -136,7 +138,7 @@ int main(int argc, char *argv[]) {
 
 				if(argumentO){
 					fwrite(&i,4,sizeof(&i),fw);
-				}
+				} 
 			} 
 		}
 
