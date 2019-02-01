@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
 
 
 			if(!nomFichierValide(argv[i+1])){
-				argumentI = 0;
+				argumentO = 0;
 			} 
 			
 
