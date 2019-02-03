@@ -28,8 +28,25 @@ int fichierValide(FILE *fp){
 }
 
 //validation du code permanent
-int cpValide(char c[]){
-	return strlen(c)==12;
+int cpValide(char *c){
+
+	int valide = 0;
+	
+	if(strlen(c)!=12){
+		return valide;
+	}
+	
+	char *cp = c;
+	
+	for(int i =0; i< strlen(c) ; i++,cp++){
+		
+		if((i<4 && !isalpha(*cp)) || (i>4 && !isdigit(*cp))){
+			return 0;
+		} 	
+	}
+	valide = 1;
+				
+	return valide;
 }
 
 //validation de l’intervalle 
