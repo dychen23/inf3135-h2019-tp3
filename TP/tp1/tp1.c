@@ -86,7 +86,9 @@ int main(int argc, char *argv[]) {
 	FILE *fp=fopen(input,"r");
 	FILE *fw;
 
-	//fichierValide(fp)? : message(5);
+	if(!fichierValide(fp)){
+		message(5);
+	}
 
 	//on vérifie tous les arguments
 	while(i < argc){
@@ -104,6 +106,8 @@ int main(int argc, char *argv[]) {
 			fwrite(codePermanent,sizeof(codePermanent),4,fw);	
 
 		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
+
+			printf("%s\n",argv[i+1]);
 
 			fp = fopen(argv[i+1],"r");
 		
