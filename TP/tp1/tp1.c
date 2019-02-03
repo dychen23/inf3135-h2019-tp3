@@ -53,7 +53,6 @@ int intervalleValide(long min, long max){
 //verifie si un nombre est parfait
 long estParfait(long n){
 
-	long parfait = 0;
 	long somme = 1;
 
 	//on commence a 2 car sert a rien de tester 1, vu qu’on ne peut pas ajouter lui-meme
@@ -79,7 +78,6 @@ int main(int argc, char *argv[]) {
 
 	char input[100] = "data.txt";
 	char output[100] = "resultat.txt";
-	char charactere;
 	
 	//printf("%s\n",fichiertxt);
 	long ntemp;
@@ -87,7 +85,7 @@ int main(int argc, char *argv[]) {
 	FILE *fp=fopen(input,"r");
 	FILE *fw;
 
-	fichierValide(fp)? : message(5);
+	//fichierValide(fp)? : message(5);
 
 	//on vérifie tous les arguments
 	while(i < argc){
@@ -120,7 +118,7 @@ int main(int argc, char *argv[]) {
 			if(r==NULL){
 				argumentO=0;
 			} else {
-				fw = fopen(argv[i+1],"w");
+				fw = fopen(argv[i+1],"w+b");
 				sansO = 0;
 			}
 
@@ -146,20 +144,18 @@ int main(int argc, char *argv[]) {
 			n1 = ntemp;
 		}
 
-		for(long i = n1; i<= n2; i++){
+		for(int32_t i = n1; i<= n2; i++){
 			if(estParfait(i)){
-				printf("%ld\n",i);	
+				printf("%d\n",i);	
 				//printf(" nb parfait\n");
 				
 				if(sansO){	
-					fw = fopen(output,"w");
+					fw = fopen(output,"w+");
 				}
 				
-				fwrite(&i,4,sizeof(&i),fw);
-
+				fwrite(&i,sizeof(&i),16,fw);
 			} 
 		}
-
 		
 		if(argumentO){
 			printf("redirection ok\n");
@@ -168,6 +164,7 @@ int main(int argc, char *argv[]) {
 		//message(0);
 
 		fclose(fp);
+		fclose(fw);
  	}
 
         return 0;
