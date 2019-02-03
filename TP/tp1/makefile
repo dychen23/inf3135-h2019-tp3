@@ -6,6 +6,9 @@ CODE = `cat $(cp.txt)`
 tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
 
+test:
+	./tp1 -c ABCD12345678 -i data.txt -o pot.txt
+
 clean :
 	rm -f *.o
 	rm -f tp1

@@ -78,7 +78,8 @@ int main(int argc, char *argv[]) {
 
 	char input[100] = "data.txt";
 	char output[100] = "resultat.txt";
-	
+	char *codePermanent;
+
 	//printf("%s\n",fichiertxt);
 	long ntemp;
 
@@ -97,6 +98,10 @@ int main(int argc, char *argv[]) {
 			} else if(!cpValide(argv[i+1])){
 				message(2);
 			} 
+			
+			codePermanent = argv[i+1];
+			fw = fopen("code.txt","w");
+			fwrite(codePermanent,sizeof(codePermanent),4,fw);	
 
 		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
 
@@ -137,6 +142,8 @@ int main(int argc, char *argv[]) {
 	} else if(!argumentO){
 		message(6);
 	} else {
+	
+		printf("%s\n",codePermanent);
 
 		if(n1 > n2){
 			ntemp = n2;
