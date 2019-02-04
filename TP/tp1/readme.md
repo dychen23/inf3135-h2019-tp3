@@ -23,7 +23,6 @@
    cp.txt - fichier avec code permanent
 
    ## Références
-	balblabla
 
    https://www.geeksforgeeks.org/perfect-number/
    https://stackoverflow.com/questions/17509479/switch-case-for-parsing-options

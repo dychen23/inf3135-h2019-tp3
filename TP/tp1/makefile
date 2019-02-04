@@ -14,7 +14,8 @@ clean :
 	rm -f tp1
 
 data :
-	wget https://github.com/guyfrancoeur/INF3135_H2019/blob/master/tp1/data.zip
+	wget https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
+	unzip data.zip
       
 resultat :
 	git add .
