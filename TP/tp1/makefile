@@ -8,7 +8,8 @@ tp1:tp1.c
 
 test:
 	./tp1 -c ABCD12345678 -i data.txt -o pot.txt
-
+test1:
+	./tp1 -c abcd12345678 < data.txt > pot.txt
 clean :
 	rm -f *.o
 	rm -f tp1

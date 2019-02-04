@@ -19,10 +19,6 @@ void message(int n){
 	printf("%d",n);
 }
 
-int nomFichierValide(char *nom){
-	return (strcmp(nom,".txt")==0);
-}
-
 //validation du fichier
 int fichierValide(FILE *fp){
 	return fp && fscanf(fp,"%ld %ld",&n1, &n2) == 2;
@@ -79,9 +75,8 @@ int main(int argc, char *argv[]) {
 
 	char input[100] = "data.txt";
 	char output[100] = "resultat.txt";
-	char *codePermanent = NULL;
+	//char *codePermanent = NULL;
 
-	//printf("%s\n",fichiertxt);
 	long ntemp;
 
 	FILE *fp=fopen(input,"r");
@@ -101,13 +96,10 @@ int main(int argc, char *argv[]) {
 			} else if(!cpValide(argv[i+1])){
 				message(2);
 			} else {
-				codePermanent = argv[i+1];
-				fw = fopen("code.txt","w");
-				fwrite(codePermanent,sizeof(codePermanent),4,fw);	
+				fw = fopen("code.txt","w");	
+				fprintf(fw,"%s\n",argv[i+1]);	
 			}
 		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
-
-			printf("%s\n",argv[i+1]);
 
 			fp = fopen(argv[i+1],"r");
 		
@@ -118,19 +110,11 @@ int main(int argc, char *argv[]) {
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
 
 			if(argv[i+1]==NULL){
-				message(6);
-			}
-			
-			char *r;
-			r=strstr(argv[i+1],".txt");
-
-			if(r==NULL){
 				argumentO=0;
 			} else {
 				fw = fopen(argv[i+1],"w+b");
 				sansO = 0;
-			}
-
+			} 
 		} else {
 			message(3);
 		}
@@ -146,8 +130,6 @@ int main(int argc, char *argv[]) {
 	} else if(!argumentO){
 		message(6);
 	} else {
-	
-		printf("%s\n",codePermanent);
 
 		if(n1 > n2){
 			ntemp = n2;
@@ -155,21 +137,18 @@ int main(int argc, char *argv[]) {
 			n1 = ntemp;
 		}
 
-		for(int32_t i = n1; i<= n2; i++){
+		for(long i = n1; i<= n2; i++){
 			if(estParfait(i)){
-				printf("%d\n",i);	
-				//printf(" nb parfait\n");
 				
 				if(sansO){	
 					fw = fopen(output,"w+");
 				}
-				
-				fwrite(&i,sizeof(&i),16,fw);
+				fprintf(fw,"%ld\n",i);
 			} 
 		}
 		
 		if(argumentO){
-			printf("redirection ok\n");
+			//printf("redirection ok\n");
 		}
 
 		//message(0);
