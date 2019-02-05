@@ -16,7 +16,7 @@ void message(int n){
 		exit(0);
 	}
 
-	printf("%d",n);
+	printf("%d\n",n);
 }
 
 //validation du fichier
@@ -66,7 +66,8 @@ long estParfait(long n){
 }
 
 int main(int argc, char *argv[]) {
-	
+
+	int num;
 	int i = 1;
 	int argumentC = 1;
 	int argumentI = 1;
@@ -112,7 +113,7 @@ int main(int argc, char *argv[]) {
 
 			avecO = 1;
 
-			if(argv[i+1]==NULL){
+			if(argv[i+1]==NULL || argv[i+1][0] == '-'){
 				argumentO=0;
 			} else {
 				strcpy(output,argv[i+1]);
@@ -126,31 +127,39 @@ int main(int argc, char *argv[]) {
 	}
 
 	if(!avecI){
-		printf("fichier entree:\n");
-		fgets(input,20,stdin);
-		strtok(input, "\n");
 
-		printf("%s\n",input);
+		fseek (stdin, 0, SEEK_END);
+		num = ftell (stdin);
 		
+		if(num > 0){
+			printf("not empty \n");
+
+		} else {
+			printf("fichier entree \n");
+			fgets(input,20,stdin);
+			strtok(input, "\n");
+			printf("%s\n",input);
+			
+			fp=fopen(input,"r");
+
+			if(!fichierValide(fp)){
+				printf("fichier invalide\n");
+				message(5);
+			}
+
+		}
 	}	
 
-	fp=fopen(input,"r");
-
-	if(!fichierValide(fp)){
-		printf("fichier invalide\n");
-		message(5);
-	}
-
 	if(!avecO){
-		printf("fichier sortie:\n");
-		fgets(output,20,stdin);
-		strtok(output, "\n");
+		if(stdout){
+			printf("fichier sortie:\n");
+			fgets(output,20,stdin);
+			strtok(output, "\n");
+		
+			fw = fopen(output,"w");
+			
+		} 
 	} 
-
-	//printf("%s\n",output);
-
-	fw = fopen(output,"w");
-
 
 	if(argc<2 || !argumentC){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
@@ -175,12 +184,6 @@ int main(int argc, char *argv[]) {
 				fprintf(fw,"%ld\n",i);
 			} 
 		}
-		
-		if(argumentO){
-			//printf("redirection ok\n");
-		}
-
-		//message(0);
 
 		fclose(fp);
 		fclose(fw);

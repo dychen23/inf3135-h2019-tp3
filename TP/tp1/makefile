@@ -1,7 +1,7 @@
 OPTIONS = -Wall -pedantic -std=c99
 
-FILE=cp.txt
-CODE = `cat $(cp.txt)`
+FILE = cp.txt
+VARIABLE= $(shell cat $(FILE))
 
 all:tp1
 
@@ -9,24 +9,22 @@ tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
 		
 1:
-	./tp1 -c abcd12345678 -i data.txt -o pot.txt
-0:
-	./tp1 -c abcd12345678 < data.txt -o pot.txt
+	./tp1 -c $(VARIABLE) -i data.txt -o pot.txt
 2:
-	./tp1 -c abcd12345678 -i data.txt > pot.txt
+	./tp1 -c $(VARIABLE) -i data.txt
 3:
-	./tp1 -c abcd12345678 < data.txt 
+	./tp1 -c $(VARIABLE) -o pot.txt
 4:
+	./tp1 -c abcd12345678 < data.txt 
+5:
 	./tp1 -c abcd12345678 > pot.txt
-5: 
+6: 
 	./tp1 -c abcd12345678 
 
 clean :
 	rm -f *.o
 	rm -f tp1
-	rm -f *.txt
-	rm -f *.zip
-	
+	rm code.txt	
 data :
 	wget https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
 	unzip data.zip
