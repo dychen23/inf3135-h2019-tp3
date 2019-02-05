@@ -147,7 +147,8 @@ int main(int argc, char *argv[]) {
 	if(!avecO){
 		fgets(output,10,stdout);
 		strtok(output, "\n");
-	}
+	} 
+
 
 	if(argc<2 || !argumentC){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
