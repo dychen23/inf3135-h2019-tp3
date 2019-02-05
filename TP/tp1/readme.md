@@ -26,6 +26,9 @@
 
    https://www.geeksforgeeks.org/perfect-number/
    https://stackoverflow.com/questions/17509479/switch-case-for-parsing-options
+   https://www.tutorialspoint.com/cprogramming/c_input_output.htm
+
+   Note de cours..
 
    ## Statut
 

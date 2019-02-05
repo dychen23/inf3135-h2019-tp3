@@ -71,20 +71,18 @@ int main(int argc, char *argv[]) {
 	int argumentC = 1;
 	int argumentI = 1;
 	int argumentO = 1;
-	int sansO = 1;
+	int avecO = 0;
+	int avecI = 0;
 
-	char input[100] = "data.txt";
-	char output[100] = "resultat.txt";
+	char input[100];
+	char output[100];
+
 	//char *codePermanent = NULL;
 
 	long ntemp;
 
-	FILE *fp=fopen(input,"r");
-	FILE *fw;
-
-	if(!fichierValide(fp)){
-		message(5);
-	}
+	FILE *fp = NULL;
+	FILE *fw = NULL;
 
 	//on vérifie tous les arguments
 	while(i < argc){
@@ -99,26 +97,56 @@ int main(int argc, char *argv[]) {
 				fw = fopen("code.txt","w");	
 				fprintf(fw,"%s\n",argv[i+1]);	
 			}
-		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
 
-			fp = fopen(argv[i+1],"r");
-		
-			if(argv[i+1] == NULL || !fichierValide(fp)){
+		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
+			
+			avecI = 1;
+
+			if(argv[i+1] == NULL){
 				argumentI=0;
+			} else {
+				strcpy(input,argv[i+1]);
+				fp = fopen(input,"r");
+				
+				if(!fichierValide(fp)){
+					printf("avec argument -i, mais fichier existe pas\n");
+				}
 			}
 
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
+
+			avecO = 1;
 
 			if(argv[i+1]==NULL){
 				argumentO=0;
 			} else {
 				fw = fopen(argv[i+1],"w+b");
-				sansO = 0;
-			} 
+			}
+ 
 		} else {
 			message(3);
 		}
 		i+=2;
+	}
+
+	if(!avecI){
+		fgets(input,10,stdin);
+		strtok(input, "\n");
+	}	
+
+	fp=fopen(input,"r");
+
+	if(fp == NULL){
+		printf("NULL\n");
+	}
+
+	if(!fichierValide(fp)){
+		printf("marche po\n");
+	}
+
+	if(!avecO){
+		fgets(output,10,stdout);
+		strtok(output, "\n");
 	}
 
 	if(argc<2 || !argumentC){
@@ -139,10 +167,6 @@ int main(int argc, char *argv[]) {
 
 		for(long i = n1; i<= n2; i++){
 			if(estParfait(i)){
-				
-				if(sansO){	
-					fw = fopen(output,"w+");
-				}
 				fprintf(fw,"%ld\n",i);
 			} 
 		}
