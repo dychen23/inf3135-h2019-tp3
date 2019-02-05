@@ -102,7 +102,6 @@ int main(int argc, char *argv[]) {
 			
 			avecI = 1;
 
-
 			if(argv[i+1] == NULL){
 				argumentI=0;
 			} else {
@@ -115,15 +114,19 @@ int main(int argc, char *argv[]) {
 
 			if(argv[i+1]==NULL){
 				argumentO=0;
+			} else {
+				strcpy(output,argv[i+1]);
 			}
  
 		} else {
 			message(3);
 		}
+
 		i+=2;
 	}
 
 	if(!avecI){
+		printf("fichier entree:\n");
 		fgets(input,10,stdin);
 		strtok(input, "\n");
 	}	
@@ -136,11 +139,14 @@ int main(int argc, char *argv[]) {
 	}
 
 	if(!avecO){
-		fgets(output,10,stdout);
+		printf("fichier sortie:\n");
+		fgets(output,10,stdin);
 		strtok(output, "\n");
 	} 
 
-	fw = fopen(output,"w+b");
+	//printf("%s\n",output);
+
+	fw = fopen(output,"w");
 
 
 	if(argc<2 || !argumentC){
@@ -158,6 +164,7 @@ int main(int argc, char *argv[]) {
 			n2 = n1;
 			n1 = ntemp;
 		}
+
 
 		for(long i = n1; i<= n2; i++){
 			if(estParfait(i)){

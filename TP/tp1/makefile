@@ -2,10 +2,14 @@ OPTIONS = -Wall -pedantic -std=c99
 
 FILE=cp.txt
 CODE = `cat $(cp.txt)`
-		
+
+all: t tp1
+
 tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
-
+		
+t:tp.c
+	gcc $(OPTIONS) -o tp tp.c
 1:
 	./tp1 -c abcd12345678 -i data.txt -o pot.txt
 0:
