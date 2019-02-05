@@ -127,8 +127,11 @@ int main(int argc, char *argv[]) {
 
 	if(!avecI){
 		printf("fichier entree:\n");
-		fgets(input,10,stdin);
+		fgets(input,20,stdin);
 		strtok(input, "\n");
+
+		printf("%s\n",input);
+		
 	}	
 
 	fp=fopen(input,"r");
@@ -140,7 +143,7 @@ int main(int argc, char *argv[]) {
 
 	if(!avecO){
 		printf("fichier sortie:\n");
-		fgets(output,10,stdin);
+		fgets(output,20,stdin);
 		strtok(output, "\n");
 	} 
 

@@ -3,13 +3,11 @@ OPTIONS = -Wall -pedantic -std=c99
 FILE=cp.txt
 CODE = `cat $(cp.txt)`
 
-all: t tp1
+all:tp1
 
 tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
 		
-t:tp.c
-	gcc $(OPTIONS) -o tp tp.c
 1:
 	./tp1 -c abcd12345678 -i data.txt -o pot.txt
 0:
@@ -28,6 +26,7 @@ clean :
 	rm -f tp1
 	rm -f *.txt
 	rm -f *.zip
+	make
 	
 data :
 	wget https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
