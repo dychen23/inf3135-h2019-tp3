@@ -135,10 +135,11 @@ int main(int argc, char *argv[]) {
 	}
 
 	if(!avecO){
-		fgets(output,10,stdin);
+		fgets(output,10,stdout);
 		strtok(output, "\n");
 	} 
-	fw = fopen(output,"w");
+
+	fw = fopen(output,"w+b");
 
 
 	if(argc<2 || !argumentC){
