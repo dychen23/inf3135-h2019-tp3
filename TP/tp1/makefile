@@ -6,13 +6,19 @@ CODE = `cat $(cp.txt)`
 tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
 
-test:
+1:
 	./tp1 -c ABCD12345678 -i data.txt -o pot.txt
-test1:
-	./tp1 -c abcd12345678 -i dat.txt -o po.txt
-test2:
-	./tp1 -c abcd12345678 < data.txt > pot.txt
-test3: 
+2:
+	./tp1 -c abcd12345678 -i dat.txt -o pot.txt
+3:
+	./tp1 -c abcd12345678 < data.txt -o pot.txt
+4:
+	./tp1 -c abcd12345678 -i data.txt > pot.txt
+5:
+	./tp1 -c abcd12345678 -i data.txt 
+6:
+	./tp1 -c abcd12345678 -o pot.txt
+7: 
 	./tp1 -c abcd12345678 
 
 clean :

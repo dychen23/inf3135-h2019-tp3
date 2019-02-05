@@ -106,11 +106,6 @@ int main(int argc, char *argv[]) {
 				argumentI=0;
 			} else {
 				strcpy(input,argv[i+1]);
-				fp = fopen(input,"r");
-				
-				if(!fichierValide(fp)){
-					printf("avec argument -i, mais fichier existe pas\n");
-				}
 			}
 
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
@@ -119,8 +114,6 @@ int main(int argc, char *argv[]) {
 
 			if(argv[i+1]==NULL){
 				argumentO=0;
-			} else {
-				fw = fopen(argv[i+1],"w+b");
 			}
  
 		} else {
@@ -136,18 +129,16 @@ int main(int argc, char *argv[]) {
 
 	fp=fopen(input,"r");
 
-	if(fp == NULL){
-		printf("NULL\n");
-	}
-
 	if(!fichierValide(fp)){
-		printf("marche po\n");
+		printf("fichier invalide\n");
+		message(5);
 	}
 
 	if(!avecO){
-		fgets(output,10,stdout);
+		fgets(output,10,stdin);
 		strtok(output, "\n");
 	} 
+	fw = fopen(output,"w");
 
 
 	if(argc<2 || !argumentC){
@@ -168,6 +159,7 @@ int main(int argc, char *argv[]) {
 
 		for(long i = n1; i<= n2; i++){
 			if(estParfait(i)){
+				printf("%ld\n",i);
 				fprintf(fw,"%ld\n",i);
 			} 
 		}
