@@ -102,6 +102,7 @@ int main(int argc, char *argv[]) {
 			
 			avecI = 1;
 
+
 			if(argv[i+1] == NULL){
 				argumentI=0;
 			} else {
