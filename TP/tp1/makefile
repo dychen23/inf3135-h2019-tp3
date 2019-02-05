@@ -26,7 +26,6 @@ clean :
 	rm -f tp1
 	rm -f *.txt
 	rm -f *.zip
-	make
 	
 data :
 	wget https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
