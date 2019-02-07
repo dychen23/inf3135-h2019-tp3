@@ -163,6 +163,7 @@ int main(int argc, char *argv[]) {
 
 			fp=fopen(input,"r");
 
+
 			if(!fichierValide(fp)){
 				printf("fichier invalide\n");
 				message(5);
