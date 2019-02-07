@@ -7,7 +7,7 @@
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
-long n1,n2;
+long min,max;
 
 //affiche les messages erreurs
 void message(int n){
@@ -21,7 +21,7 @@ void message(int n){
 
 //validation du fichier
 int fichierValide(FILE *fp){
-	return fp && fscanf(fp,"%ld %ld",&n1, &n2) == 2;
+	return fp && fscanf(fp,"%ld %ld",&min, &max) == 2;
 }
 
 //validation du code permanent
@@ -102,7 +102,7 @@ int main(int argc, char *argv[]) {
 		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
 			
 			avecI = 1;
-
+			
 			if(argv[i+1] == NULL){
 				argumentI=0;
 			} else {
@@ -134,22 +134,33 @@ int main(int argc, char *argv[]) {
 		i+=2;
 	}
 
-	//printf("%s\n",output);
+	if(argc<2 || !argumentC){
+		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
+		exit(0);
+	} else if(!argumentI){
+		message(5);
+	} else if(!intervalleValide(min,max)){
+		message(4);
+	} else if(!argumentO){
+		message(6);
+	} 
 
 	if(!avecI){
 
 		fseek (stdin, 0, SEEK_END);
 		num = ftell (stdin);
 		
+		// < redirection
 		if(num > 0){
-			//printf("not empty \n");
+			printf("not empty \n");
 
+	
+		//sinon on demande input
 		} else {
 			printf("fichier entree: \n");
 			fgets(input,20,stdin);
 			strtok(input, "\n");
-			printf("%s\n",input);
-			
+
 			fp=fopen(input,"r");
 
 			if(!fichierValide(fp)){
@@ -160,49 +171,43 @@ int main(int argc, char *argv[]) {
 	}	
 
 	if(!avecO){
-		fseek (stdin, 0, SEEK_END);
-		num = ftell (stdin);
+
+		fseek (stdout, 0, SEEK_END);
+		num = ftell (stdout);
 		
+		// redirection >
 		if(num > 0){
-			//printf("not empty \n");
+			printf("num \n");
+
 		} else {
+	
 			printf("fichier sortie:\n");
 			fgets(output,20,stdin);
 			strtok(output, "\n");
-		
+			
+			printf("%s\n",output);
+			//puts("sasdasdasd\n");
 			fw = fopen(output,"w");	
 		} 
 	} 
 
-	if(argc<2 || !argumentC){
-		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
-	} else if(!argumentI){
-		message(5);
-	} else if(!intervalleValide(n1,n2)){
-		message(4);
-	} else if(!argumentO){
-		message(6);
-	} else {
-		
-		if(n1 > n2){
-			ntemp = n2;
-			n2 = n1;
-			n1 = ntemp;
-		}
 
+	if(min > max){
+		ntemp = max;
+		max = min;
+		min = ntemp;
+	}
+	printf("\ninput:%s\n",input);
+	printf("output:%s\n\n",output);
+	for(long i = min; i<= max; i++){
+		if(estParfait(i)){
+			printf("%ld\n",i);
+			fprintf(fw,"%ld\n",i);
+		} 
+	}
 
-		for(long i = n1; i<= n2; i++){
-			
-			//printf("%ld\n",n1);
-			if(estParfait(i)){
-				printf("%ld\n",i);
-				fprintf(fw,"%ld\n",i);
-			} 
-		}
-
-		fclose(fp);
-		fclose(fw);
- 	}
+	fclose(fp);
+	fclose(fw);
 
         return 0;
 }

@@ -20,7 +20,8 @@ tp1:tp1.c
 	./tp1 -c abcd12345678 > pot.txt
 6: 
 	./tp1 -c abcd12345678 
-
+7:
+	./tp1 -c $(VARIABLE) < data.txt > pot.txt
 clean :
 	rm -f *.o
 	rm -f tp1
