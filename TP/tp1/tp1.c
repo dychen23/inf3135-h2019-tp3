@@ -150,15 +150,30 @@ int main(int argc, char *argv[]) {
 		fseek (stdin, 0, SEEK_END);
 		num = ftell (stdin);
 		
-		// < redirection
-		if(num > 0){
-			printf("not empty \n");
+		rewind(stdin);
 
+		if(num > 0){
+
+			fgets(input,100,stdin);
+			fflush(stdin);			
+			//strtok(input, "\n");
+			puts(input);
+			
+			char *r;
+			char *ptr;
 	
+			r = strtok(input," ");
+			min = strtol(r,&ptr,10);
+			
+			r = strtok(NULL," "),
+			max= strtol(r,&ptr,10);
+
+			//printf("%s\n",r);
+
 		//sinon on demande input
 		} else {
 			printf("fichier entree: \n");
-			if(!fgets(input,20,stdin)){
+			if(!fgets(input,100,stdin)){
 				message(5);
 			}
 			
@@ -176,21 +191,22 @@ int main(int argc, char *argv[]) {
 
 	if(!avecO){
 
-		fseek (stdout, 0, SEEK_END);
-		num = ftell (stdout);
+		fseek (stdin, 0, SEEK_END);
+		num = ftell (stdin);
 		
 		// redirection >
 		if(num > 0){
 			printf("num \n");
+			fgets(output,100,stdin);
 
 		} else {
 	
 			printf("fichier sortie:\n");
-			fgets(output,20,stdin);
+			
+			fgets(output,100,stdin);
 			strtok(output, "\n");
 			
 			printf("%s\n",output);
-			//puts("sasdasdasd\n");
 			fw = fopen(output,"w");	
 		} 
 	} 
@@ -201,6 +217,7 @@ int main(int argc, char *argv[]) {
 		max = min;
 		min = ntemp;
 	}
+
 	printf("\ninput:%s\n",input);
 	printf("output:%s\n\n",output);
 	for(long i = min; i<= max; i++){

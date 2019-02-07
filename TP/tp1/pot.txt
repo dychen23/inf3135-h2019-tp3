@@ -1,6 +1,11 @@
-not empty 
-num 
+fichier entree: 
+fichier sortie:
 
-input:˜ZQÿ
+
+input:data.txt
 output:
 
+6
+28
+496
+8128
