@@ -1,0 +1,6 @@
+not empty 
+num 
+
+input:˜ZQÿ
+output:
+
