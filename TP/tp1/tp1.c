@@ -158,15 +158,14 @@ int main(int argc, char *argv[]) {
 		//sinon on demande input
 		} else {
 			printf("fichier entree: \n");
-			fgets(input,20,stdin);
-			strtok(input, "\n");
+			if(fgets(input,20,stdin)){
+				strtok(input, "\n");
+				fp=fopen(input,"r");
 
-			fp=fopen(input,"r");
-
-
-			if(!fichierValide(fp)){
-				printf("fichier invalide\n");
-				message(5);
+				if(!fichierValide(fp)){
+					printf("fichier invalide\n");
+					message(5);
+				}
 			}
 		}
 	}	
