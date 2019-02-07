@@ -107,6 +107,13 @@ int main(int argc, char *argv[]) {
 				argumentI=0;
 			} else {
 				strcpy(input,argv[i+1]);
+
+				fp=fopen(input,"r");
+
+				if(!fichierValide(fp)){
+					printf("fichier invalide\n");
+					message(5);
+				}
 			}
 
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
@@ -117,6 +124,7 @@ int main(int argc, char *argv[]) {
 				argumentO=0;
 			} else {
 				strcpy(output,argv[i+1]);
+				fw = fopen(output,"w");
 			}
  
 		} else {
@@ -126,7 +134,7 @@ int main(int argc, char *argv[]) {
 		i+=2;
 	}
 
-	printf("%s\n",output);
+	//printf("%s\n",output);
 
 	if(!avecI){
 
@@ -134,10 +142,10 @@ int main(int argc, char *argv[]) {
 		num = ftell (stdin);
 		
 		if(num > 0){
-			printf("not empty \n");
+			//printf("not empty \n");
 
 		} else {
-			printf("fichier entree \n");
+			printf("fichier entree: \n");
 			fgets(input,20,stdin);
 			strtok(input, "\n");
 			printf("%s\n",input);
@@ -148,20 +156,22 @@ int main(int argc, char *argv[]) {
 				printf("fichier invalide\n");
 				message(5);
 			}
-
 		}
 	}	
 
 	if(!avecO){
-		if(stdout){
+		fseek (stdin, 0, SEEK_END);
+		num = ftell (stdin);
+		
+		if(num > 0){
+			//printf("not empty \n");
+		} else {
 			printf("fichier sortie:\n");
 			fgets(output,20,stdin);
 			strtok(output, "\n");
 		
-			fw = fopen(output,"w");
-			
+			fw = fopen(output,"w");	
 		} 
-		printf("passe ici\n ");
 	} 
 
 	if(argc<2 || !argumentC){
@@ -173,7 +183,6 @@ int main(int argc, char *argv[]) {
 	} else if(!argumentO){
 		message(6);
 	} else {
-		printf("passe ici\n ");
 		
 		if(n1 > n2){
 			ntemp = n2;
@@ -183,7 +192,8 @@ int main(int argc, char *argv[]) {
 
 
 		for(long i = n1; i<= n2; i++){
-
+			
+			//printf("%ld\n",n1);
 			if(estParfait(i)){
 				printf("%ld\n",i);
 				fprintf(fw,"%ld\n",i);

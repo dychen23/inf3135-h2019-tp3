@@ -15,7 +15,7 @@ tp1:tp1.c
 3:
 	./tp1 -c $(VARIABLE) -o pot.txt
 4:
-	./tp1 -c abcd12345678 < data.txt 
+	./tp1 -c abcd12345678 < data.txt
 5:
 	./tp1 -c abcd12345678 > pot.txt
 6: 
