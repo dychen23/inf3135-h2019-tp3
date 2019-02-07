@@ -126,6 +126,8 @@ int main(int argc, char *argv[]) {
 		i+=2;
 	}
 
+	printf("%s\n",output);
+
 	if(!avecI){
 
 		fseek (stdin, 0, SEEK_END);
@@ -159,6 +161,7 @@ int main(int argc, char *argv[]) {
 			fw = fopen(output,"w");
 			
 		} 
+		printf("passe ici\n ");
 	} 
 
 	if(argc<2 || !argumentC){
@@ -170,7 +173,8 @@ int main(int argc, char *argv[]) {
 	} else if(!argumentO){
 		message(6);
 	} else {
-
+		printf("passe ici\n ");
+		
 		if(n1 > n2){
 			ntemp = n2;
 			n2 = n1;
@@ -179,6 +183,7 @@ int main(int argc, char *argv[]) {
 
 
 		for(long i = n1; i<= n2; i++){
+
 			if(estParfait(i)){
 				printf("%ld\n",i);
 				fprintf(fw,"%ld\n",i);
