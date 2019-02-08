@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿# Travail pratique 1
 
    ## Description
@@ -43,6 +42,3 @@
    il y a des bogues
    <indiquez si le projet est complété ou s'il y a des bogues>
    
-=======
-#inf3135
->>>>>>> 381e17d7a09623960c767ff18229786d3e9d0ca4
