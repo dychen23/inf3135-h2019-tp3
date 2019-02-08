@@ -24,8 +24,11 @@
    ## Contenu du projet
 
    MAKEFILE - fichier makefile pour automatiser 
+
    TP1.C - le corps de notre TP1,
+
    README.MD - fichier markdown
+
    cp.txt - fichier avec code permanent
 
    ## Références

@@ -9,15 +9,15 @@ tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
 		
 1:
-	./tp1 -c $(VARIABLE) -i ./data/data.txt -o pot.txt
+	./tp1 -c $(VARIABLE) -i ./data/data.txt -o p
 2:
 	./tp1 -c $(VARIABLE) -i ./data/data.txt
 3:
-	./tp1 -c $(VARIABLE) -o pot.txt
+	./tp1 -c $(VARIABLE) -o p
 4:
 	./tp1 -c abcd12345678 < ./data/data.txt
 5:
-	./tp1 -c abcd12345678 > pot.txt
+	./tp1 -c abcd12345678 > p
 6: 
 	./tp1 -c abcd12345678 
 7:
@@ -26,7 +26,7 @@ clean :
 	rm -f *.o
 	rm -f tp1
 	rm code.txt	
-
+	rm -f -r data
 data :
 	wget https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
 	unzip data.zip -d ./data

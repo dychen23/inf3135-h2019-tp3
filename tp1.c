@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
 				fp=fopen(argv[i+1],"r");
 
 				if(!fichierValide(fp)){
-					printf("fichier invalide\n");
+					//printf("fichier invalide\n");
 					message(5);
 				}
 			}
@@ -182,8 +182,12 @@ int main(int argc, char *argv[]) {
 		fseek (stdin, 0, SEEK_END);
 		num = ftell (stdin);
 		
-		if(num < 0){
-			
+		// > p.txt
+		if(num > 0){
+
+			//pardonnez-moi 
+		} else {
+	
 			printf("fichier sortie:\n");
 			
 			fgets(output,100,stdin);
@@ -191,11 +195,8 @@ int main(int argc, char *argv[]) {
 			
 			printf("%s\n",output);
 			fw = fopen(output,"w");	
-
-
 		} 
 	} 
-
 
 	if(min > max){
 		ntemp = max;
@@ -205,13 +206,17 @@ int main(int argc, char *argv[]) {
 
 	//printf("\ninput:%s\n",input);
 	//printf("output:%s\n\n",output);
+
 	for(long i = min; i<= max; i++){
 		if(estParfait(i)){
-			//printf("%ld\n",i);
+			
 			fprintf(fw,"%ld\n",i);
 	
 			if(!avecO){
-				//fprintf(stdout,"%ld\n",i);
+
+				//////A ENELVER SI MARCHE PAS
+				fprintf(stdout,"%ld\n",i);
+				//////A ENELVER SI MARCHE PAS
 			}
 		} 
 	}
