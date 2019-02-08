@@ -75,8 +75,9 @@ int main(int argc, char *argv[]) {
 	int avecO = 0;
 	int avecI = 0;
 
-	char input[100];
+	char input[100] = "./data/";
 	char output[100];
+	char temp[100];
 
 	//char *codePermanent = NULL;
 
@@ -106,9 +107,9 @@ int main(int argc, char *argv[]) {
 			if(argv[i+1] == NULL){
 				argumentI=0;
 			} else {
-				strcpy(input,argv[i+1]);
+				//strcat(input,argv[i+1]);
 
-				fp=fopen(input,"r");
+				fp=fopen(argv[i+1],"r");
 
 				if(!fichierValide(fp)){
 					printf("fichier invalide\n");
@@ -151,39 +152,33 @@ int main(int argc, char *argv[]) {
 		num = ftell (stdin);
 		
 		rewind(stdin);
-
-		if(num > 0){
-
-			fgets(input,100,stdin);
-			fflush(stdin);			
-			//strtok(input, "\n");
-			puts(input);
 			
+		// < data.txt
+		if(num > 0){
+			
+			fgets(temp,100,stdin);
+			strtok(temp, "\n");
+
 			char *r;
 			char *ptr;
-	
-			r = strtok(input," ");
+				
+			r = strtok(temp," ");
 			min = strtol(r,&ptr,10);
 			
 			r = strtok(NULL," "),
 			max= strtol(r,&ptr,10);
 
-			//printf("%s\n",r);
-
 		//sinon on demande input
 		} else {
 			printf("fichier entree: \n");
-			if(!fgets(input,100,stdin)){
-				message(5);
-			}
-			
-			strtok(input, "\n");
-		
-			fp=fopen(input,"r");
 
+			fgets(temp,100,stdin);
+			strtok(temp, "\n");
+			
+			fp=fopen(temp,"r");
 
 			if(!fichierValide(fp)){
-				printf("fichier invalide\n");
+				//printf("fichier invalide\n");
 				message(5);
 			}
 		}
@@ -194,10 +189,14 @@ int main(int argc, char *argv[]) {
 		fseek (stdin, 0, SEEK_END);
 		num = ftell (stdin);
 		
-		// redirection >
+		//printf("%d\n",num);
+		// > p.txt
 		if(num > 0){
-			printf("num \n");
-			fgets(output,100,stdin);
+			
+			//printf("num \n");
+			//fgets(output,100,stdin);
+				
+			//printf("output %s\n",output);
 
 		} else {
 	
@@ -218,8 +217,8 @@ int main(int argc, char *argv[]) {
 		min = ntemp;
 	}
 
-	printf("\ninput:%s\n",input);
-	printf("output:%s\n\n",output);
+	//printf("\ninput:%s\n",input);
+	//printf("output:%s\n\n",output);
 	for(long i = min; i<= max; i++){
 		if(estParfait(i)){
 			printf("%ld\n",i);
