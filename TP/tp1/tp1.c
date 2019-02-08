@@ -11,12 +11,8 @@ long min,max;
 
 //affiche les messages erreurs
 void message(int n){
-	if(n != 0){
-		printf("message erreur %d\n",n);
-		exit(0);
-	}
-
-	printf("%d\n",n);
+	printf("message erreur %d\n",n);
+	exit(0);
 }
 
 //validation du fichier
@@ -75,11 +71,8 @@ int main(int argc, char *argv[]) {
 	int avecO = 0;
 	int avecI = 0;
 
-	char input[100] = "./data/";
 	char output[100];
 	char temp[100];
-
-	//char *codePermanent = NULL;
 
 	long ntemp;
 
@@ -221,8 +214,12 @@ int main(int argc, char *argv[]) {
 	//printf("output:%s\n\n",output);
 	for(long i = min; i<= max; i++){
 		if(estParfait(i)){
-			printf("%ld\n",i);
+			//printf("%ld\n",i);
 			fprintf(fw,"%ld\n",i);
+	
+			if(!avecO){
+				//fprintf(stdout,"%ld\n",i);
+			}
 		} 
 	}
 
