@@ -35,7 +35,9 @@
    https://forums.opensuse.org/showthread.php/443685-How-to-call-a-script-in-Makefile-and-capture-its-output
 
    https://www.geeksforgeeks.org/perfect-number/
+
    https://stackoverflow.com/questions/17509479/switch-case-for-parsing-options
+
    https://www.tutorialspoint.com/cprogramming/c_input_output.htm
      
    
@@ -44,6 +46,7 @@
    ## Statut
    
    il y a des bogues
+
    <indiquez si le projet est complété ou s'il y a des bogues>
    
 =======
