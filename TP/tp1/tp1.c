@@ -182,17 +182,8 @@ int main(int argc, char *argv[]) {
 		fseek (stdin, 0, SEEK_END);
 		num = ftell (stdin);
 		
-		//printf("%d\n",num);
-		// > p.txt
-		if(num > 0){
+		if(num < 0){
 			
-			//printf("num \n");
-			//fgets(output,100,stdin);
-				
-			//printf("output %s\n",output);
-
-		} else {
-	
 			printf("fichier sortie:\n");
 			
 			fgets(output,100,stdin);
@@ -200,6 +191,8 @@ int main(int argc, char *argv[]) {
 			
 			printf("%s\n",output);
 			fw = fopen(output,"w");	
+
+
 		} 
 	} 
 
