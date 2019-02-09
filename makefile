@@ -8,20 +8,21 @@ all:tp1
 tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
 		
-1:
+test1:
 	./tp1 -c $(VARIABLE) -i ./data/data.txt -o p
-2:
+test2:
 	./tp1 -c $(VARIABLE) -i ./data/data.txt
-3:
+test3:
 	./tp1 -c $(VARIABLE) -o p
-4:
+test4:
 	./tp1 -c abcd12345678 < ./data/data.txt
-5:
+test5:
 	./tp1 -c abcd12345678 > p
-6: 
+test6: 
 	./tp1 -c abcd12345678 
-7:
+test7:
 	./tp1 -c $(VARIABLE) < ./data/data.txt > pot.txt
+
 clean :
 	rm -f *.o
 	rm -f tp1

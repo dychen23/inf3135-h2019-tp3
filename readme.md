@@ -14,6 +14,9 @@
 
    ./tp1 -c abcd12345678 -i fichierentree.txt -o fichiersortie.txt
    ./tp1 -c abcd12345678 -i fichierentree.txt
+   ./tp1 -c abcd12345678 -o fichiersortie.txt 
+   ./tp1 -c abcd12345678 < fichierentree.txt > fichiersortie.txt
+
    (demande a l'utilisateur dentree un fichier de sortie)
 
    les resultats sont dirigees dans le fichier de sortie
@@ -45,7 +48,7 @@
 
    ## Statut
    
-   il y a des bogues
+   il y a des bogues avec le stdin... il ne "flush" proprement, le buffer est toujours dedans
 
    <indiquez si le projet est complété ou s'il y a des bogues>
    
