@@ -105,7 +105,6 @@ int main(int argc, char *argv[]) {
 				fp=fopen(argv[i+1],"r");
 
 				if(!fichierValide(fp)){
-					//printf("fichier invalide\n");
 					message(5);
 				}
 			}
@@ -171,7 +170,6 @@ int main(int argc, char *argv[]) {
 			fp=fopen(temp,"r");
 
 			if(!fichierValide(fp)){
-				//printf("fichier invalide\n");
 				message(5);
 			}
 		}
@@ -204,19 +202,13 @@ int main(int argc, char *argv[]) {
 		min = ntemp;
 	}
 
-	//printf("\ninput:%s\n",input);
-	//printf("output:%s\n\n",output);
-
 	for(long i = min; i<= max; i++){
 		if(estParfait(i)){
 			
 			fprintf(fw,"%ld\n",i);
 	
 			if(!avecO){
-
-				//////A ENELVER SI MARCHE PAS
 				fprintf(stdout,"%ld\n",i);
-				//////A ENELVER SI MARCHE PAS
 			}
 		} 
 	}
