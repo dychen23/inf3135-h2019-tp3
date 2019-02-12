@@ -1,1 +1,0 @@
-curl https://gitlab.com/lachalex/inf3135_h2019_labos/raw/master/labo03/renverse.c | grep "//"
