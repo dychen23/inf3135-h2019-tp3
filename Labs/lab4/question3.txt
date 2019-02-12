@@ -1,0 +1,1 @@
+git log | grep "author" -i | sort -d -f | uniq

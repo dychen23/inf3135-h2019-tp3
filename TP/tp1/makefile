@@ -8,25 +8,26 @@ all:tp1
 tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
 		
-1:
-	./tp1 -c $(VARIABLE) -i ./data/data.txt -o pot.txt
-2:
+test1:
+	./tp1 -c $(VARIABLE) -i ./data/data.txt -o p
+test2:
 	./tp1 -c $(VARIABLE) -i ./data/data.txt
-3:
-	./tp1 -c $(VARIABLE) -o pot.txt
-4:
+test3:
+	./tp1 -c $(VARIABLE) -o p
+test4:
 	./tp1 -c abcd12345678 < ./data/data.txt
-5:
-	./tp1 -c abcd12345678 > pot.txt
-6: 
+test5:
+	./tp1 -c abcd12345678 > p
+test6: 
 	./tp1 -c abcd12345678 
-7:
+test7:
 	./tp1 -c $(VARIABLE) < ./data/data.txt > pot.txt
+
 clean :
 	rm -f *.o
 	rm -f tp1
 	rm code.txt	
-
+	rm -f -r data
 data :
 	wget https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
 	unzip data.zip -d ./data

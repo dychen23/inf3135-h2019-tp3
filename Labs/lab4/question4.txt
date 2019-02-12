@@ -1,0 +1,1 @@
+git log | grep "author" -i | sed 's/.*: \(.*\) <.*$/\1/p' | sort -d -f | uniq
