@@ -26,7 +26,7 @@ test7:
 clean :
 	rm -f *.o
 	rm -f tp1
-	rm code.txt	
+	rm -f code.txt	
 	rm -f -r data
 data :
 	wget https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
