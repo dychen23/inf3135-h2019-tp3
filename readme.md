@@ -13,8 +13,11 @@
    ## Fonctionnement
 
    ./tp1 -c abcd12345678 -i fichierentree.txt -o fichiersortie.txt
+
    ./tp1 -c abcd12345678 -i fichierentree.txt
+
    ./tp1 -c abcd12345678 -o fichiersortie.txt 
+
    ./tp1 -c abcd12345678 < fichierentree.txt > fichiersortie.txt
 
    (demande a l'utilisateur dentree un fichier de sortie)

@@ -3,7 +3,7 @@ OPTIONS = -Wall -pedantic -std=c99
 FILE = cp.txt
 VARIABLE= $(shell cat $(FILE))
 
-all:tp1
+default:tp1
 
 tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
@@ -15,11 +15,11 @@ test2:
 test3:
 	./tp1 -c $(VARIABLE) -o p
 test4:
-	./tp1 -c abcd12345678 < ./data/data.txt
+	./tp1 -c $(VARIABLE) < ./data/data.txt
 test5:
-	./tp1 -c abcd12345678 > p
+	./tp1 -c $(VARIABLE) > p
 test6: 
-	./tp1 -c abcd12345678 
+	./tp1 -c $(VARIABLE) 
 test7:
 	./tp1 -c $(VARIABLE) < ./data/data.txt > pot.txt
 
