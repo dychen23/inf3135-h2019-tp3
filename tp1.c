@@ -7,13 +7,7 @@
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
-long min,max;
-
-//affiche les messages erreurs
-void message(int n){
-	printf("message erreur %d\n",n);
-	exit(0);
-}
+unsigned long min,max;
 
 //validation du fichier
 int fichierValide(FILE *fp){
@@ -74,7 +68,7 @@ int main(int argc, char *argv[]) {
 	char output[100];
 	char temp[100];
 
-	long ntemp;
+	unsigned long ntemp;
 
 	FILE *fp = NULL;
 	FILE *fw = NULL;
@@ -87,7 +81,7 @@ int main(int argc, char *argv[]) {
 			if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
 				argumentC =0;
 			} else if(!cpValide(argv[i+1])){
-				message(2);
+				exit(2);
 			} else {
 				fw = fopen("code.txt","w");	
 				fprintf(fw,"%s\n",argv[i+1]);	
@@ -105,7 +99,7 @@ int main(int argc, char *argv[]) {
 				fp=fopen(argv[i+1],"r");
 
 				if(!fichierValide(fp)){
-					message(5);
+					exit(5);
 				}
 			}
 
@@ -121,7 +115,7 @@ int main(int argc, char *argv[]) {
 			}
  
 		} else {
-			message(3);
+			exit(3);
 		}
 
 		i+=2;
@@ -131,11 +125,11 @@ int main(int argc, char *argv[]) {
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 		exit(0);
 	} else if(!argumentI){
-		message(5);
+		exit(5);
 	} else if(!intervalleValide(min,max)){
-		message(4);
+		exit(4);
 	} else if(!argumentO){
-		message(6);
+		exit(6);
 	} 
 
 	if(!avecI){
@@ -170,7 +164,7 @@ int main(int argc, char *argv[]) {
 			fp=fopen(temp,"r");
 
 			if(!fichierValide(fp)){
-				message(5);
+				exit(5);
 			}
 		}
 	}	
@@ -204,7 +198,6 @@ int main(int argc, char *argv[]) {
 
 	for(long i = min; i<= max; i++){
 		if(estParfait(i)){
-			
 			fprintf(fw,"%ld\n",i);
 	
 			if(!avecO){
