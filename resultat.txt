@@ -2,15 +2,15 @@ CHEA23099303
 ----------------------------
 clone                : 1pts
 push (succes)        : 1pts
-make (default:)      : 0pts
+make (default:)      : 1pts
 make                 : 1pts
 make data            : 1pts
 make data (verif)    : 1pts
 make test            : 0pts
-make clean           : 0pts
+make clean           : 1pts
 make resultat        : 1pts
 README.md            : 0pts
 compilation          : 2pts
 code.txt             : 1pts
 ------------------------------------------------------
-resultat tp1 : 9pts/30 | jours de retard : 1
+resultat tp1 : 11pts/30 | jours de retard : 7
