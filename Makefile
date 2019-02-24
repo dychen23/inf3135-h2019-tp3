@@ -8,21 +8,22 @@ default:tp1
 tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
 		
-test1:
+1:
 	./tp1 -c $(VARIABLE) -i ./data/data.txt -o p
-test2:
+2:
 	./tp1 -c $(VARIABLE) -i ./data/data.txt
-test3:
+3:
 	./tp1 -c $(VARIABLE) -o p
-test4:
+4:
 	./tp1 -c $(VARIABLE) < ./data/data.txt
-test5:
+5:
 	./tp1 -c $(VARIABLE) > p
-test6: 
+6: 
 	./tp1 -c $(VARIABLE) 
-test7:
+7:
 	./tp1 -c $(VARIABLE) < ./data/data.txt > pot.txt
 
+.PHONY: clean
 clean :
 	rm -f *.o
 	rm -f tp1
@@ -38,6 +39,7 @@ resultat:
 	git add resultat.txt
 	git commit -m "ajoute resultat.txt"
 	git push
+
 push :
 	git add .
 	git commit -m "."

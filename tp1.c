@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+#define TRACE
+
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
 unsigned long min,max;
@@ -76,6 +78,21 @@ int main(int argc, char *argv[]) {
 	//on vérifie tous les arguments
 	while(i < argc){
 		
+		#ifdef TRACE
+		if(argv[i][0]=='-'){
+			switch(argv[i][1]){
+				case 'c' : printf("c\n"); break;
+
+			
+				case 'i' : printf("i\n"); break;
+				case 'o' : printf("o\n"); break;
+	
+				default: exit(3); break;
+			}
+		}
+		#endif
+
+
 		//strcomp retourne 0 si egale		
 		if(strcmp(argv[i],"-c") == 0 || strcmp(argv[i],"-C") == 0){
 			if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
