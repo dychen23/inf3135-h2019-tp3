@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "tp2.h"
 
 #define TRACE
 
@@ -14,47 +15,6 @@ unsigned long min,max;
 //validation du fichier
 int fichierValide(FILE *fp){
 	return fp && fscanf(fp,"%ld %ld",&min, &max) == 2;
-}
-
-//validation du code permanent
-int cpValide(char *c){
-	
-	if(strlen(c)!=12){
-		return 0;
-	}
-	
-	char *cp = c;
-	
-	for(int i =0; i< strlen(c) ; i++,cp++){
-		if((i<4 && !isalpha(*cp)) || (i>4 && !isdigit(*cp))){
-			return 0;
-		} 	
-	}
-				
-	return 1;
-}
-
-//validation de l’intervalle 
-int intervalleValide(long min, long max){
-	return (min>=0 && max>=0);
-}
-
-//verifie si un nombre est parfait
-long estParfait(long n){
-
-	long somme = 1;
-
-	//on commence a 2 car sert a rien de tester 1, vu qu’on ne peut pas ajouter lui-meme
-	for(long i = 2; i*i<=n; i++){	
-		if(n%i==0){
-			if(i*i!=n){
-				somme+= i + (n/i);
-			} else {
-				somme+=i ;
-			}
-		}
-	}
-	return (somme == n && n!=1); 
 }
 
 int main(int argc, char *argv[]) {
@@ -71,7 +31,7 @@ int main(int argc, char *argv[]) {
 	char temp[100];
 
 	unsigned long ntemp;
-
+	
 	FILE *fp = NULL;
 	FILE *fw = NULL;
 
@@ -82,7 +42,7 @@ int main(int argc, char *argv[]) {
 		if(argv[i][0]=='-'){
 			switch(argv[i][1]){
 				case 'c' : printf("c\n"); break;
-
+						
 			
 				case 'i' : printf("i\n"); break;
 				case 'o' : printf("o\n"); break;
@@ -91,7 +51,6 @@ int main(int argc, char *argv[]) {
 			}
 		}
 		#endif
-
 
 		//strcomp retourne 0 si egale		
 		if(strcmp(argv[i],"-c") == 0 || strcmp(argv[i],"-C") == 0){
@@ -111,7 +70,6 @@ int main(int argc, char *argv[]) {
 			if(argv[i+1] == NULL){
 				argumentI=0;
 			} else {
-				//strcat(input,argv[i+1]);
 
 				fp=fopen(argv[i+1],"r");
 
@@ -213,7 +171,7 @@ int main(int argc, char *argv[]) {
 		min = ntemp;
 	}
 
-	for(long i = min; i<= max; i++){
+	for(unsigned long i = min; i<= max; i++){
 		if(estParfait(i)){
 			fprintf(fw,"%ld\n",i);
 	

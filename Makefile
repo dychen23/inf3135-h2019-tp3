@@ -7,7 +7,7 @@ default:tp1
 
 tp1:tp1.c
 	gcc $(OPTIONS) -o tp1 tp1.c
-		
+
 1:
 	./tp1 -c $(VARIABLE) -i ./data/data.txt -o p
 2:
