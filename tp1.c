@@ -6,7 +6,7 @@
 #include <fcntl.h>
 #include "tp2.h"
 
-#define TRACE
+//#define TRACE
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
@@ -26,7 +26,8 @@ int main(int argc, char *argv[]) {
 	int argumentO = 1;
 	int avecO = 0;
 	int avecI = 0;
-
+	
+	
 	char output[100];
 	char temp[100];
 
@@ -155,13 +156,13 @@ int main(int argc, char *argv[]) {
 			//pardonnez-moi 
 		} else {
 	
-			printf("fichier sortie:\n");
+			//printf("fichier sortie:\n");
 			
-			fgets(output,100,stdin);
-			strtok(output, "\n");
+			//fgets(output,100,stdin);
+			//strtok(output, "\n");
 			
-			printf("%s\n",output);
-			fw = fopen(output,"w");	
+			//printf("%s\n");
+			//fw = fopen(output,"w");	
 		} 
 	} 
 
@@ -173,10 +174,11 @@ int main(int argc, char *argv[]) {
 
 	for(unsigned long i = min; i<= max; i++){
 		if(estParfait(i)){
-			fprintf(fw,"%ld\n",i);
-	
-			if(!avecO){
-				fprintf(stdout,"%ld\n",i);
+
+			if(avecO){
+				fprintf(fw,"%ld\n",i);
+			} else {
+				printf("%ld\n",i);
 			}
 		} 
 	}
