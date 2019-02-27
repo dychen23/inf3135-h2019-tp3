@@ -1,4 +1,11 @@
-data.zip
+#fichier.c
+*.o
+*.out
+
+#fichier zip
+*.zip
+
+#repertoire
 data/
 tp1-data/
-*.o
+
