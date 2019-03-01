@@ -3,30 +3,30 @@ OPTIONS = -Wall -pedantic -std=c99
 FILE = cp.txt
 VARIABLE= $(shell cat $(FILE))
 
-default:tp1
+default:tp2
 
-tp1:tp1.c
-	gcc $(OPTIONS) -o tp1 tp1.c
+tp2:tp2.c
+	gcc $(OPTIONS) -o tp2 tp2.c
 
 1:
-	./tp1 -c $(VARIABLE) -i ./data/data.txt -o p
+	./tp2 -c $(VARIABLE) -i ./data/data.txt -o p
 2:
-	./tp1 -c $(VARIABLE) -i ./data/data.txt
+	./tp2 -c $(VARIABLE) -i ./data/data.txt
 3:
-	./tp1 -c $(VARIABLE) -o p
+	./tp2 -c $(VARIABLE) -o p
 4:
-	./tp1 -c $(VARIABLE) < ./data/data.txt
+	./tp2 -c $(VARIABLE) < ./data/data.txt
 5:
-	./tp1 -c $(VARIABLE) > p
+	./tp2 -c $(VARIABLE) > p
 6: 
-	./tp1 -c $(VARIABLE) 
+	./tp2 -c $(VARIABLE) 
 7:
-	./tp1 -c $(VARIABLE) < ./data/data.txt > pot.txt
+	./tp2 -c $(VARIABLE) < ./data/data.txt > pot.txt
 
 .PHONY: clean
 clean :
 	rm -f *.o
-	rm -f tp1
+	rm -f tp2
 	rm -f code.txt	
 	rm -rf data
 
