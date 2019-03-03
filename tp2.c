@@ -6,7 +6,7 @@
 #include <fcntl.h>
 #include "tp2.h"
 
-//#define TRACE
+#define TRACE
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
@@ -41,6 +41,7 @@ int main(int argc, char *argv[]) {
 		
 		#ifdef TRACE
 		if(argv[i][0]=='-'){
+			
 			switch(argv[i][1]){
 				case 'c' : printf("c\n"); break;
 						
