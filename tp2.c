@@ -6,16 +6,11 @@
 #include <fcntl.h>
 #include "tp2.h"
 
-#define TRACE
+//#define TRACE
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
 unsigned long min,max;
-
-//validation du fichier
-int fichierValide(FILE *fp){
-	return fp && fscanf(fp,"%ld %ld",&min, &max) == 2;
-}
 
 int main(int argc, char *argv[]) {
 
@@ -28,7 +23,7 @@ int main(int argc, char *argv[]) {
 	int avecI = 0;
 	
 	
-	char output[100];
+	char output[100] = "./data/data.txt";
 	char temp[100];
 
 	unsigned long ntemp;
@@ -75,7 +70,7 @@ int main(int argc, char *argv[]) {
 
 				fp=fopen(argv[i+1],"r");
 
-				if(!fichierValide(fp)){
+				if(!(fp && fscanf(fp,"%ld %ld",&min, &max) == 2)){
 					exit(5);
 				}
 			}
@@ -90,7 +85,7 @@ int main(int argc, char *argv[]) {
 				strcpy(output,argv[i+1]);
 				fw = fopen(output,"w");
 			}
- 
+ 			
 		} else {
 			exit(3);
 		}
@@ -108,16 +103,23 @@ int main(int argc, char *argv[]) {
 	} else if(!argumentO){
 		exit(6);
 	} 
-
+	
 	if(!avecI){
+		fp=fopen("./data/data.txt","r");
+
+		if(!(fp && fscanf(fp,"%ld %ld",&min, &max) == 2)){
+			exit(5);
+		}
+
 
 		fseek (stdin, 0, SEEK_END);
 		num = ftell (stdin);
 		
 		rewind(stdin);
-			
+
 		// < data.txt
 		if(num > 0){
+			//printf("%d\n",avecO);
 			
 			fgets(temp,100,stdin);
 			strtok(temp, "\n");
@@ -130,42 +132,10 @@ int main(int argc, char *argv[]) {
 			
 			r = strtok(NULL," "),
 			max= strtol(r,&ptr,10);
-
-		//sinon on demande input
-		} else {
-			printf("fichier entree: \n");
-
-			fgets(temp,100,stdin);
-			strtok(temp, "\n");
 			
-			fp=fopen(temp,"r");
-
-			if(!fichierValide(fp)){
-				exit(5);
-			}
-		}
-	}	
-
-	if(!avecO){
-
-		fseek (stdin, 0, SEEK_END);
-		num = ftell (stdin);
-		
-		// > p.txt
-		if(num > 0){
-
-			//pardonnez-moi 
-		} else {
-	
-			//printf("fichier sortie:\n");
-			
-			//fgets(output,100,stdin);
-			//strtok(output, "\n");
-			
-			//printf("%s\n");
-			//fw = fopen(output,"w");	
 		} 
-	} 
+		
+	}	
 
 	if(min > max){
 		ntemp = max;
@@ -177,7 +147,9 @@ int main(int argc, char *argv[]) {
 		if(estParfait(i)){
 
 			if(avecO){
+				//printf("asd\n");
 				fprintf(fw,"%ld\n",i);
+				
 			} else {
 				printf("%ld\n",i);
 			}

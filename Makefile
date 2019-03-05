@@ -21,7 +21,7 @@ tp2:tp2.c
 6: 
 	./tp2 -c $(VARIABLE) 
 7:
-	./tp2 -c $(VARIABLE) < ./data/data.txt > pot.txt
+	./tp2 -c $(VARIABLE) < ./data/data.txt > p
 
 .PHONY: clean
 clean :
