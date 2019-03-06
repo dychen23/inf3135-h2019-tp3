@@ -4,9 +4,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "tp2.h"
+#include "outils.h"
 
 //#define TRACE
+
 
 //nb parfait = la somme de toute ses diviseurs except lui-meme
 
@@ -21,8 +22,7 @@ int main(int argc, char *argv[]) {
 	int argumentO = 1;
 	int avecO = 0;
 	int avecI = 0;
-	
-	
+
 	char output[100] = "./data/data.txt";
 	char temp[100];
 

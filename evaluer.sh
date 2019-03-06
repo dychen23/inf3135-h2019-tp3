@@ -1,3 +1,3 @@
 #!/bin/bash
 
-test gtimeout 5s make; echo 0
+cat inf3135-h2019-tp2.correction

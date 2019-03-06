@@ -1,12 +1,15 @@
-OPTIONS = -Wall -pedantic -std=c99
+OPTIONS = -Wall -pedantic -std=c99 -lm -O1
 
 FILE = cp.txt
 VARIABLE= $(shell cat $(FILE))
 
 default:tp2
 
-tp2:tp2.c
-	gcc $(OPTIONS) -o tp2 tp2.c
+outils.o: outils.h outils.c
+	gcc $(OPTIONS) -c outils.h outils.c 
+
+tp2:outils.o tp2.c
+	gcc $(OPTIONS) outils.o tp2.c -o tp2
 
 1:
 	./tp2 -c $(VARIABLE) -i ./data/data.txt -o p
@@ -23,18 +26,27 @@ tp2:tp2.c
 7:
 	./tp2 -c $(VARIABLE) < ./data/data.txt > p
 
+e:
+	$(shell ./evaluer.sh)
+	
 .PHONY: clean
 clean :
 	rm -f *.o
 	rm -f tp2
 	rm -f code.txt	
 	rm -rf data
+	rm -f *.h.gch
+	rm -f *tp2.correction
 
 data :
-	wget -q  https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
+	wget -q https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
+	wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master/inf3135-h2019-tp2.correction
 	unzip data.zip -d ./data
 	rm data.zip
-		      
+
+correction:
+	wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master/inf3135-h2019-tp2.correction 		      
+
 resultat:
 	git add resultat.txt
 	git commit -m "ajoute resultat.txt"

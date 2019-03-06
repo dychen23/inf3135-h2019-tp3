@@ -26,10 +26,10 @@ int cpValide(char *c){
 //verifie si un nombre est parfait
 long estParfait(long n){
 
-	long somme = 1;
+	unsigned long somme = 1;
 
 	//on commence a 2 car sert a rien de tester 1, vu qu’on ne peut pas ajouter lui-meme
-	for(long i = 2; i*i<=n; i++){	
+	for(unsigned long i = 2; i*i<=n; i++){	
 		if(n%i==0){
 			if(i*i!=n){
 				somme+= i + (n/i);
@@ -45,3 +45,4 @@ long estParfait(long n){
 int intervalleValide(long min, long max){
 	return (min>=0 && max>=0);
 }
+
