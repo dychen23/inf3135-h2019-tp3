@@ -40,9 +40,6 @@ data :
 	unzip data.zip -d ./data
 	rm data.zip
 
-correction:
-	wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master/inf3135-h2019-tp2.correction 		      
-
 resultat:
 	git add resultat.txt
 	git commit -m "ajoute resultat.txt"

@@ -15,7 +15,8 @@ void swap(unsigned long *min,unsigned long *max){
 		*min = ntemp;
 }
 
-long estPremier(long n){
+int estPremier(long n){
+
 	return pow(2,3);	
 }
 
@@ -38,7 +39,7 @@ int cpValide(char *c){
 }
 
 //verifie si un nombre est parfait
-long estParfait(long n){
+int estParfait(long n){
 
 	unsigned long somme = 1;
 

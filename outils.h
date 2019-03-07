@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-long estParfait(long n);
-long estPremier(long n);
+int estParfait(long n);
+int estPremier(long n);
 int cpValide(char *c);
 int intervalleValide(long min, long max);
 

@@ -9,11 +9,6 @@
 
 //#define TRACE
 
-
-//nb parfait = la somme de toute ses diviseurs except lui-meme
-
-unsigned long min,max;
-
 int main(int argc, char *argv[]) {
 
 	int num;
@@ -27,8 +22,8 @@ int main(int argc, char *argv[]) {
 	char output[100];
 	char temp[100];
 
-	unsigned long ntemp;
-	
+	unsigned long min,max;
+
 	FILE *fp = NULL;
 	FILE *fw = NULL;
 
@@ -128,7 +123,6 @@ int main(int argc, char *argv[]) {
 			max= strtol(r,&ptr,10);
 			
 		} 
-		
 	}	
 
 	if(min > max){
