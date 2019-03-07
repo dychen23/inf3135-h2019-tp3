@@ -12,9 +12,9 @@ tp2:outils.o tp2.c
 	gcc $(OPTIONS) outils.o tp2.c -o tp2
 
 test:
-	./tp2 -c $(VARIABLE) -i ./data/data.txt -o p
+	./tp2 -c $(VARIABLE) -i ./data/data.txt 
 2:
-	./tp2 -c $(VARIABLE) -i ./data/data.txt
+	./tp2 -c $(VARIABLE) -i ./data/data.txt -o p
 3:
 	./tp2 -c $(VARIABLE) -o p
 4:

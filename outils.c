@@ -17,7 +17,12 @@ void swap(unsigned long *min,unsigned long *max){
 
 int estPremier(long n){
 
-	return pow(2,3);	
+	if(n==2) return 0;
+	if(n==3) return 0;
+	if(n%2==0) return 1;
+	if(n%3==0) return 1;
+
+	return 0;
 }
 
 //validation du code permanent
@@ -44,7 +49,8 @@ int estParfait(long n){
 	unsigned long somme = 1;
 
 	//on commence a 2 car sert a rien de tester 1, vu qu’on ne peut pas ajouter lui-meme
-	for(unsigned long i = 2; i*i<=n; ++i){	
+	for(unsigned long i = 2; i*i<=n && estPremier(n) ; ++i){	
+
 		if(n%i==0){
 			if(i*i!=n){
 				somme+= i + (n/i);
