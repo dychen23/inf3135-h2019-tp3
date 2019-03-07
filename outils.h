@@ -5,7 +5,9 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-int cpValide(char *c);
 long estParfait(long n);
+long estPremier(long n);
+int cpValide(char *c);
 int intervalleValide(long min, long max);
 
+void swap(unsigned long *min, unsigned long *max);

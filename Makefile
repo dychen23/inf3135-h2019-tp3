@@ -3,7 +3,7 @@ OPTIONS = -Wall -pedantic -std=c99 -lm -O1
 FILE = cp.txt
 VARIABLE= $(shell cat $(FILE))
 
-default:tp2
+default :tp2
 
 outils.o: outils.h outils.c
 	gcc $(OPTIONS) -c outils.h outils.c 
@@ -11,7 +11,7 @@ outils.o: outils.h outils.c
 tp2:outils.o tp2.c
 	gcc $(OPTIONS) outils.o tp2.c -o tp2
 
-1:
+test:
 	./tp2 -c $(VARIABLE) -i ./data/data.txt -o p
 2:
 	./tp2 -c $(VARIABLE) -i ./data/data.txt
@@ -25,9 +25,6 @@ tp2:outils.o tp2.c
 	./tp2 -c $(VARIABLE) 
 7:
 	./tp2 -c $(VARIABLE) < ./data/data.txt > p
-
-e:
-	$(shell ./evaluer.sh)
 	
 .PHONY: clean
 clean :
@@ -40,7 +37,6 @@ clean :
 
 data :
 	wget -q https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
-	wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master/inf3135-h2019-tp2.correction
 	unzip data.zip -d ./data
 	rm data.zip
 

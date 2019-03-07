@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "outils.h"
+#include <math.h>
 
 //#define TRACE
 
@@ -23,7 +24,7 @@ int main(int argc, char *argv[]) {
 	int avecO = 0;
 	int avecI = 0;
 
-	char output[100] = "./data/data.txt";
+	char output[100];
 	char temp[100];
 
 	unsigned long ntemp;
@@ -54,7 +55,7 @@ int main(int argc, char *argv[]) {
 			if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
 				argumentC =0;
 			} else if(!cpValide(argv[i+1])){
-				exit(2);
+				exit(2);	
 			} else {
 				fw = fopen("code.txt","w");	
 				fprintf(fw,"%s\n",argv[i+1]);	
@@ -85,7 +86,6 @@ int main(int argc, char *argv[]) {
 				strcpy(output,argv[i+1]);
 				fw = fopen(output,"w");
 			}
- 			
 		} else {
 			exit(3);
 		}
@@ -105,12 +105,8 @@ int main(int argc, char *argv[]) {
 	} 
 	
 	if(!avecI){
-		fp=fopen("./data/data.txt","r");
 
-		if(!(fp && fscanf(fp,"%ld %ld",&min, &max) == 2)){
-			exit(5);
-		}
-
+		scanf("%ld %ld",&min, &max);
 
 		fseek (stdin, 0, SEEK_END);
 		num = ftell (stdin);
@@ -119,8 +115,6 @@ int main(int argc, char *argv[]) {
 
 		// < data.txt
 		if(num > 0){
-			//printf("%d\n",avecO);
-			
 			fgets(temp,100,stdin);
 			strtok(temp, "\n");
 
@@ -138,18 +132,14 @@ int main(int argc, char *argv[]) {
 	}	
 
 	if(min > max){
-		ntemp = max;
-		max = min;
-		min = ntemp;
+		swap(&min,&max);
 	}
 
 	for(unsigned long i = min; i<= max; i++){
 		if(estParfait(i)){
 
 			if(avecO){
-				//printf("asd\n");
-				fprintf(fw,"%ld\n",i);
-				
+				fprintf(fw,"%ld\n",i);		
 			} else {
 				printf("%ld\n",i);
 			}
