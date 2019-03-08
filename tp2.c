@@ -129,6 +129,7 @@ int main(int argc, char *argv[]) {
 		swap(&min,&max);
 	}
 
+
 	for(unsigned long i = min; i<= max; i++){
 		if(estParfait2(i)){
 			if(avecO){
