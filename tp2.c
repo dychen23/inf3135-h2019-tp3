@@ -90,11 +90,9 @@ int main(int argc, char *argv[]) {
 
 	if(argc<2 || !argumentC){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
-		exit(0);
+		exit(1);
 	} else if(!argumentI){
 		exit(5);
-	} else if(!intervalleValide(min,max)){
-		exit(4);
 	} else if(!argumentO){
 		exit(6);
 	} 
@@ -124,6 +122,10 @@ int main(int argc, char *argv[]) {
 			
 		} 
 	}	
+	
+	if(!intervalleValide(min,max)){
+		exit(4);
+	}
 
 	if(min > max){
 		swap(&min,&max);
@@ -131,7 +133,7 @@ int main(int argc, char *argv[]) {
 
 
 	for(unsigned long i = min; i<= max; i++){
-		if(estParfait2(i)){
+		if(estParfait(i)){
 			if(avecO){
 				fprintf(fw,"%ld\n",i);		
 			} else {
