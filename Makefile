@@ -29,14 +29,14 @@ test:
 time:
 	time make test
 	
-.PHONY: clean
+.SILENT .PHONY: clean
 clean :
-	rm -f *.o
-	rm -f tp2
-	rm -f code.txt	
-	rm -rf data
+	rm -f *.o 
+	rm -f tp2 
+	rm -f code.txt 
+	rm -rf data 
 	rm -f *.h.gch
-	rm -f *tp2.correction
+	rm -f *tp2.correction 
 
 data :
 	wget -q https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 

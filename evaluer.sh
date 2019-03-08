@@ -7,7 +7,7 @@ fi
 C=0
 nbPoints=0
 NC='\033[0m'
-utilsateur=$(cat cp.txt)
+utilisateur=$(cat cp.txt)
 
 while read line; do
 	Color='\033[01;31m'
