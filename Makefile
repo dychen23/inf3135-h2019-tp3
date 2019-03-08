@@ -48,7 +48,7 @@ resultat:
 	git commit -m "ajoute resultat.txt"
 	git push
 
-push :
+.SILENT push :
 	git add .
 	git commit -m "."
 	git push
