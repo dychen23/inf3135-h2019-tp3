@@ -1,9 +1,9 @@
 OPTIONS = -Wall -pedantic -std=c99 -lm -O1
 
-FILE = cp.txt
-VARIABLE= $(shell cat $(FILE))
+FILE=cp.txt
+VARIABLE=$(shell cat $(FILE))
 
-default :tp2
+default:tp2
 
 outils.o: outils.h outils.c
 	gcc $(OPTIONS) -c outils.h outils.c 

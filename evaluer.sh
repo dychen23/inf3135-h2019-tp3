@@ -6,9 +6,11 @@ fi
 
 C=0
 nbPoints=0
+NC='\033[0m'
+utilsateur=$(cat cp.txt)
 
 while read line; do
-	utilisateur=$(cat cp.txt) 
+	Color='\033[01;31m'
 	resultat="echec" 
 
 	tabP[$C]=${line:0:2};
@@ -20,9 +22,10 @@ while read line; do
 	if [ ${tabC[$C]} -eq ${tabR[$C]} ]; then
 		resultat="reussi ${tabP[$C]}pts";
 		nbPoints=$[$nbPoints+${tabP[$C]}];
+		Color='\033[1;32m'
 	fi 
 	
-	echo "$C ${tabC[$C]}: ${tabR[$C]} $resultat : ${tabM[$C]}";
+	echo -e "$C ${tabC[$C]}: ${tabR[$C]} ${Color}$resultat${NC}: ${tabM[$C]}";
 
 	C=$[$C+1];
 done < inf3135-h2019-tp2.correction
@@ -30,3 +33,4 @@ done < inf3135-h2019-tp2.correction
 	echo "";
 	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp2: $nbPoints";
 	echo "FIN."
+	echo ${tabR[14]}
