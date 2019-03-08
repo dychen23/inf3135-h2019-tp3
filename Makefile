@@ -25,6 +25,9 @@ test:
 	./tp2 -c $(VARIABLE) 
 7:
 	./tp2 -c $(VARIABLE) < ./data/data.txt > p
+
+time:
+	time make test
 	
 .PHONY: clean
 clean :

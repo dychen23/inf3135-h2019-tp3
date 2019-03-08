@@ -130,8 +130,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	for(unsigned long i = min; i<= max; i++){
-		if(estParfait(i)){
-
+		if(estParfait2(i)){
 			if(avecO){
 				fprintf(fw,"%ld\n",i);		
 			} else {

@@ -17,14 +17,22 @@ void swap(unsigned long *min,unsigned long *max){
 
 int estPremier(long n){
 
-	if(n%2==0) return 1;
-	int i = 3;
-
-	while(i*i<=n){
-			
-		if(n%i==0)return 0;
-			i+=2;
+	if(n==2) return 1;
+/*
+	if(n==3) return 1;
+	if(n==5) return 1;
+        if(n==7) return 1;
+	if(n%2==0) return 0;
+	if(n%3==0) return 0;
+	if(n%5==0) return 0;
+        if(n%7==0) return 0;
+*/
+	for(int i =3;i*i <= n; i+=2){
+		if(n%i==0){
+			return 0;
+		}
 	}
+	
 	return 1;
 }
 
@@ -50,9 +58,10 @@ int cpValide(char *c){
 int estParfait(long n){
 
 	unsigned long somme = 1;
-
-	for(unsigned long i = 2; i*i<=n; ++i){	
 	
+	//on commence a 2 car sert a rien de tester 1, vu qu’on ne peut pas ajouter lui-meme
+	for(unsigned long i = 2; i*i<=n; ++i){	
+
 		if(n%i==0){
 			if(i*i!=n){
 				somme+= i + (n/i);
@@ -61,35 +70,30 @@ int estParfait(long n){
 			}
 		}
 	}
-
 	return (somme == n && n != 1); 
 }
 
-
-
 int estParfait2(long n){
-
-	unsigned long somme = 1;
-	unsigned long total = 1;
-
 	
-	for(unsigned long i = 2; i*i<=n ; ++i){	
+	unsigned long prime;
+        unsigned long total;
 
-		if(estPremier(i)){
-
-			long a = (pow(2,i)-1);
-			long b = pow(2,i-1);
-			total = a*b;
+	for(int i = 2; i*i <= n; ++i){
 		
-			if( estPremier(a) && total == n) 
-			
-				return 1;
-			}
+		if(estPremier(i)){
+		prime = pow(2,i)-1;
+
+		if(estPremier(prime)){ 
+				//printf("i = 2: %lu %lu\n",prime,total);
+			total = pow(2,i-1)*prime;
+
+			if(n==total)return 1;	
+		}
+		}
 	}
 
-	return (0); 
+	return 0;
 }
-
 
 //validation de l’intervalle 
 int intervalleValide(long min, long max){
