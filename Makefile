@@ -29,7 +29,7 @@ test:
 time:
 	time make test
 	
-.SILENT .PHONY: clean
+.PHONY: clean
 clean :
 	rm -f *.o 
 	rm -f tp2 
@@ -48,7 +48,7 @@ resultat:
 	git commit -m "ajoute resultat.txt"
 	git push
 
-.SILENT push :
+push :
 	git add .
 	git commit -m "."
 	git push

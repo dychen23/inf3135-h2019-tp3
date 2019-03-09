@@ -16,7 +16,7 @@ while read line; do
 	tabP[$C]=${line:0:2};
 	tabC[$C]=${line:4:2};
 	tabM[$C]=${line:29};
-		${line:29} 2>/dev/null;
+		${line:29};
 	tabR[$C]=$?;
 
 	if [ ${tabC[$C]} -eq ${tabR[$C]} ]; then
