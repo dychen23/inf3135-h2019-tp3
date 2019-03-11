@@ -137,20 +137,27 @@ int main(int argc, char *argv[]) {
 //for 2 31
 // if npp
 //if nbparfait
-	for(unsigned long i = min; i<= max; i++){
 	
-		/*
-		for(unsigned long i = 2; i*i<=n; ++i){	
+	for(unsigned long p = 2; p<31; ++p){
 	
-			if(n%i==0){
-				if(i*i!=n){
-					somme+= i + (n/i);
+		unsigned long MersennePrime =pow(2,p)-1;
+		unsigned long a = pow(2,p-1)*MersennePrime;
+
+		if(estPremier(MersennePrime) && a<=max && a >= min){
+	
+			if(estParfait(a)){
+				if(avecO){
+					fprintf(fw,"%ld\n",a);		
 				} else {
-					somme+=i ;
+					printf("%ld\n",a);
 				}
-			}
+			} 
+
 		}
-		*/
+	}
+	
+	/*
+	for(unsigned long i = min; i<= max; ++i){
 		
 		if(estParfait(i)){
 			if(avecO){
@@ -160,6 +167,7 @@ int main(int argc, char *argv[]) {
 			}
 		} 
 	}
+	*/
 
 	fclose(fp);
 	fclose(fw);

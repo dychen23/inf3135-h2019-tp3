@@ -22,4 +22,3 @@
 1 10 0 test 2 resultat       diff --brief -b res.out ~/depot/data2.res
 1 90 0 Qualite               ./tp2 -c $(cat cp.txt) < ~/depot/data3.in > res.out
 1 10 0 Qualite               diff --brief -b res.out ~/depot/data3.res
-1 10 0 Test		     make clean ; make clean
