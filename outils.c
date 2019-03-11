@@ -83,7 +83,6 @@ int estParfait(long n){
 			}
 		}
 
-		//if(estParfait2(i) == n) return 1;
 	}
 
 	return (somme == n && n != 1); 
