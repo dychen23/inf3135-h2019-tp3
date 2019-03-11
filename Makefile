@@ -13,21 +13,6 @@ tp2:outils.o tp2.c
 
 test:
 	./tp2 -c $(VARIABLE) -i ./data/data.txt 
-2:
-	./tp2 -c $(VARIABLE) -i ./data/data.txt -o p
-3:
-	./tp2 -c $(VARIABLE) -o p
-4:
-	./tp2 -c $(VARIABLE) < ./data/data.txt
-5:
-	./tp2 -c $(VARIABLE) > p
-6: 
-	./tp2 -c $(VARIABLE) 
-7:
-	./tp2 -c $(VARIABLE) < ./data/data.txt > p
-
-time:
-	time make test
 	
 .PHONY: clean
 clean :
@@ -37,12 +22,13 @@ clean :
 	rm -rf data 
 	rm -f *.h.gch
 
+
 data :
-	wget -q https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 
+	wget -q  https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip
 	unzip data.zip -d ./data
 	rm data.zip
 
-resultat:
+resultat :
 	git add resultat.txt
 	git commit -m "ajoute resultat.txt"
 	git push

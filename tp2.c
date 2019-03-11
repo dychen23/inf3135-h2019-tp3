@@ -80,6 +80,8 @@ int main(int argc, char *argv[]) {
 			} else {
 				strcpy(output,argv[i+1]);
 				fw = fopen(output,"w");
+
+				if(fw == NULL) exit(6);
 			}
 		} else {
 			exit(3);
@@ -132,6 +134,9 @@ int main(int argc, char *argv[]) {
 	}
 
 
+//for 2 31
+// if npp
+//if nbparfait
 	for(unsigned long i = min; i<= max; i++){
 	
 		/*

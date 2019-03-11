@@ -18,7 +18,7 @@ while read line; do
 	tabP[$C]=${line:0:2};
 	tabC[$C]=${line:4:2};
 	tabM[$C]=${line:29};
-		eval ${line:29};
+		eval gtimeout 5s  ${line:29};
 	tabR[$C]=$?;
 	
 	
@@ -34,11 +34,5 @@ while read line; do
 done < inf3135-h2019-tp2.correction
 
 	echo "";
-	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp2: $nbPoints";
+	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp2: $nbPoints/$C";
 	echo "FIN."
-	echo ${tabR[14]};	
-		
-	echo  ;
-	ca=`grep -c -e 'default :' -e 'default:' Makefile`
-	echo ${ca}
-	#echo ${sub}
