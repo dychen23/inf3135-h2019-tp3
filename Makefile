@@ -3,7 +3,7 @@ OPTIONS = -Wall -pedantic -std=c99 -lm -O1
 FILE=cp.txt
 VARIABLE=$(shell cat $(FILE))
 
-default:tp2
+default :tp2
 
 outils.o: outils.h outils.c
 	gcc $(OPTIONS) -c outils.h outils.c 
@@ -36,7 +36,6 @@ clean :
 	rm -f code.txt 
 	rm -rf data 
 	rm -f *.h.gch
-	rm -f *tp2.correction 
 
 data :
 	wget -q https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip 

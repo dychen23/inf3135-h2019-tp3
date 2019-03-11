@@ -133,6 +133,20 @@ int main(int argc, char *argv[]) {
 
 
 	for(unsigned long i = min; i<= max; i++){
+	
+		/*
+		for(unsigned long i = 2; i*i<=n; ++i){	
+	
+			if(n%i==0){
+				if(i*i!=n){
+					somme+= i + (n/i);
+				} else {
+					somme+=i ;
+				}
+			}
+		}
+		*/
+		
 		if(estParfait(i)){
 			if(avecO){
 				fprintf(fw,"%ld\n",i);		

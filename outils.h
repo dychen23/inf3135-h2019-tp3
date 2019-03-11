@@ -7,6 +7,7 @@
 
 int estParfait(long n);
 int estParfait2(long n);
+// estNombreParfaitPotentiel(long n);
 int estPremier(long n);
 
 int cpValide(char *c);

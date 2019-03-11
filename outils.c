@@ -17,15 +17,14 @@ void swap(unsigned long *min,unsigned long *max){
 
 int estPremier(long n){
 
-	if(n%2==0) return 1;
-	int i = 3;
-
-	while(i*i<=n){
-			
-		if(n%i==0)return 0;
-			i+=2;
-	}
-	return 1;
+    if (n < 2) return 0;
+    if (n == 2) return 1;
+    if (n % 2 == 0) return 0;
+    
+for (int i=3; (i*i) <= n; i+=2) {
+        if (n % i == 0 ) return 0;
+    }
+    return 1;
 }
 
 //validation du code permanent
@@ -46,6 +45,29 @@ int cpValide(char *c){
 	return 1;
 }
 
+int estParfait2(long n){
+	
+	/*
+	unsigned long somme = 1;
+	unsigned long total = 1;
+
+	
+	for(unsigned long i = 2; i*i<=n ; ++i){	
+
+
+		long a = (pow(2,i)-1);
+		long b = pow(2,i-1);
+		total = a*b;
+		
+		if(total == n) 
+			
+			return 1;
+		}
+	*/
+	
+	return pow(2,n-1)*(pow(2,n)-1); 
+}
+
 //verifie si un nombre est parfait
 int estParfait(long n){
 
@@ -60,34 +82,11 @@ int estParfait(long n){
 				somme+=i ;
 			}
 		}
+
+		//if(estParfait2(i) == n) return 1;
 	}
 
 	return (somme == n && n != 1); 
-}
-
-
-
-int estParfait2(long n){
-
-	unsigned long somme = 1;
-	unsigned long total = 1;
-
-	
-	for(unsigned long i = 2; i*i<=n ; ++i){	
-
-		if(estPremier(i)){
-
-			long a = (pow(2,i)-1);
-			long b = pow(2,i-1);
-			total = a*b;
-		
-			if( estPremier(a) && total == n) 
-			
-				return 1;
-			}
-	}
-
-	return (0); 
 }
 
 

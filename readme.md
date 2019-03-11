@@ -12,13 +12,13 @@
 
    ## Fonctionnement
 
-   ./tp1 -c abcd12345678 -i fichierentree.txt -o fichiersortie.txt
+   ./tp2 -c abcd12345678 -i fichierentree.txt -o fichiersortie.txt
 
-   ./tp1 -c abcd12345678 -i fichierentree.txt
+   ./tp2 -c abcd12345678 -i fichierentree.txt
 
-   ./tp1 -c abcd12345678 -o fichiersortie.txt 
+   ./tp2 -c abcd12345678 -o fichiersortie.txt 
 
-   ./tp1 -c abcd12345678 < fichierentree.txt > fichiersortie.txt
+   ./tp2 -c abcd12345678 < fichierentree.txt > fichiersortie.txt
 
    (demande a l'utilisateur dentree un fichier de sortie)
 
@@ -31,8 +31,10 @@
 
    MAKEFILE - fichier makefile pour automatiser 
 
-   TP1.C - le corps de notre TP1,
-
+   TP2.C - le corps de notre TP1,
+   outils.c
+   outils.h
+	
    README.MD - fichier markdown
 
    cp.txt - fichier avec code permanent
@@ -51,9 +53,6 @@
 
    ## Statut
    
-   il y a des bogues avec le stdin... il ne "flush" proprement, le buffer est toujours dedans
-
-   <indiquez si le projet est complété ou s'il y a des bogues>
    
 =======
 #inf3135
