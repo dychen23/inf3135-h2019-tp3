@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 
 				fp=fopen(argv[i+1],"r");
 
-				if(!(fp && fscanf(fp,"%ld %ld",&min, &max) == 2)){
+				if(!(fp && fscanf(fp,"%lu %lu",&min, &max) == 2)){
 					exit(5);
 				}
 			}
@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
 	
 	if(!avecI){
 
-		scanf("%ld %ld",&min, &max);
+		scanf("%lu %lu",&min, &max);
 
 		fseek (stdin, 0, SEEK_END);
 		num = ftell (stdin);
@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
 		swap(&min,&max);
 	}
 	
-	for(unsigned long p = 2; p<31; ++p){
+	for(unsigned long p = 2; p<=31; ++p){
 	
 		unsigned long MersennePrime =pow(2,p)-1;
 		unsigned long a = pow(2,p-1)*MersennePrime;
