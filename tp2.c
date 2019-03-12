@@ -135,11 +135,10 @@ int main(int argc, char *argv[]) {
 	
 	for(unsigned long p = 2; p<=31; ++p){
 	
-		unsigned long MersennePrime =pow(2,p)-1;
+		unsigned long MersennePrime = pow(2,p)-1;
 		unsigned long a = pow(2,p-1)*MersennePrime;
 
 		if(estPremier(MersennePrime) && a<=max && a >= min){
-	
 			if(estParfait(a)){
 				if(avecO){
 					fprintf(fw,"%ld\n",a);		
