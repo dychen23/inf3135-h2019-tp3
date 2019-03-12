@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
 		swap(&min,&max);
 	}
 	
-	for(unsigned long p = 2; p<=31; ++p){
+	for(unsigned long p = 2; p<31; ++p){
 	
 		unsigned long MersennePrime =pow(2,p)-1;
 		unsigned long a = pow(2,p-1)*MersennePrime;
