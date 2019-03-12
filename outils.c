@@ -45,29 +45,6 @@ int cpValide(char *c){
 	return 1;
 }
 
-int estParfait2(long n){
-	
-	/*
-	unsigned long somme = 1;
-	unsigned long total = 1;
-
-	
-	for(unsigned long i = 2; i*i<=n ; ++i){	
-
-
-		long a = (pow(2,i)-1);
-		long b = pow(2,i-1);
-		total = a*b;
-		
-		if(total == n) 
-			
-			return 1;
-		}
-	*/
-	
-	return pow(2,n-1)*(pow(2,n)-1); 
-}
-
 //verifie si un nombre est parfait
 int estParfait(long n){
 

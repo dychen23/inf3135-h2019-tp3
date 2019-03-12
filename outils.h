@@ -5,12 +5,10 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-int estParfait(long n);
-int estParfait2(long n);
-// estNombreParfaitPotentiel(long n);
-int estPremier(long n);
+int estParfait(unsigned long n);
+int estPremier(unsigned long n);
 
 int cpValide(char *c);
-int intervalleValide(long min, long max);
+int intervalleValide(unsigned long min,unsigned long max);
 
 void swap(unsigned long *min, unsigned long *max);

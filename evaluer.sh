@@ -18,7 +18,7 @@ while read line; do
 	tabP[$C]=${line:0:2};
 	tabC[$C]=${line:4:2};
 	tabM[$C]=${line:29};
-		eval gtimeout 5s  ${line:29};
+		eval ${line:29};
 	tabR[$C]=$?;
 	
 	
