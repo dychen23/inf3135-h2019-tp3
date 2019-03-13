@@ -1,4 +1,4 @@
-OPTIONS = -Wall -pedantic -std=c99 -lm -O1
+OPTIONS = -Wall -pedantic -std=c99 -lm -O1 
 
 FILE=cp.txt
 VARIABLE=$(shell cat $(FILE))

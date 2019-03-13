@@ -8,6 +8,7 @@
 #include <math.h>
 
 //#define TRACE
+//#define valeur
 
 int main(int argc, char *argv[]) {
 
@@ -26,6 +27,10 @@ int main(int argc, char *argv[]) {
 
 	FILE *fp = NULL;
 	FILE *fw = NULL;
+
+	#ifdef valeur
+	printf("%lu\n",sizeof(unsigned long));
+	#endif
 
 	//on vérifie tous les arguments
 	while(i < argc){
