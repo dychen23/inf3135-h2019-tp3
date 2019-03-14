@@ -15,8 +15,6 @@ int main(int argc, char *argv[]) {
 	int num;
 	int i = 1;
 	int argumentC = 1;
-	int argumentI = 1;
-	int argumentO = 1;
 	int avecO = 0;
 	int avecI = 0;
 
@@ -25,8 +23,8 @@ int main(int argc, char *argv[]) {
 
 	unsigned long min,max;
 
-	FILE *fp = NULL;
-	FILE *fw = NULL;
+	FILE *fp = stdin;
+	FILE *fw = stdout;
 
 	#ifdef valeur
 	printf("%lu\n",sizeof(unsigned long));
@@ -56,24 +54,24 @@ int main(int argc, char *argv[]) {
 				argumentC =0;
 			} else if(!cpValide(argv[i+1])){
 				exit(2);	
-			} else {
-				fw = fopen("code.txt","w");	
-				fprintf(fw,"%s\n",argv[i+1]);	
-			}
+			} 
+
+			fw = fopen("code.txt","w");	
+			fprintf(fw,"%s\n",argv[i+1]);	
+	
 
 		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
 			
 			avecI = 1;
 			
 			if(argv[i+1] == NULL){
-				argumentI=0;
-			} else {
+				exit(5);
+			} 
 
-				fp=fopen(argv[i+1],"r");
+			fp=fopen(argv[i+1],"r");
 
-				if(!(fp && fscanf(fp,"%lu %lu",&min, &max) == 2)){
+			if(!(fp && fscanf(fp,"%lu %lu",&min, &max) == 2)){
 					exit(5);
-				}
 			}
 
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
@@ -81,13 +79,14 @@ int main(int argc, char *argv[]) {
 			avecO = 1;
 
 			if(argv[i+1]==NULL || argv[i+1][0] == '-'){
-				argumentO=0;
-			} else {
+				exit(6);
+			} 
+			
 				strcpy(output,argv[i+1]);
 				fw = fopen(output,"w");
 
 				if(fw == NULL) exit(6);
-			}
+
 		} else {
 			exit(3);
 		}
@@ -98,10 +97,6 @@ int main(int argc, char *argv[]) {
 	if(argc<2 || !argumentC){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 		exit(1);
-	} else if(!argumentI){
-		exit(5);
-	} else if(!argumentO){
-		exit(6);
 	} 
 	
 	if(!avecI){
@@ -115,6 +110,11 @@ int main(int argc, char *argv[]) {
 
 		// < data.txt
 		if(num > 0){
+			
+			fp=stdin;
+			
+			if(!fp) exit(5);
+				
 			fgets(temp,100,stdin);
 			strtok(temp, "\n");
 
@@ -138,7 +138,7 @@ int main(int argc, char *argv[]) {
 		swap(&min,&max);
 	}
 	
-	for(unsigned long p = 2; p<=31; ++p){
+	for(int p = 2; p<=31; ++p){
 	
 		unsigned long MersennePrime = pow(2,p)-1;
 		unsigned long a = pow(2,p-1)*MersennePrime;
@@ -151,7 +151,6 @@ int main(int argc, char *argv[]) {
 					printf("%ld\n",a);
 				}
 			} 
-
 		}
 	}
 

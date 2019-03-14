@@ -15,9 +15,10 @@ while read line; do
 	resultat="echec" 
 	
 	tabP[$C]=${line:0:2};
+	tabT[$C]=${line:2:2};
 	tabC[$C]=${line:4:2};
 	tabM[$C]=${line:29};
-		eval ${line:29} > /dev/null 2>&1;
+		eval timeout ${tabT[$C]}s ${line:29} > /dev/null 2>&1;
 	tabR[$C]=$?;
 	
 	if [ ${tabC[$C]} -eq ${tabR[$C]} ]; then
