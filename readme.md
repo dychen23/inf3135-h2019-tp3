@@ -48,11 +48,13 @@
 
    https://www.tutorialspoint.com/cprogramming/c_input_output.htm
      
+   https://www.tutorialspoint.com/cprogramming/c_data_types.htm
    
    Note de cours..
 
    ## Statut
    
+   Tous les tests du fichier inf3135-h2019-tp2.correction passent sauf le dernier.
    
 =======
 #inf3135
