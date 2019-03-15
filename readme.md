@@ -49,7 +49,8 @@
    https://www.tutorialspoint.com/cprogramming/c_input_output.htm
      
    https://www.tutorialspoint.com/cprogramming/c_data_types.htm
-   
+
+https://www.maths-et-tiques.fr/index.php/histoire-des-maths/nombres/les-nombres-parfaits   
    Note de cours..
 
    ## Statut
