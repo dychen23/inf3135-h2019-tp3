@@ -5,6 +5,7 @@ wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master/
 fi
 
 C=0
+nbTotalNote=0
 nbPoints=0
 NC='\033[0m'
 utilisateur=$(cat cp.txt)
@@ -26,6 +27,10 @@ while read line; do
 		nbPoints=$[$nbPoints+${tabP[$C]}];
 		Color='\033[1;32m'
 	fi 
+	
+	if [ ${tabP[$C]} -ne 0 ]; then
+		nbTotalNote=$[$nbTotalNote + ${tabP[$C]}]
+	fi
 
 	if [ "$C" -lt 10 ]; then
 		espace=" "
@@ -38,5 +43,5 @@ done < inf3135-h2019-tp2.correction
 
 	
 	echo "";
-	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp2: $nbPoints/$C";
+	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp2: $nbPoints/$nbTotalNote";
 	echo "FIN."

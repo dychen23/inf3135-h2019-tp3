@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include "outils.h"
 #include <math.h>
+#include <limits.h>
 
 //#define TRACE
 //#define valeur
@@ -141,14 +142,14 @@ int main(int argc, char *argv[]) {
 	for(int p = 2; p<=31; ++p){
 	
 		unsigned long MersennePrime = pow(2,p)-1;
-		unsigned long a = pow(2,p-1)*MersennePrime;
+		unsigned long long a = pow(2,p-1)*MersennePrime;
 
 		if(estPremier(MersennePrime) && a<=max && a >= min){
 			if(estParfait(a)){
 				if(avecO){
-					fprintf(fw,"%ld\n",a);		
+					fprintf(fw,"%llu\n",a);		
 				} else {
-					printf("%ld\n",a);
+					printf("%llu\n",a);
 				}
 			} 
 		}
