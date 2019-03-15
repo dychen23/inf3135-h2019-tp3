@@ -29,15 +29,19 @@
 
    ## Contenu du projet
 
-   MAKEFILE - fichier makefile pour automatiser 
-
-   TP2.C - le corps de notre TP1,
-   outils.c
+   Makefile - fichier makefile pour automatiser 
+   tp2.c 
+   README.md - fichier markdown
    outils.h
-	
-   README.MD - fichier markdown
-
+   outils.c
    cp.txt - fichier avec code permanent
+   
+   evaluer.sh - script pour automatiser nos tests, ou le format est:
+   1: compteur
+   2: le code de retour attendu
+   3: notre code de retour
+   4: resultat de nos tests
+   5: la commande
 
    ## Références
    https://forums.opensuse.org/showthread.php/443685-How-to-call-a-script-in-Makefile-and-capture-its-output
