@@ -15,7 +15,7 @@ void swap(unsigned long *min,unsigned long *max){
 		*min = ntemp;
 }
 
-int estPremier(long n){
+int estPremier(unsigned long n){
 
     if (n < 2) return 0;
     if (n == 2) return 1;
@@ -46,12 +46,11 @@ int cpValide(char *c){
 }
 
 //verifie si un nombre est parfait
-int estParfait(long n){
+int estParfait(unsigned long n){
 
 	unsigned long somme = 1;
 
 	for(unsigned long i = 2; i*i<=n; ++i){	
-	
 		if(n%i==0){
 			if(i*i!=n){
 				somme+= i + (n/i);
@@ -59,9 +58,7 @@ int estParfait(long n){
 				somme+=i ;
 			}
 		}
-
 	}
-
 	return (somme == n && n != 1); 
 }
 

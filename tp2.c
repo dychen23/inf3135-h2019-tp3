@@ -145,6 +145,7 @@ int main(int argc, char *argv[]) {
 		unsigned long long a = pow(2,p-1)*MersennePrime;
 
 		if(estPremier(MersennePrime) && a<=max && a >= min){
+			
 			if(estParfait(a)){
 				if(avecO){
 					fprintf(fw,"%llu\n",a);		
