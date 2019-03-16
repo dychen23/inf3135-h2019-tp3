@@ -6,7 +6,6 @@
 #include <fcntl.h>
 #include "outils.h"
 #include <math.h>
-#include <limits.h>
 
 //#define TRACE
 //#define valeur
