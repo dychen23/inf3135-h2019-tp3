@@ -44,9 +44,13 @@ Travail pratique tp2
    
    evaluer.sh - script pour automatiser nos tests, ou le format est:
    1: compteur
+
    2: le code de retour attendu
+
    3: notre code de retour
+
    4: resultat de nos tests
+
    5: la commande
 
    ## References
@@ -60,7 +64,8 @@ Travail pratique tp2
      
    https://www.tutorialspoint.com/cprogramming/c_data_types.htm
 
-https://www.maths-et-tiques.fr/index.php/histoire-des-maths/nombres/les-nombres-parfaits   
+   https://www.maths-et-tiques.fr/index.php/histoire-des-maths/nombres/les-nombres-parfaits   
+   
    Note de cours..
 
    ## Statut
