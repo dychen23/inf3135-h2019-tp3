@@ -8,9 +8,13 @@ Travail pratique tp2
 
    ## Approche
 
-   Dans le cadre du cours, on a constaté que un nomrbe est parfait si ET seulement si (2^p)-1 est un nombre premier.
+   Dans le cadre du cours, on a constaté que un nobre est parfait si ET seulement si (2^p)-1 est un nombre premier.
+   
    Donc, pour notre premiere boucle, on parcours de 2 jusqu'a 31 puisque qu'on travaille avec des nombres de 32 bits.
-   Ensuite, on verifie si c'est un nombre parfait potentiel en appliquant la formule 2^(p-1)*(2^p)-1.   
+   
+   Ensuite, on verifie si c'est un nombre parfait potentiel en appliquant la formule 2^(p-1)*(2^p)-1 ET en verifiant que (2^p)-1 est un nb premier.
+
+   Finalement, si la somme des diviseurs de notre nombre parfait potentiel est egale a notre nombre, c'est un nombre parfait.   
    ## Auteur
 
    Andy Chen CHEA23099303	
