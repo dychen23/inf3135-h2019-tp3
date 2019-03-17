@@ -8,13 +8,13 @@ Travail pratique tp2
 
    ## Approche
 
-   Dans le cadre du cours, on a constaté que un nobre est parfait si ET seulement si (2^p)-1 est un nombre premier.
+   Dans le cadre du cours, on a constaté que un ombre est parfait si ET seulement si (2^p)-1 est un nombre premier.
    
    Donc, pour notre premiere boucle, on parcours de 2 jusqu'a 31 puisque qu'on travaille avec des nombres de 32 bits.
    
-   Ensuite, on verifie si c'est un nombre parfait potentiel en appliquant la formule 2^(p-1)*(2^p)-1 ET en verifiant que (2^p)-1 est un nb premier.
+   Ensuite, on vérifie si c'est un nombre parfait potentiel en appliquant la formule 2^(p-1)*(2^p)-1 ET en verifiant que (2^p)-1 est un nb premier.
 
-   Finalement, si la somme des diviseurs de notre nombre parfait potentiel est egale a notre nombre, c'est un nombre parfait.   
+   Finalement, si la somme des diviseurs de notre nombre parfait potentiel est egale à notre nombre, on peut conclure que notre nombre est un nombre parfait.   
    ## Auteur
 
    Andy Chen CHEA23099303	
@@ -29,9 +29,9 @@ Travail pratique tp2
 
    ./tp2 -c abcd12345678 < fichierentree.txt > fichiersortie.txt
 
-   (demande a l'utilisateur dentree un fichier de sortie)
+   (demande à l'utilisateur d'entr�r un fichier de sortie)
 
-   les resultats sont dirigees dans le fichier de sortie
+   les résultats sont dirigées dans le fichier de sortie
 
    ## Contenu du projet
 
@@ -65,8 +65,4 @@ https://www.maths-et-tiques.fr/index.php/histoire-des-maths/nombres/les-nombres-
 
    ## Statut
    
-   Tous les tests du fichier inf3135-h2019-tp2.correction passent 
-   
-=======
-#inf3135
->>>>>>> 381e17d7a09623960c767ff18229786d3e9d0ca4
+   Tous les tests du fichier inf3135-h2019-tp2.correction passent sur le serveur Java et sur la machine locale.
