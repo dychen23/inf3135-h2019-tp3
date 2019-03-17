@@ -43,6 +43,7 @@ Travail pratique tp2
    cp.txt - fichier avec code permanent
    
    evaluer.sh - script pour automatiser nos tests, ou le format est:
+
    1: compteur
 
    2: le code de retour attendu
