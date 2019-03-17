@@ -8,7 +8,9 @@ Travail pratique tp2
 
    ## Approche
 
-   Dans le cadre du cours, on a constaté que un nombe est parfait si ET seulement si (2^p)-1 est un nombre premier. Donc, pour notre premier boucle, on parcours de 2 jusqu'a 31 puisque qu'on travaille avec des nombres de 32 bits.    
+   Dans le cadre du cours, on a constaté que un nomrbe est parfait si ET seulement si (2^p)-1 est un nombre premier.
+   Donc, pour notre premiere boucle, on parcours de 2 jusqu'a 31 puisque qu'on travaille avec des nombres de 32 bits.
+   Ensuite, on verifie si c'est un nombre parfait potentiel en appliquant la formule 2^(p-1)*(2^p)-1.   
    ## Auteur
 
    Andy Chen CHEA23099303	
