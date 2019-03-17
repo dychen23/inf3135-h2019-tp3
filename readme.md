@@ -1,11 +1,14 @@
-<<<<<<< HEAD
-﻿# Travail pratue tp2
+
+Travail pratique tp2
 
    ## Description
 
    On cherche la liste des nombres parfaits qui n'existe pas
    dans le cours INF3135 a UQAM
 
+   ## Approche
+
+   Dans le cadre du cours, on a constateé que un nomb est parfait si ET seulement si (2^p)-1 est un nombre premier
    ## Auteur
 
    Andy Chen CHEA23099303	
@@ -23,9 +26,6 @@
    (demande a l'utilisateur dentree un fichier de sortie)
 
    les resultats sont dirigees dans le fichier de sortie
-
-   <expliquez brièvement comment faire fonctionner votre projet, en inscrivant
-   au moins deux exemples d'utilisation (commande lancée et résultat affiché)>
 
    ## Contenu du projet
 
@@ -59,7 +59,7 @@ https://www.maths-et-tiques.fr/index.php/histoire-des-maths/nombres/les-nombres-
 
    ## Statut
    
-   Tous les tests du fichier inf3135-h2019-tp2.correction passent sauf le dernier.
+   Tous les tests du fichier inf3135-h2019-tp2.correction passent 
    
 =======
 #inf3135
