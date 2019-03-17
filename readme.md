@@ -8,13 +8,13 @@ Travail pratique tp2
 
    ## Approche
 
-   Dans le cadre du cours, on a constaté que un ombre est parfait si ET seulement si (2^p)-1 est un nombre premier.
+   Dans le cadre du cours, on a constate que un ombre est parfait si ET seulement si (2^p)-1 est un nombre premier.
    
    Donc, pour notre premiere boucle, on parcours de 2 jusqu'a 31 puisque qu'on travaille avec des nombres de 32 bits.
    
-   Ensuite, on vérifie si c'est un nombre parfait potentiel en appliquant la formule 2^(p-1)*(2^p)-1 ET en verifiant que (2^p)-1 est un nb premier.
+   Ensuite, on verifie si c'est un nombre parfait potentiel en appliquant la formule 2^(p-1)*(2^p)-1 ET en verifiant que (2^p)-1 est un nb premier.
 
-   Finalement, si la somme des diviseurs de notre nombre parfait potentiel est egale à notre nombre, on peut conclure que notre nombre est un nombre parfait.   
+   Finalement, si la somme des diviseurs de notre nombre parfait potentiel est egale a notre nombre, on peut conclure que notre nombre est un nombre parfait.   
    ## Auteur
 
    Andy Chen CHEA23099303	
@@ -29,9 +29,9 @@ Travail pratique tp2
 
    ./tp2 -c abcd12345678 < fichierentree.txt > fichiersortie.txt
 
-   (demande à l'utilisateur d'entr�r un fichier de sortie)
+   (demande a l'utilisateur d'enter un fichier de sortie)
 
-   les résultats sont dirigées dans le fichier de sortie
+   les resultats sont dirigees dans le fichier de sortie
 
    ## Contenu du projet
 
@@ -49,7 +49,7 @@ Travail pratique tp2
    4: resultat de nos tests
    5: la commande
 
-   ## Références
+   ## References
    https://forums.opensuse.org/showthread.php/443685-How-to-call-a-script-in-Makefile-and-capture-its-output
 
    https://www.geeksforgeeks.org/perfect-number/
