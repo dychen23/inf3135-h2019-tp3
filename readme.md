@@ -1,5 +1,5 @@
 
-Travail pratique tp2
+Travail pratique tp3
 
    ## Description
 
@@ -21,13 +21,13 @@ Travail pratique tp2
 
    ## Fonctionnement
 
-   ./tp2 -c abcd12345678 -i fichierentree.txt -o fichiersortie.txt
+   ./tp3 -c abcd12345678 -i fichierentree.txt -o fichiersortie.txt
 
-   ./tp2 -c abcd12345678 -i fichierentree.txt
+   ./tp3 -c abcd12345678 -i fichierentree.txt
 
-   ./tp2 -c abcd12345678 -o fichiersortie.txt 
+   ./tp3 -c abcd12345678 -o fichiersortie.txt 
 
-   ./tp2 -c abcd12345678 < fichierentree.txt > fichiersortie.txt
+   ./tp3 -c abcd12345678 < fichierentree.txt > fichiersortie.txt
 
    (demande a l'utilisateur d'enter un fichier de sortie)
 
@@ -36,7 +36,7 @@ Travail pratique tp2
    ## Contenu du projet
 
    Makefile - fichier makefile pour automatiser 
-   tp2.c 
+   tp3.c 
    README.md - fichier markdown
    outils.h
    outils.c
@@ -71,4 +71,4 @@ Travail pratique tp2
 
    ## Statut
    
-   Tous les tests du fichier inf3135-h2019-tp2.correction passent sur le serveur Java et sur la machine locale.
+   Tous les tests du fichier inf3135-h2019-tp3.correction passent sur le serveur Java et sur la machine locale.
