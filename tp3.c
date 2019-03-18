@@ -21,6 +21,8 @@ int main(int argc, char *argv[]) {
 	char output[100];
 	char temp[100];
 
+	char *argumentD ="DESC";
+
 	unsigned long min,max;
 
 	FILE *fp = stdin;
@@ -47,8 +49,7 @@ int main(int argc, char *argv[]) {
 			}
 		}
 		#endif
-
-		//strcomp retourne 0 si egale		
+	
 		if(strcmp(argv[i],"-c") == 0 || strcmp(argv[i],"-C") == 0){
 			if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
 				argumentC =0;
@@ -87,6 +88,13 @@ int main(int argc, char *argv[]) {
 
 				if(fw == NULL) exit(6);
 
+		} else if(strcmp(argv[i],"-d") == 0 || strcmp(argv[i],"-D") == 0){
+			if((argv[i+1]==NULL) && (strcmp(argv[i+1],"ASC") != 0) && (strcmp(argv[i+1],"DESC") != 0)) {
+				exit(6);
+			} 
+
+			//argumentD = argv[i+1];
+			
 		} else {
 			exit(3);
 		}
