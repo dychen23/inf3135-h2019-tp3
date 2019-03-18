@@ -4,7 +4,7 @@ if [ ! -f inf3135-h2019-tp2.correction ]; then
 wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master/inf3135-h2019-tp2.correction
 fi
 
-C=0
+C=0 
 nbTotalNote=0
 nbPoints=0
 NC='\033[0m'
