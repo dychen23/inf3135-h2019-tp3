@@ -12,7 +12,7 @@ tp3:outils.o tp3.c
 	gcc $(OPTIONS) outils.o tp3.c -o tp3
 
 test:
-	./tp3 -c $(VARIABLE) -i ./data/data.txt -d asd
+	./tp3 -c $(VARIABLE) -i ./data/data.txt -d ASC
 	
 .PHONY: clean
 clean :

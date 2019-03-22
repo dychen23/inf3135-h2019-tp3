@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include <fcntl.h>
 #include "outils.h"
 #include <math.h>
@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
 			fp=fopen(argv[i+1],"r");
 
 			if(!(fp && fscanf(fp,"%lu %lu",&min, &max) == 2)){
-					exit(5);
+				exit(5);
 			}
 
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
@@ -83,17 +83,26 @@ int main(int argc, char *argv[]) {
 				exit(6);
 			} 
 			
-				strcpy(output,argv[i+1]);
-				fw = fopen(output,"w");
+			strcpy(output,argv[i+1]);
+			fw = fopen(output,"w");
 
-				if(fw == NULL) exit(6);
+			if(fw == NULL) exit(6);
 
 		} else if(strcmp(argv[i],"-d") == 0 || strcmp(argv[i],"-D") == 0){
-			if((argv[i+1]==NULL) && (strcmp(argv[i+1],"ASC") != 0) && (strcmp(argv[i+1],"DESC") != 0)) {
+		
+			/*
+			char *temp = argv[i+1];
+
+			while(temp){
+				temp = toupper((int)temp);
+				temp++;
+			}*/
+
+			if(argv[i+1]== NULL || ((strcmp(argv[i+1],"ASC") != 0) && (strcmp(argv[i+1],"DESC") != 0))) {
 				exit(6);
 			} 
 
-			//argumentD = argv[i+1];
+			argumentD = argv[i+1];
 			
 		} else {
 			exit(3);
