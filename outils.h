@@ -4,11 +4,6 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-#ifndef OUTILS_H
-#define OUTILS_H
-
-#endif
-
 int estParfait(unsigned long n);
 int estPremier(unsigned long n);
 

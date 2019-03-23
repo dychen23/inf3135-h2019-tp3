@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include "outils.h"
+#include "structure.h"
 #include <math.h>
 
 //#define TRACE
@@ -16,12 +17,14 @@ int main(int argc, char *argv[]) {
 	int argumentC = 1;
 	int avecO = 0;
 	int avecI = 0;
+	
+	enum bool b = T;
 
 	char output[100];
 	char temp[100];
 
 	char *argumentD ="DESC";
-
+	
 	unsigned long min,max;
 
 	FILE *fp = stdin;
