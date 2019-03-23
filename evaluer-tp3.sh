@@ -1,8 +1,16 @@
 #!/bin/bash
 
-if [ ! -f inf3135-h2019-tp2.correction ]; then
-wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master/inf3135-h2019-tp2.correction
+if [ -z $1 ]; then
+	correction=inf3135-h2019-tp2.correction
+else
+	correction=$1
 fi
+
+if [ ! -f inf3135-h2019-tp2.correction ]; then	
+	wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master$
+fi
+
+echo ${correction}
 
 C=0 
 nbTotalNote=0
@@ -19,7 +27,7 @@ while read line; do
 	tabT[$C]=${line:2:2};
 	tabC[$C]=${line:4:2};
 	tabM[$C]=${line:29};
-		eval timeout ${tabT[$C]}s ${line:29} > /dev/null 2>&1;
+		 eval timeout ${tabT[$C]}s ${line:29} > /dev/null 2>&1;
 	tabR[$C]=$?;
 	
 	if [ ${tabC[$C]} -eq ${tabR[$C]} ]; then
@@ -45,3 +53,4 @@ done < inf3135-h2019-tp2.correction
 	echo "";
 	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp2: $nbPoints/$nbTotalNote";
 	echo "FIN."
+

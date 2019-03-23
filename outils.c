@@ -2,7 +2,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include <math.h>
 
@@ -10,11 +9,12 @@
 void swap(unsigned long *min,unsigned long *max){
 	unsigned long ntemp;
 
-		ntemp = *max;
-		*max = *min;
-		*min = ntemp;
+	ntemp = *max;
+	*max = *min;
+	*min = ntemp;
 }
 
+//verifie si nb est premier
 int estPremier(unsigned long n){
 
     if (n < 2) return 0;

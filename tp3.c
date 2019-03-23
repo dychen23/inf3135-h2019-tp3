@@ -2,7 +2,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-//#include <unistd.h>
 #include <fcntl.h>
 #include "outils.h"
 #include <math.h>
