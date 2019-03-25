@@ -1,10 +1,8 @@
 #ifndef STRUCTURE_H
 #define STRUCTURE_H
+	#include "structure.h"
 
-	typedef struct mymap{
-
-		char content;
-	} mymap;
-
-	void inserer(mymap m, int n);
+	typedef int make_iso_compilers_happy;
 #endif
+
+

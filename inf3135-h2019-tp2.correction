@@ -1,3 +1,4 @@
+0 10 0 dummy                 echo "dummy test"
 1 10 0 make (default:)       grep -c -e 'default :' -e 'default:' Makefile
 1 10 0 make                  make
 0 20 0 make data             make data

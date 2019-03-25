@@ -174,6 +174,8 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
+	//printf("%f\n",pow(2,200));
+
 	fclose(fp);
 	fclose(fw);
 

@@ -1,13 +1,13 @@
 #!/bin/bash
 
 if [ -z $1 ]; then
-	correction=inf3135-h2019-tp2.correction
+	correction=inf3135-h2019-tp3.correction
 else
 	correction=$1
 fi
 
-if [ ! -f inf3135-h2019-tp2.correction ]; then	
-	wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master$
+if [ ! -f inf3135-h2019-tp3.correction ]; then	
+	wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP3/master/inf3135-h2019-tp3.correction
 fi
 
 echo ${correction}
@@ -47,10 +47,10 @@ while read line; do
 	echo -e "$espace$C ${tabC[$C]}: ${tabR[$C]} ${Color}$resultat${NC}: ${tabM[$C]}";
 
 	C=$[$C+1];
-done < inf3135-h2019-tp2.correction
+done < inf3135-h2019-tp3.correction
 
 	
 	echo "";
-	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp2: $nbPoints/$nbTotalNote";
+	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp3: $nbPoints/$nbTotalNote";
 	echo "FIN."
 
