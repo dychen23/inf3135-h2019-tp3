@@ -63,6 +63,7 @@ int main(int argc, char *argv[]) {
 			fprintf(fw,"%s\n",argv[i+1]);	
 	
 
+
 		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
 			
 			avecI = 1;
