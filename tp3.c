@@ -100,7 +100,8 @@ int main(int argc, char *argv[]) {
 				temp++;
 			}*/
 
-			if(argv[i+1]== NULL || ((strcmp(argv[i+1],"ASC") != 0) && (strcmp(argv[i+1],"DESC") != 0))) {
+			if(argv[i+1]== NULL || ((strcmp(argv[i+1],"ASC") != 0) 
+				&& (strcmp(argv[i+1],"DESC") != 0))) {
 				exit(6);
 			} 
 

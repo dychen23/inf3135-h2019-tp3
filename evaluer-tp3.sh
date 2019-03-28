@@ -49,8 +49,6 @@ while read line; do
 	C=$[$C+1];
 done < inf3135-h2019-tp3.correction
 
-	
 	echo "";
 	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp3: $nbPoints/$nbTotalNote";
 	echo "FIN."
-
