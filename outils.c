@@ -5,6 +5,11 @@
 #include <fcntl.h>
 #include <math.h>
 
+/*
+uint128_t charU128(char* c){
+	return 0 ;	
+}
+*/
 
 void swap(unsigned long *min,unsigned long *max){
 	unsigned long ntemp;

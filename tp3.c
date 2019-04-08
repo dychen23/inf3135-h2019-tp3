@@ -14,18 +14,20 @@ int main(int argc, char *argv[]) {
 
 	int num;
 	int i = 1;
-	int argumentC = 1;
-	int avecO = 0;
-	int avecI = 0;
 	
-	enum bool b = T;
+	enum bool avecC = T;
+	enum bool avecI = F;
+	enum bool avecO = F;
 
 	char output[100];
 	char temp[100];
 
+	char line[100];
+
 	char *argumentD ="DESC";
 	
-	unsigned long min,max;
+	unsigned long min = 0;
+	unsigned long max = 0 ;
 
 	FILE *fp = stdin;
 	FILE *fw = stdout;
@@ -36,25 +38,10 @@ int main(int argc, char *argv[]) {
 
 	//on vérifie tous les arguments
 	while(i < argc){
-		
-		#ifdef TRACE
-		if(argv[i][0]=='-'){
-			
-			switch(argv[i][1]){
-				case 'c' : printf("c\n"); break;
-						
-			
-				case 'i' : printf("i\n"); break;
-				case 'o' : printf("o\n"); break;
-	
-				default: exit(3); break;
-			}
-		}
-		#endif
 	
 		if(strcmp(argv[i],"-c") == 0 || strcmp(argv[i],"-C") == 0){
 			if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
-				argumentC =0;
+				avecC = F;
 			} else if(!cpValide(argv[i+1])){
 				exit(2);	
 			} 
@@ -63,10 +50,9 @@ int main(int argc, char *argv[]) {
 			fprintf(fw,"%s\n",argv[i+1]);	
 	
 
-
 		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
 			
-			avecI = 1;
+			avecI = T;
 			
 			if(argv[i+1] == NULL){
 				exit(5);
@@ -74,13 +60,24 @@ int main(int argc, char *argv[]) {
 
 			fp=fopen(argv[i+1],"r");
 
+			/*
 			if(!(fp && fscanf(fp,"%lu %lu",&min, &max) == 2)){
 				exit(5);
 			}
+			*/
+
+			while(!feof(fp)){
+		
+				if(fscanf(fp,"%lu %lu",&min, &max)==2){
+					printf("%lu %lu\n",min,max);
+				} 
+			}		
+			
+		
 
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
 
-			avecO = 1;
+			avecO = T;
 
 			if(argv[i+1]==NULL || argv[i+1][0] == '-'){
 				exit(6);
@@ -101,12 +98,15 @@ int main(int argc, char *argv[]) {
 				temp++;
 			}*/
 
-			if(argv[i+1]== NULL || ((strcmp(argv[i+1],"ASC") != 0) 
+			if(argv[i+1]== NULL || 
+				((strcmp(argv[i+1],"ASC") != 0) 
 				&& (strcmp(argv[i+1],"DESC") != 0))) {
-				exit(6);
+				exit(7);
 			} 
 
 			argumentD = argv[i+1];
+
+			//printf("%d\n",toupper(argv[i+1]));
 			
 		} else {
 			exit(3);
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
 		i+=2;
 	}
 
-	if(argc<2 || !argumentC){
+	if(argc<2 || !avecC){
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 		exit(1);
 	} 
@@ -132,7 +132,7 @@ int main(int argc, char *argv[]) {
 		// < data.txt
 		if(num > 0){
 			
-			fp=stdin;
+			//fp=stdin;
 			
 			if(!fp) exit(5);
 				
@@ -175,8 +175,6 @@ int main(int argc, char *argv[]) {
 			} 
 		}
 	}
-
-	//printf("%f\n",pow(2,200));
 
 	fclose(fp);
 	fclose(fw);

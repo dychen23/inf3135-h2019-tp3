@@ -6,7 +6,6 @@ void inserer(noeud_t** noeud, int element){
 	
 	noeud_t* nouveauNoeud = (noeud_t*)malloc(sizeof(noeud_t));
 
-
 	nouveauNoeud->element = element;
 	nouveauNoeud->suivant = (*noeud);
 	nouveauNoeud->precedent = NULL;

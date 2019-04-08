@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
+//uint128_t charU128(char* c);
+
 int estParfait(unsigned long n);
 int estPremier(unsigned long n);
 

@@ -16,7 +16,10 @@ tp3:outils.o structure.o tp3.c
 
 test:
 	./tp3 -c $(VARIABLE) -i ./data/data.txt -d ASC
-	
+
+1:
+	./tp3 -c $(VARIABLE) -d ASC
+
 .PHONY: clean
 clean :
 	rm -f *.o 
