@@ -1,8 +1,7 @@
 #fichier.c
 *.o
 *.out
-
-#fichier zip
+*.guy
 *.zip
 
 #repertoire
