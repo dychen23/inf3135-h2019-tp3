@@ -23,8 +23,6 @@ int main(int argc, char *argv[]) {
 	char temp[100];
 
 	char line[100];
-
-	char *argumentD ="DESC";
 	
 	unsigned long min = 0;
 	unsigned long max = 0 ;
@@ -69,7 +67,7 @@ int main(int argc, char *argv[]) {
 			while(!feof(fp)){
 		
 				if(fscanf(fp,"%lu %lu",&min, &max)==2){
-					printf("%lu %lu\n",min,max);
+					//printf("%lu %lu\n",min,max);
 				} 
 			}		
 			
@@ -89,24 +87,12 @@ int main(int argc, char *argv[]) {
 			if(fw == NULL) exit(6);
 
 		} else if(strcmp(argv[i],"-d") == 0 || strcmp(argv[i],"-D") == 0){
-		
-			/*
-			char *temp = argv[i+1];
 
-			while(temp){
-				temp = toupper((int)temp);
-				temp++;
-			}*/
-
-			if(argv[i+1]== NULL || 
-				((strcmp(argv[i+1],"ASC") != 0) 
-				&& (strcmp(argv[i+1],"DESC") != 0))) {
+			char *argumentD = argv[i+1];
+			
+			if(argv[i+1]== NULL || !ASCorDES(argumentD)) {
 				exit(7);
 			} 
-
-			argumentD = argv[i+1];
-
-			//printf("%d\n",toupper(argv[i+1]));
 			
 		} else {
 			exit(3);

@@ -27,6 +27,6 @@ void imprimer(noeud_t* n){
 		printf("%d\n",n->element);
 		dernier = n;
 		n = n->suivant;
-	}
+	} 
 }
 

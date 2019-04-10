@@ -12,5 +12,7 @@ int estPremier(unsigned long n);
 int cpValide(char *c);
 int intervalleValide(unsigned long min,unsigned long max);
 
+int ASCorDES(char *c);
+
 void swap(unsigned long *min, unsigned long *max);
 

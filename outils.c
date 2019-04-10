@@ -19,6 +19,11 @@ void swap(unsigned long *min,unsigned long *max){
 	*min = ntemp;
 }
 
+int ASCorDES(char *c){
+
+	return strcmp(c,"asc") == 0 || strcmp(c,"ASC") == 0 || strcmp(c,"des") == 0 || strcmp(c,"DES") == 0 ;
+}
+
 //verifie si nb est premier
 int estPremier(unsigned long n){
 
