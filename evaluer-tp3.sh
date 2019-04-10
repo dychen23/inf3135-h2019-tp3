@@ -29,7 +29,7 @@ while read line; do
 	tabM[$C]=${line:29};
 		 eval timeout ${tabT[$C]}s ${line:29} > /dev/null 2>&1;
 	tabR[$C]=$?;
-	
+		
 	if [ ${tabC[$C]} -eq ${tabR[$C]} ]; then
 		resultat="reussi ${tabP[$C]}pts";
 		nbPoints=$[$nbPoints+${tabP[$C]}];

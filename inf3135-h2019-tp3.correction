@@ -1,0 +1,36 @@
+0 10 0 dummy                 echo "dummy test" > /dev/null
+1 10 0 make (default:)       grep -c -e 'default :' -e 'default:' Makefile
+1 10 0 make                  make
+0 20 0 make data             make data
+0 10 1 make data (verif)     test ! -f ./data/data.txt
+0 20 0 make test             make test
+0 10 0 make clean            make clean ; make clean
+1 10 0 make clean (test)     test ! -f tp2.o && test ! -f tp2 && test ! -d data && test ! -f outils.o && test ! -f data.zip
+0 10 0 make resultat         grep -c -e 'resultat:' -e 'resultat :' Makefile
+0 10 0 README.md             test -f README.md
+1 10 0 compilation           gcc -Wall -pedantic -std=c99 -lm -O2 -o tp3 tp3.c outils.c structure.c &> compilation.guy ; test ! -s compilation.guy
+0 00 0 ** modification **    ln -sf tp3 tp2
+0 15 0 code.txt              ./tp2 -c $(cat cp.txt) -i ~/depot/data0.in ; test -f code.txt
+1 10 1 c.retour 1            ./tp2
+1 10 2 c.retour 2            ./tp2 -c FRAG
+1 10 3 c.retour 3            ./tp2 -c FRAG12345678 -u
+1 10 4 c.retour 4            ./tp2 -c $(cat cp.txt) < ~/depot/data4.err
+1 10 5 c.retour 5            ./tp2 -c $(cat cp.txt) -i ok.txt
+1 10 6 c.retour 6            ./tp2 -c $(cat cp.txt) -o ./ok/ok.txt < ~/depot/data1.in
+1 90 0 test 0 execution      ./tp2 -c $(cat cp.txt) -i ~/depot/data5.in -o res.out
+1 10 0 test 0 resultat       diff --brief -b res.out ~/depot/data5.res
+1 90 0 test 1 exe            ./tp2 -c $(cat cp.txt) -o res.out < ~/depot/data1.in
+1 10 0 test 1 resultat       diff --brief -b res.out ~/depot/data1.res
+1 90 0 test 2 exe            ./tp2 -c $(cat cp.txt) -i ~/depot/data2.in > res.out
+1 10 0 test 2 resultat       diff --brief -b res.out ~/depot/data2.res
+1 90 0 Qualite               ./tp2 -c $(cat cp.txt) < ~/depot/data3.in > res.out
+1 10 0 Qualite (diff)        diff --brief -b res.out ~/depot/data3.res
+1 90 0 Performance           ./tp2 -c $(cat cp.txt) -i ~/depot/data6.in -o res.out
+1 10 0 Performance (diff)    diff --brief -b res.out ~/depot/data6.res
+0 10 0 .correction           wget -q https://github.com/guyfrancoeur/INF3135_H2019_TP2/raw/master/inf3135-h2019-tp2.correction -O inf3135-h2019-tp2.correction
+1 00 0 evaluer.sh (existe)   test -f evaluer.sh
+1 00 0 evaluer.sh (compact)  WC=$(wc -l evaluer.sh) ; test ${WC:0:2} -lt 55
+1 99 0 evaluer.sh (excute)   ./evaluer.sh > evaluer-tp2.guy
+1 00 0 evaluer.sh (diff)     WC=$(wc -l evaluer-tp2.guy) ; test ${WC:0:2} -ge 25 -a ${WC:0:2} -le 30
+2 00 0 verification bash     V1=$(head -n 1 evaluer-tp2.guy) ; test "$V1" == "0: reussi 0 pts" -o "$V1" == " 0 : reussi 0 pts" -o "$V1" == "0 : reussi 0 pts"
+4 00 0 contribution git fr   echo "Bravo pour la participation et la remise de votre travail."

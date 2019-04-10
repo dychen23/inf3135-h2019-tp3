@@ -21,8 +21,6 @@ int main(int argc, char *argv[]) {
 
 	char output[100];
 	char temp[100];
-
-	char line[100];
 	
 	unsigned long min = 0;
 	unsigned long max = 0 ;
@@ -58,6 +56,9 @@ int main(int argc, char *argv[]) {
 
 			fp=fopen(argv[i+1],"r");
 
+			if(!fp){
+				exit(5);
+			}
 			/*
 			if(!(fp && fscanf(fp,"%lu %lu",&min, &max) == 2)){
 				exit(5);
