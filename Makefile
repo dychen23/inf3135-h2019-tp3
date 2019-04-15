@@ -28,8 +28,10 @@ test:
 clean :
 	rm -f *.o 
 	rm -f tp3 
+	rm -f tp2
 	rm -f code.txt 
-	rm -rf data 
+	rm -rf data.zip.*
+	rm -rf data
 	rm -f *.h.gch
 	rm -f res.out
 	rm -f *.guy

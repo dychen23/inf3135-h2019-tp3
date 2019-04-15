@@ -50,15 +50,12 @@ int main(int argc, char *argv[]) {
 			
 			avecI = T;
 			
-			if(argv[i+1] == NULL){
+			fp=fopen(argv[i+1],"r");
+
+			if(argv[i+1] == NULL || !(fp)){
 				exit(5);
 			} 
 
-			fp=fopen(argv[i+1],"r");
-
-			if(!fp){
-				exit(5);
-			}
 			/*
 			if(!(fp && fscanf(fp,"%lu %lu",&min, &max) == 2)){
 				exit(5);
