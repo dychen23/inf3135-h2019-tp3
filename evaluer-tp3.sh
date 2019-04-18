@@ -47,5 +47,3 @@ done < inf3135-h2019-tp3.correction
 	echo "";
 	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp3: $nbPoints/$nbTotalNote";
 	echo "FIN."
-
-	WC=$(wc -l evaluer.sh); echo ${WC:0:2};
