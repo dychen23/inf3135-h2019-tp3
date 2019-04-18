@@ -17,13 +17,13 @@ NC='\033[0m'
 utilisateur=$(cat cp.txt)
 
 while read line; do
-	espace=""; Color='\033[01;31m'; resultat="echec" 
-	
-	tabP[$C]=${line:0:2}; tabT[$C]=${line:2:2};tabC[$C]=${line:4:2};
-	tabM[$C]=${line:29};
-		 eval timeout ${tabT[$C]}s ${line:29} > /dev/null 2>&1; 
-	tabR[$C]=$?;
-		
+    espace=""; Color='\033[01;31m'; resultat="echec" 
+
+    tabP[$C]=${line:0:2}; tabT[$C]=${line:2:2};tabC[$C]=${line:4:2};
+    CMD="timeout tabT[$C] ${line:29}"
+    eval $CMD > /dev/null 2>&1;
+    tabR[$C]=$?;
+
 	if [ ${tabC[$C]} -eq ${tabR[$C]} ]; then
 		resultat="reussi ${tabP[$C]}pts";
 		nbPoints=$[$nbPoints+${tabP[$C]}];
