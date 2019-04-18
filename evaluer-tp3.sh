@@ -17,9 +17,7 @@ NC='\033[0m'
 utilisateur=$(cat cp.txt)
 
 while read line; do
-	espace=""
-	Color='\033[01;31m'
-	resultat="echec" 
+	espace=""; Color='\033[01;31m'; resultat="echec" 
 	
 	tabP[$C]=${line:0:2}; tabT[$C]=${line:2:2};tabC[$C]=${line:4:2};
 	tabM[$C]=${line:29};
@@ -49,3 +47,5 @@ done < inf3135-h2019-tp3.correction
 	echo "";
 	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp3: $nbPoints/$nbTotalNote";
 	echo "FIN."
+
+	WC=$(wc -l evaluer.sh); echo ${WC:0:2};
