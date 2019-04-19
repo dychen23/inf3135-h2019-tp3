@@ -28,7 +28,7 @@ test:
 clean :
 	rm -f *.o 
 	rm -f tp3 
-	rm -f tp2
+	
 	rm -f code.txt 
 	rm -rf data.zip.*
 	rm -rf data
