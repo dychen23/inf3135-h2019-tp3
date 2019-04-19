@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function finish {
+	 kill -9 `ps -aux | grep "evaluer" | awk '{print $2}'`
+}
+
 if [ -z $1 ]; then
 	correction=inf3135-h2019-tp3.correction
 else
@@ -19,7 +23,9 @@ while read line; do
 
     	tabP[$C]=${line:0:2}; tabT[$C]=${line:2:2};tabC[$C]=${line:4:2};
     	tabM[$C]=${line:29};
-	
+
+	CMD="${tabM[$C]}"
+		
 	if [ ${tabT[$C]} -ne "00" ]; then
 		CMD="timeout ${tabT[$C]}s ${tabM[$C]}";	
 	fi	
@@ -51,3 +57,5 @@ done < inf3135-h2019-tp3.correction
 	echo "";
 	echo "Note (total) pour $utilisateur dans inf3135-h2019-tp3: $nbPoints/$nbTotalNote";
 	echo "FIN."
+
+	trap finish SIGINT
