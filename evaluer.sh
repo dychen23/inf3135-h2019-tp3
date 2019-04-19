@@ -42,7 +42,7 @@ while read line; do
 		espace=" "
 	fi
 	
-	echo -e "$espace$C ${tabC[$C]}: ${tabR[$C]} ${Color}$resultat${NC}: ${tabM[$C]}";
+	echo -e  "$C: ${Color}$resultat${NC}";
 
 	C=$[$C+1];
 done < inf3135-h2019-tp2.correction
