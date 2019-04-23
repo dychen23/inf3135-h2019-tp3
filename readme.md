@@ -66,6 +66,8 @@ Travail pratique tp3
    https://www.tutorialspoint.com/cprogramming/c_data_types.htm
 
    https://www.maths-et-tiques.fr/index.php/histoire-des-maths/nombres/les-nombres-parfaits   
+
+   https://chgi.developpez.com/arbre/binaire/?fbclid=IwAR24E2Im9m-wGb7XPIcyczTQdnIUy2zT67KVI4BVjLLHgOHZc65DAJq1CCE
    
    Note de cours..
 

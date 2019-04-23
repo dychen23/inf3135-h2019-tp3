@@ -7,7 +7,7 @@
 1 10 0 make clean            make clean ; make clean
 0 10 0 make resultat         grep -c -e 'resultat:' -e 'resultat :' Makefile
 0 10 0 README.md             test -f README.md
-1 10 0 compilation           ln -sf tp3 tp2 # gcc -Wall -pedantic -std=c99 -lm -O2 -o tp2 tp2.c outils.c &> compilation.guy ; test ! -s compilation.guy
+1 10 0 compilation           echo "OK" # gcc -Wall -pedantic -std=c99 -lm -O2 -o tp2 tp2.c outils.c &> compilation.guy ; test ! -s compilation.guy
 1 15 0 code.txt              ./tp2 -c $(cat cp.txt) -i ~/depot/data0.in ; test -f code.txt
 1 10 1 c.retour 1            ./tp2
 1 10 2 c.retour 2            ./tp2 -c FRAG

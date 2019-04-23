@@ -17,6 +17,9 @@ tp3:outils.o structure.o tp3.c
 test:
 	./tp3 -c $(VARIABLE) -i ./data/data.txt -d asc 
 
+g:
+	rm -f *.guy
+
 1:
 	./tp3 -c $(VARIABLE) -i ./data/data.txt -d ASC
 2:
@@ -34,7 +37,6 @@ clean :
 	rm -rf data
 	rm -f *.h.gch
 	rm -f res.out
-	rm -f *.guy
 
 data :
 	wget -q  https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip

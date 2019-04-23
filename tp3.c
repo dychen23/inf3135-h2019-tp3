@@ -6,6 +6,7 @@
 #include "outils.h"
 #include "structure.h"
 #include <math.h>
+#include <stdbool.h>
 
 //#define TRACE
 //#define valeur
@@ -15,9 +16,9 @@ int main(int argc, char *argv[]) {
 	int num;
 	int i = 1;
 	
-	enum bool avecC = T;
-	enum bool avecI = F;
-	enum bool avecO = F;
+	bool avecC = 1;
+	bool avecI = 0;
+	bool avecO = 0;
 
 	char output[100];
 	char temp[100];
@@ -37,7 +38,7 @@ int main(int argc, char *argv[]) {
 	
 		if(strcmp(argv[i],"-c") == 0 || strcmp(argv[i],"-C") == 0){
 			if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
-				avecC = F;
+				avecC = 0;
 			} else if(!cpValide(argv[i+1])){
 				exit(2);	
 			} 
@@ -48,7 +49,7 @@ int main(int argc, char *argv[]) {
 
 		} else if(strcmp(argv[i],"-i") == 0 || strcmp(argv[i],"-I") == 0){
 			
-			avecI = T;
+			avecI = 1;
 			
 			fp=fopen(argv[i+1],"r");
 
@@ -73,7 +74,7 @@ int main(int argc, char *argv[]) {
 
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
 
-			avecO = T;
+			avecO = 1;
 
 			if(argv[i+1]==NULL || argv[i+1][0] == '-'){
 				exit(6);

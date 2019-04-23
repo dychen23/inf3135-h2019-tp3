@@ -10,8 +10,6 @@ if [ ! -f inf3135-h2019-tp2.correction ]; then
 	wget -q https://raw.githubusercontent.com/guyfrancoeur/INF3135_H2019_TP2/master/inf3135-h2019-tp2.correction
 fi
 
-echo ${correction}
-
 C=0 
 nbTotalNote=0
 nbPoints=0
@@ -25,7 +23,7 @@ while read line; do
 	
 	tabP[$C]=${line:0:2}; tabT[$C]=${line:2:2};tabC[$C]=${line:4:2};
 	tabM[$C]=${line:29};
-		 eval timeout ${tabT[$C]}s ${line:29} > /dev/null 2>&1;
+		 eval timeout ${tabT[$C]}s ${line:29} > /dev/null 2>&1; 
 	tabR[$C]=$?;
 		
 	if [ ${tabC[$C]} -eq ${tabR[$C]} ]; then
@@ -42,7 +40,7 @@ while read line; do
 		espace=" "
 	fi
 	
-	echo -e  "$C: ${Color}$resultat${NC}";
+	echo  "$C: $resultat";
 
 	C=$[$C+1];
 done < inf3135-h2019-tp2.correction

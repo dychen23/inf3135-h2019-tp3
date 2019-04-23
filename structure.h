@@ -2,17 +2,14 @@
 #ifndef STRUCTURE_H
 #define STRUCTURE_H
 	
-	typedef struct Noeud{
-	
-		int element;
+	typedef struct node
+	{
+   	 	unsigned int key;
+   		struct node *left;
+   	 	struct node *right;
 
-		struct Noeud* suivant;
-		struct Noeud* precedent;
+	} node ;
 
-        } noeud_t;
-
-
-	typedef enum bool {T=1,F=0} bool_t;
 	typedef unsigned __int128 uint128_t;
          
 	void inserer(noeud_t** noeud, int n);
