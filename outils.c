@@ -11,6 +11,8 @@ uint128_t charU128(char* c){
 }
 */
 
+//==============================================================================
+
 void swap(unsigned long *min,unsigned long *max){
 	unsigned long ntemp;
 
@@ -19,12 +21,16 @@ void swap(unsigned long *min,unsigned long *max){
 	*min = ntemp;
 }
 
+//==============================================================================
+
 int ASCorDES(char *c){
 
 	return strcmp(c,"asc") == 0 || strcmp(c,"ASC") == 0 || strcmp(c,"des") == 0 || strcmp(c,"DES") == 0 ;
 }
 
-//verifie si nb est premier
+
+//==============================================================================
+
 int estPremier(unsigned long n){
 
     if (n < 2) return 0;
@@ -37,7 +43,8 @@ for (int i=3; (i*i) <= n; i+=2) {
     return 1;
 }
 
-//validation du code permanent
+//==============================================================================
+
 int cpValide(char *c){
 	
 	if(strlen(c)!=12){
@@ -55,6 +62,8 @@ int cpValide(char *c){
 	return 1;
 }
 
+//==============================================================================
+
 //verifie si un nombre est parfait
 int estParfait(unsigned long n){
 
@@ -71,6 +80,9 @@ int estParfait(unsigned long n){
 	}
 	return (somme == n && n != 1); 
 }
+
+
+//==============================================================================
 
 
 //validation de l’intervalle 

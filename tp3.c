@@ -9,9 +9,31 @@
 #include <stdbool.h>
 
 //#define TRACE
-//#define valeur
+//#define testarbre
 
 int main(int argc, char *argv[]) {
+
+	#ifdef testarbre
+
+	noeud *arbre = NULL;
+	
+	ajoutNoeud(&arbre,5);
+	ajoutNoeud(&arbre,30);
+
+	printTree(arbre);
+	printf("=========\n");
+	printReverseTree(arbre);
+
+	if(rechercheNoeud(arbre,5)){
+
+		printf("existe deja\n");		
+	}
+
+	#endif
+
+	uint128_t n = 0;
+	
+	
 
 	int num;
 	int i = 1;
@@ -28,10 +50,6 @@ int main(int argc, char *argv[]) {
 
 	FILE *fp = stdin;
 	FILE *fw = stdout;
-
-	#ifdef valeur
-	printf("%lu\n",sizeof(unsigned long));
-	#endif
 
 	//on vérifie tous les arguments
 	while(i < argc){

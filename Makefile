@@ -26,6 +26,8 @@ g:
 	./tp3 -c $(VARIABLE) -i ./data/data.txt -d des
 3:
 	./tp3 -c $(VARIABLE) -i ./data/data.txt -d DES
+4:
+	./tp3 -c $(VARIABLE) -i ./data/data.txt -d lol
 
 .PHONY: clean
 clean :
