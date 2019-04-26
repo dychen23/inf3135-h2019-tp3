@@ -4,17 +4,57 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <math.h>
+#include "structure.h"
 
-/*
-uint128_t charU128(char* c){
-	return 0 ;	
+
+uint128_t readU128(char const *string){
+	
+	int len=strlen(string);
+
+	uint128_t mod=1;
+	uint128_t utotal =0;
+
+	for(int i = len-1; i>=0; i--){
+
+		if(string[i] < 48 || string[i] > 57){
+			return -1;
+		}
+
+		uint128_t temp =(uint128_t) string[i]-48 ; // nombre ascii
+		temp *= mod; 
+		utotal += temp;
+		mod *= 10;
+	}
+	return utotal;
 }
-*/
 
 //==============================================================================
 
-void swap(unsigned long *min,unsigned long *max){
-	unsigned long ntemp;
+void printU128(uint128_t n){
+	
+	int string[45];
+	short compteur=0;
+	uint128_t div=10;
+
+	while(n!=0){
+		string[compteur]=(n%div);
+		n /= div;
+		compteur++;
+	}
+
+
+	for(int i = compteur-1; i>=0; i--){
+		printf("%d",string[i]);
+	}
+		printf("\n");
+}
+
+
+//==============================================================================
+
+void swap(uint128_t *min, uint128_t *max){
+
+	uint128_t ntemp;
 
 	ntemp = *max;
 	*max = *min;
@@ -31,7 +71,7 @@ int ASCorDES(char *c){
 
 //==============================================================================
 
-int estPremier(unsigned long n){
+uint128_t estPremier(uint128_t n){
 
     if (n < 2) return 0;
     if (n == 2) return 1;
@@ -65,11 +105,11 @@ int cpValide(char *c){
 //==============================================================================
 
 //verifie si un nombre est parfait
-int estParfait(unsigned long n){
+uint128_t estParfait(uint128_t n){
 
-	unsigned long somme = 1;
+	uint128_t somme = 1;
 
-	for(unsigned long i = 2; i*i<=n; ++i){	
+	for(uint128_t i = 2; i*i<=n; ++i){	
 		if(n%i==0){
 			if(i*i!=n){
 				somme+= i + (n/i);
@@ -84,9 +124,9 @@ int estParfait(unsigned long n){
 
 //==============================================================================
 
-
+/*
 //validation de l’intervalle 
-int intervalleValide(long min, long max){
-	return (min>=0 && max>=0);
+int intervalleValide(uint128_t min ){
+	return (min >= 0 );
 }
-
+*/

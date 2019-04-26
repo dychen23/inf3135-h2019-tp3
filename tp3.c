@@ -10,30 +10,36 @@
 
 //#define TRACE
 //#define testarbre
-
+//#define testu128t
+ 
 int main(int argc, char *argv[]) {
 
 	#ifdef testarbre
-
-	noeud *arbre = NULL;
+		noeud *arbre = NULL;
 	
-	ajoutNoeud(&arbre,5);
-	ajoutNoeud(&arbre,30);
+		ajoutNoeud(&arbre,5);
+		ajoutNoeud(&arbre,30);
 
-	printTree(arbre);
-	printf("=========\n");
-	printReverseTree(arbre);
+		printTree(arbre);
+		printf("=========\n");
+		printReverseTree(arbre);
 
-	if(rechercheNoeud(arbre,5)){
+		if(rechercheNoeud(arbre,5)){
 
 		printf("existe deja\n");		
-	}
+		}	
 
 	#endif
 
-	uint128_t n = 0;
+	#ifdef testu128t
+		char *a = "123456789123456789123456789012345111111";
+
+		uint128_t n = readU128(a);
 	
-	
+		printU128(n);
+
+		printf("%lu de longeur\n",strlen(a));
+	#endif
 
 	int num;
 	int i = 1;
@@ -45,9 +51,12 @@ int main(int argc, char *argv[]) {
 	char output[100];
 	char temp[100];
 	
-	unsigned long min = 0;
-	unsigned long max = 0 ;
+	char s1[40]; //(char *)malloc();
+	char s2[40]; //(char *)malloc();
 
+	uint128_t min = 0;
+	uint128_t max = 0;
+	
 	FILE *fp = stdin;
 	FILE *fw = stdout;
 
@@ -75,21 +84,23 @@ int main(int argc, char *argv[]) {
 				exit(5);
 			} 
 
-			/*
-			if(!(fp && fscanf(fp,"%lu %lu",&min, &max) == 2)){
-				exit(5);
-			}
-			*/
+			int erreur4 = 4;
 
 			while(!feof(fp)){
-		
-				if(fscanf(fp,"%lu %lu",&min, &max)==2){
-					//printf("%lu %lu\n",min,max);
-				} 
-			}		
-			
-		
+				
+				if(fscanf(fp,"%s %s",s1,s2)==2){
+					
+					erreur4 = 0;
 
+					min = readU128(s1);
+					max = readU128(s2);
+
+					if(min == -1 || max == -1){
+						exit(4);
+					}
+				} 				
+			}		
+		
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
 
 			avecO = 1;
@@ -124,8 +135,8 @@ int main(int argc, char *argv[]) {
 	} 
 	
 	if(!avecI){
-
-		scanf("%lu %lu",&min, &max);
+ 
+		//scanf("%lu %lu",&min, &max);
 
 		fseek (stdin, 0, SEEK_END);
 		num = ftell (stdin);
@@ -153,27 +164,24 @@ int main(int argc, char *argv[]) {
 			
 		} 
 	}	
-	
-	if(!intervalleValide(min,max)){
-		exit(4);
-	}
-
+		
 	if(min > max){
 		swap(&min,&max);
-	}
+	} 
+
+	for(uint128_t p = 2; p<=65; ++p){
 	
-	for(int p = 2; p<=31; ++p){
-	
-		unsigned long MersennePrime = pow(2,p)-1;
-		unsigned long long a = pow(2,p-1)*MersennePrime;
+		uint128_t MersennePrime = pow(2,p)-1;
+		uint128_t a = pow(2,p-1)*MersennePrime;
 
 		if(estPremier(MersennePrime) && a<=max && a >= min){
 			
 			if(estParfait(a)){
 				if(avecO){
-					fprintf(fw,"%llu\n",a);		
+					//fprintf(fw,"%llu\n",a);		
 				} else {
-					printf("%llu\n",a);
+					printU128(a);
+					//printf("%llu\n",a);
 				}
 			} 
 		}
@@ -181,6 +189,10 @@ int main(int argc, char *argv[]) {
 
 	fclose(fp);
 	fclose(fw);
+
+	#ifdef testarbre
+		clearTree(&arbre);
+	#endif
 
         return 0;
 }

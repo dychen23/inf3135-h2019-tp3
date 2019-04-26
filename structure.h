@@ -8,16 +8,18 @@
 
 	typedef struct noeud
 	{
-   	 	unsigned int key;
+   	 	uint128_t key;
    		struct noeud *left;
    	 	struct noeud *right;
 
 	} noeud ;
 	         
-	void ajoutNoeud(noeud **noeud, unsigned int n);
+	void ajoutNoeud(noeud **noeud, uint128_t n);
 	void printTree(noeud *tree);
 	void printReverseTree(noeud *tree);
-	int rechercheNoeud(noeud *tree, unsigned int key); 
+	uint128_t rechercheNoeud(noeud *tree, uint128_t key); 
+	void clearTree(noeud **tree);
+
 	
 #endif
 

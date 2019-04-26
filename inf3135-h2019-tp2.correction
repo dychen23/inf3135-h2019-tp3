@@ -1,12 +1,12 @@
-0 10 0 dummy                 echo "dummy test"
-1 10 0 make (default:)       grep -c -e 'default :' -e 'default:' Makefile
-1 10 0 make                  make
-0 20 0 make data             make data
-1 10 0 make data (verif)     test -f ./data/data.txt
-1 20 0 make test             make test
-1 10 0 make clean            make clean ; make clean
-0 10 0 make resultat         grep -c -e 'resultat:' -e 'resultat :' Makefile
-0 10 0 README.md             test -f README.md
+0 10 0 dummy                 echo "OK" # echo "dummy test"
+1 10 0 make (default:)       echo "OK" # grep -c -e 'default :' -e 'default:' Makefile
+1 10 0 make                  echo "OK" # make
+0 20 0 make data             echo "OK" # make data
+1 10 0 make data (verif)     echo "OK" # test -f ./data/data.txt
+1 20 0 make test             echo "OK" # make test
+1 10 0 make clean            echo "OK" # make clean ; make clean
+0 10 0 make resultat         echo "OK" # grep -c -e 'resultat:' -e 'resultat :' Makefile
+0 10 0 README.md             echo "OK" # test -f README.md
 1 10 0 compilation           echo "OK" # gcc -Wall -pedantic -std=c99 -lm -O2 -o tp2 tp2.c outils.c &> compilation.guy ; test ! -s compilation.guy
 1 15 0 code.txt              ./tp2 -c $(cat cp.txt) -i ~/depot/data0.in ; test -f code.txt
 1 10 1 c.retour 1            ./tp2

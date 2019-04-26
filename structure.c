@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void ajoutNoeud(noeud **tree, unsigned int key)
+void ajoutNoeud(noeud **tree, uint128_t key)
 {
     noeud *tmpNode;
     noeud *tmpTree = *tree;
@@ -41,7 +41,7 @@ void printTree(noeud *tree)
 
     if(tree->left)  printTree(tree->left);
 
-    printf("Cle = %d\n", tree->key);
+    printU128(tree->key);
 
     if(tree->right) printTree(tree->right);
 }
@@ -55,7 +55,7 @@ void printReverseTree(noeud *tree)
 
     if(tree->right) printReverseTree(tree->right);
 
-    printf("Cle = %d\n", tree->key);
+    printU128(tree->key);
 
     if(tree->left)  printReverseTree(tree->left);
 }
@@ -63,7 +63,7 @@ void printReverseTree(noeud *tree)
 //===========================================================================
 
 
-int rechercheNoeud(noeud *tree, unsigned int key)
+uint128_t rechercheNoeud(noeud *tree, uint128_t key)
 {
     while(tree)
     {
@@ -75,3 +75,20 @@ int rechercheNoeud(noeud *tree, unsigned int key)
     return 0;
 }
 
+
+//===========================================================================
+
+void clearTree(noeud **tree)
+{
+    noeud *tmpTree = *tree;
+
+    if(!tree) return;
+
+    if(tmpTree->left)  clearTree(&tmpTree->left);
+
+    if(tmpTree->right) clearTree(&tmpTree->right);
+
+    free(tmpTree);      
+
+    *tree = NULL;
+}
