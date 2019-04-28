@@ -3,12 +3,16 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
+
 #include "structure.h"
 
 uint128_t estParfait(uint128_t n);
 uint128_t estPremier(uint128_t n);
 
+uint128_t exposant(uint128_t a, uint128_t b);
+
 int cpValide(char *c);
+
 //int intervalleValide(uint128_t min);
 
 int ASCorDES(char *c);

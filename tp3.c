@@ -10,7 +10,7 @@
 
 //#define TRACE
 //#define testarbre
-//#define testu128t
+#define testu128t
  
 int main(int argc, char *argv[]) {
 
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	#endif
 
 	#ifdef testu128t
-		char *a = "123456789123456789123456789012345111111";
+		char *a = "123456789098765432123456789098765432123";
 
 		uint128_t n = readU128(a);
 	
@@ -67,6 +67,7 @@ int main(int argc, char *argv[]) {
 			if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
 				avecC = 0;
 			} else if(!cpValide(argv[i+1])){
+				
 				exit(2);	
 			} 
 
@@ -94,12 +95,10 @@ int main(int argc, char *argv[]) {
 
 					min = readU128(s1);
 					max = readU128(s2);
-
-					if(min == -1 || max == -1){
-						exit(4);
-					}
 				} 				
-			}		
+			}	
+
+			if(erreur4==4) exit(erreur4);
 		
 		} else if(strcmp(argv[i],"-o") == 0 || strcmp(argv[i],"-O") == 0){
 
@@ -169,20 +168,35 @@ int main(int argc, char *argv[]) {
 		swap(&min,&max);
 	} 
 
-	for(uint128_t p = 2; p<=65; ++p){
-	
-		uint128_t MersennePrime = pow(2,p)-1;
-		uint128_t a = pow(2,p-1)*MersennePrime;
-
-		if(estPremier(MersennePrime) && a<=max && a >= min){
+	#ifdef testu128t
+		
+	uint128_t MersennePrime = exposant(2,61)-1;
+	uint128_t asd = exposant(2,61-1)*MersennePrime;
 			
+	printf("min : ");
+	printU128(min);
+	printf("max :");
+	printU128(max);
+
+	#endif
+
+	uint128_t total = 0;
+
+	for(uint128_t p = 2; p<=65 && total < max; ++p){
+	
+		uint128_t MersennePrime = exposant(2,p)-1;
+		uint128_t a = exposant(2,p-1)*MersennePrime;
+
+		if(estPremier(MersennePrime)){
+		
 			if(estParfait(a)){
 				if(avecO){
 					//fprintf(fw,"%llu\n",a);		
-				} else {
-					printU128(a);
+				} else {											printU128(a);
 					//printf("%llu\n",a);
 				}
+
+				total = a;
 			} 
 		}
 	}

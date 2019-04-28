@@ -4,8 +4,22 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <math.h>
+
 #include "structure.h"
 
+uint128_t exposant(uint128_t a, uint128_t b){
+
+	uint128_t n = 1;
+	uint128_t m = 1;
+
+	while(m <= b){
+		
+		n *= a;
+		m++;		
+	}
+
+	return n;
+}
 
 uint128_t readU128(char const *string){
 	
@@ -32,7 +46,7 @@ uint128_t readU128(char const *string){
 
 void printU128(uint128_t n){
 	
-	int string[45];
+	int string[50];
 	short compteur=0;
 	uint128_t div=10;
 
@@ -43,7 +57,7 @@ void printU128(uint128_t n){
 	}
 
 
-	for(int i = compteur-1; i>=0; i--){
+	for(int i = compteur-1; i>=0; --i){
 		printf("%d",string[i]);
 	}
 		printf("\n");
