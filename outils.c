@@ -13,56 +13,11 @@ uint128_t exposant(uint128_t a, uint128_t b){
 	uint128_t m = 1;
 
 	while(m <= b){
-		
 		n *= a;
 		m++;		
 	}
-
 	return n;
 }
-
-uint128_t readU128(char const *string){
-	
-	int len=strlen(string);
-
-	uint128_t mod=1;
-	uint128_t utotal =0;
-
-	for(int i = len-1; i>=0; i--){
-
-		if(string[i] < 48 || string[i] > 57){
-			return -1;
-		}
-
-		uint128_t temp =(uint128_t) string[i]-48 ; // nombre ascii
-		temp *= mod; 
-		utotal += temp;
-		mod *= 10;
-	}
-	return utotal;
-}
-
-//==============================================================================
-
-void printU128(uint128_t n){
-	
-	int string[50];
-	short compteur=0;
-	uint128_t div=10;
-
-	while(n!=0){
-		string[compteur]=(n%div);
-		n /= div;
-		compteur++;
-	}
-
-
-	for(int i = compteur-1; i>=0; --i){
-		printf("%d",string[i]);
-	}
-		printf("\n");
-}
-
 
 //==============================================================================
 
@@ -82,6 +37,11 @@ int ASCorDES(char *c){
 	return strcmp(c,"asc") == 0 || strcmp(c,"ASC") == 0 || strcmp(c,"des") == 0 || strcmp(c,"DES") == 0 ;
 }
 
+int verifierasc(char *c){
+	
+	return strcmp(c,"asc") == 0 ;
+}
+
 
 //==============================================================================
 
@@ -90,30 +50,14 @@ uint128_t estPremier(uint128_t n){
     if (n < 2) return 0;
     if (n == 2) return 1;
     if (n % 2 == 0) return 0;
+
+    uint128_t nb_racine = sqrt(n);
     
-for (int i=3; (i*i) <= n; i+=2) {
+for (uint128_t i=3; i <= nb_racine; i+=2) {
         if (n % i == 0 ) return 0;
     }
+
     return 1;
-}
-
-//==============================================================================
-
-int cpValide(char *c){
-	
-	if(strlen(c)!=12){
-		return 0;
-	}
-	
-	char *cp = c;
-	
-	for(int i =0; i< strlen(c) ; i++,cp++){
-		if((i<4 && !isalpha(*cp)) || (i>4 && !isdigit(*cp))){
-			return 0;
-		} 	
-	}
-				
-	return 1;
 }
 
 //==============================================================================
@@ -135,6 +79,31 @@ uint128_t estParfait(uint128_t n){
 	return (somme == n && n != 1); 
 }
 
+//==============================================================================
+
+void verificationNombre(uint128_t *min, uint128_t *max,noeud *arbre){
+
+	
+}
+
+//==============================================================================
+
+int cpValide(char *c){
+	
+	if(strlen(c)!=12){
+		return 0;
+	}
+	
+	char *cp = c;
+	
+	for(int i =0; i< strlen(c) ; i++,cp++){
+		if((i<4 && !isalpha(*cp)) || (i>4 && !isdigit(*cp))){
+			return 0;
+		} 	
+	}
+				
+	return 1;
+}
 
 //==============================================================================
 

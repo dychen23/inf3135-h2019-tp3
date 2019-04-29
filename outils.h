@@ -6,6 +6,8 @@
 
 #include "structure.h"
 
+void verificationNombre(uint128_t *min, uint128_t *max, noeud **arbre);
+
 uint128_t estParfait(uint128_t n);
 uint128_t estPremier(uint128_t n);
 
@@ -16,10 +18,8 @@ int cpValide(char *c);
 //int intervalleValide(uint128_t min);
 
 int ASCorDES(char *c);
+int verifierasc (char *c);
 
 void swap(uint128_t *min, uint128_t *max);
-
-uint128_t readU128(char const *c);
-void printU128(uint128_t n);
 
 

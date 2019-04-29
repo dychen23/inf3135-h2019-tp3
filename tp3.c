@@ -10,10 +10,13 @@
 
 //#define TRACE
 //#define testarbre
-#define testu128t
- 
+//#define testu128t
+//#define testajout
+
 int main(int argc, char *argv[]) {
 
+	noeud *arbre = NULL;
+	
 	#ifdef testarbre
 		noeud *arbre = NULL;
 	
@@ -39,6 +42,12 @@ int main(int argc, char *argv[]) {
 		printU128(n);
 
 		printf("%lu de longeur\n",strlen(a));
+
+		
+		uint128_t b = 19 ;
+		uint128_t c = 28 ;
+
+		if(c<b) printf(" 19 < 28 ");
 	#endif
 
 	int num;
@@ -60,14 +69,15 @@ int main(int argc, char *argv[]) {
 	FILE *fp = stdin;
 	FILE *fw = stdout;
 
-	//on vérifie tous les arguments
+	int tri = asc;
+	char *triage = "asc";
+
 	while(i < argc){
 	
 		if(strcmp(argv[i],"-c") == 0 || strcmp(argv[i],"-C") == 0){
 			if(argv[i+1] == NULL || argv[i+1][0] == '-' ){
 				avecC = 0;
 			} else if(!cpValide(argv[i+1])){
-				
 				exit(2);	
 			} 
 
@@ -95,7 +105,9 @@ int main(int argc, char *argv[]) {
 
 					min = readU128(s1);
 					max = readU128(s2);
-				} 				
+
+					//verificationNombre(&min,&max,&arbre);
+				} 			
 			}	
 
 			if(erreur4==4) exit(erreur4);
@@ -163,43 +175,51 @@ int main(int argc, char *argv[]) {
 			
 		} 
 	}	
-		
+	
+	//#ifdef testajout
 	if(min > max){
 		swap(&min,&max);
 	} 
+
+	uint128_t total = 0;
+
+	for(uint128_t p = 2; p<=65 && total < max; ++p){
+		if(estPremier(p)){
+			uint128_t MersennePrime = exposant(2,p)-1;
+			uint128_t a = exposant(2,p-1)*MersennePrime;
+
+			if(estPremier(MersennePrime)){
+				
+				if(a <= max && a>= min){
+					ajoutNoeud(&arbre,a);	
+				}
+
+				total = a;
+			}
+		}
+	}
+
+	afficherArbre(arbre);
+
+
+	//#endif
 
 	#ifdef testu128t
 		
 	uint128_t MersennePrime = exposant(2,61)-1;
 	uint128_t asd = exposant(2,61-1)*MersennePrime;
 			
+	printf("asd : ");
+	printU128(asd); 
+
 	printf("min : ");
 	printU128(min);
-	printf("max :");
+
+	printf("max : ");
 	printU128(max);
 
 	#endif
 
-	uint128_t total = 0;
-
-	for(uint128_t p = 2; p<=65 && total < max; ++p){
-	
-		uint128_t MersennePrime = exposant(2,p)-1;
-		uint128_t a = exposant(2,p-1)*MersennePrime;
-
-		if(estPremier(MersennePrime)){
-		
-			if(estParfait(a)){
-				if(avecO){
-					//fprintf(fw,"%llu\n",a);		
-				} else {											printU128(a);
-					//printf("%llu\n",a);
-				}
-
-				total = a;
-			} 
-		}
-	}
 
 	fclose(fp);
 	fclose(fw);

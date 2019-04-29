@@ -1,6 +1,7 @@
 #include "structure.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 void ajoutNoeud(noeud **tree, uint128_t key)
 {
@@ -8,6 +9,7 @@ void ajoutNoeud(noeud **tree, uint128_t key)
     noeud *tmpTree = *tree;
 
     noeud *elem = malloc(sizeof(noeud));
+
     elem->key = key;
     elem->left = NULL;
     elem->right = NULL;
@@ -35,29 +37,29 @@ void ajoutNoeud(noeud **tree, uint128_t key)
 
 //===========================================================================
 
-void printTree(noeud *tree)
+void afficherArbre(noeud *tree)
 {
     if(!tree) return;
 
-    if(tree->left)  printTree(tree->left);
+    if(tree->left)  afficherArbre(tree->left);
 
     printU128(tree->key);
 
-    if(tree->right) printTree(tree->right);
+    if(tree->right) afficherArbre(tree->right);
 }
 
 //===========================================================================
 
 
-void printReverseTree(noeud *tree)
+void afficherArbreInverse(noeud *tree)
 {
     if(!tree) return;
 
-    if(tree->right) printReverseTree(tree->right);
+    if(tree->right) afficherArbreInverse(tree->right);
 
     printU128(tree->key);
 
-    if(tree->left)  printReverseTree(tree->left);
+    if(tree->left)  afficherArbreInverse(tree->left);
 }
 
 //===========================================================================
@@ -92,3 +94,48 @@ void clearTree(noeud **tree)
 
     *tree = NULL;
 }
+
+//===========================================================================
+
+uint128_t readU128(char const *string){
+	
+	int len=strlen(string);
+
+	uint128_t mod=1;
+	uint128_t utotal =0;
+
+	for(int i = len-1; i>=0; i--){
+
+		if(string[i] < 48 || string[i] > 57){
+			return -1;
+		}
+
+		uint128_t temp =(uint128_t) string[i]-48 ; // nombre ascii
+		temp *= mod; 
+		utotal += temp;
+		mod *= 10;
+	}
+	return utotal;
+}
+
+//==============================================================================
+
+void printU128(uint128_t n){
+	
+	int string[50];
+	short compteur=0;
+	uint128_t div=10;
+
+	while(n!=0){
+		string[compteur]=(n%div);
+		n /= div;
+		compteur++;
+	}
+
+
+	for(int i = compteur-1; i>=0; --i){
+		printf("%d",string[i]);
+	}
+		printf("\n");
+}
+
