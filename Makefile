@@ -15,15 +15,15 @@ tp3:outils.o structure.o tp3.c
 	gcc $(OPTIONS) outils.o structure.o tp3.c -o tp3
 
 test:
-	./tp3 -c $(VARIABLE) -i ./data/data.txt -d asc 
+	./tp3 -c $(VARIABLE) -i ./data/data.txt -d asc -o caca.txt
 
 g:
 	rm -f *.guy
 
 1:
-	./tp3 -c $(VARIABLE) -i ./data/data.txt -d ASC
+	./tp3 -c $(VARIABLE) -i ./data/data.txt -d ASC 
 2:
-	./tp3 -c $(VARIABLE) -i ./data/data.txt -d des
+	./tp3 -c $(VARIABLE) -i ./data/data.txt -d des -o caca.txt
 3:
 	./tp3 -c $(VARIABLE) -i ./data/data.txt -d DES
 4:

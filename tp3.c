@@ -130,7 +130,11 @@ int main(int argc, char *argv[]) {
 			
 			if(argv[i+1]== NULL || !ASCorDES(argumentD)) {
 				exit(7);
-			} 
+			}
+			
+			if(strcmp(argumentD,"asc") == 0 || strcmp(argumentD,"ASC") == 0){
+				tri=asc;
+			}
 			
 		} else {
 			exit(3);
@@ -143,7 +147,7 @@ int main(int argc, char *argv[]) {
 		fprintf(stderr, "Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
 		exit(1);
 	} 
-	
+
 	if(!avecI){
  
 		//scanf("%lu %lu",&min, &max);
@@ -170,48 +174,28 @@ int main(int argc, char *argv[]) {
 			min = strtol(r,&ptr,10);
 			
 			r = strtok(NULL," "),
-			max= strtol(r,&ptr,10);
-			
+			max= strtol(r,&ptr,10);	
 		} 
 	}	
-
-	afficherArbre(arbre);
 
 	#ifdef testajout
 	if(min > max){
 		swap(&min,&max);
 	} 
 
+	//afficherArbre(arbre);
+	//afficherArbreInverse(arbre);
+
+	#endif	
 	
+	tri == asc ? afficherArbre(arbre,fw): afficherArbreInverse(arbre,fw);
 
-	afficherArbre(arbre);
-	afficherArbreInverse(arbre);
-
-	#endif
-
-	#ifdef testu128t
-		
-	uint128_t MersennePrime = exposant(2,61)-1;
-	uint128_t asd = exposant(2,61-1)*MersennePrime;
-			
-	printf("asd : ");
-	printU128(asd); 
-
-	printf("min : ");
-	printU128(min);
-
-	printf("max : ");
-	printU128(max);
-
-	#endif
-
+	
 
 	fclose(fp);
 	fclose(fw);
 
-	#ifdef testarbre
-		clearTree(&arbre);
-	#endif
+	clearTree(&arbre);
 
         return 0;
 }
