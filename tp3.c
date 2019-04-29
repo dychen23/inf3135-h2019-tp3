@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 		printf("=========\n");
 		printReverseTree(arbre);
 
-		if(rechercheNoeud(arbre,5)){
+		if(noeudExiste(arbre,5)){
 
 		printf("existe deja\n");		
 		}	
@@ -69,8 +69,7 @@ int main(int argc, char *argv[]) {
 	FILE *fp = stdin;
 	FILE *fw = stdout;
 
-	int tri = asc;
-	char *triage = "asc";
+	int tri = des;
 
 	while(i < argc){
 	
@@ -106,7 +105,7 @@ int main(int argc, char *argv[]) {
 					min = readU128(s1);
 					max = readU128(s2);
 
-					//verificationNombre(&min,&max,&arbre);
+					verificationNombre(&min,&max,&arbre);
 				} 			
 			}	
 
@@ -175,34 +174,20 @@ int main(int argc, char *argv[]) {
 			
 		} 
 	}	
-	
-	//#ifdef testajout
+
+	afficherArbre(arbre);
+
+	#ifdef testajout
 	if(min > max){
 		swap(&min,&max);
 	} 
 
-	uint128_t total = 0;
-
-	for(uint128_t p = 2; p<=65 && total < max; ++p){
-		if(estPremier(p)){
-			uint128_t MersennePrime = exposant(2,p)-1;
-			uint128_t a = exposant(2,p-1)*MersennePrime;
-
-			if(estPremier(MersennePrime)){
-				
-				if(a <= max && a>= min){
-					ajoutNoeud(&arbre,a);	
-				}
-
-				total = a;
-			}
-		}
-	}
+	
 
 	afficherArbre(arbre);
+	afficherArbreInverse(arbre);
 
-
-	//#endif
+	#endif
 
 	#ifdef testu128t
 		

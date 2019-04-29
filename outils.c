@@ -81,9 +81,33 @@ uint128_t estParfait(uint128_t n){
 
 //==============================================================================
 
-void verificationNombre(uint128_t *min, uint128_t *max,noeud *arbre){
+void verificationNombre(uint128_t *min, uint128_t *max,noeud **arbre){
 
-	
+	uint128_t total = 0;
+
+	for(uint128_t p = 2; p<=65 && total < *max; ++p){
+		if(estPremier(p)){
+			uint128_t MersennePrime = exposant(2,p)-1;
+			uint128_t a = exposant(2,p-1)*MersennePrime;
+
+			if(estPremier(MersennePrime)){
+		
+				if(*min > *max){
+					swap(min,max);
+				}
+				
+				if(a <= *max && a>= *min){
+					if(!(noeudExiste(*arbre,a))){
+						ajoutNoeud(arbre,a);
+					}		
+				}
+
+				total = a;
+			}
+		}
+	}
+
+	//afficherArbre(arbre);
 }
 
 //==============================================================================

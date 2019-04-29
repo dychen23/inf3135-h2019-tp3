@@ -65,7 +65,7 @@ void afficherArbreInverse(noeud *tree)
 //===========================================================================
 
 
-uint128_t rechercheNoeud(noeud *tree, uint128_t key)
+uint128_t noeudExiste(noeud *tree, uint128_t key)
 {
     while(tree)
     {
