@@ -130,6 +130,34 @@ int main(int argc, char *argv[]) {
 			}
 		}	
 						
+ /*
+		//scanf("%lu %lu",&min, &max);
+
+		fseek (stdin, 0, SEEK_END);
+		num = ftell (stdin);
+		
+		rewind(stdin);
+
+		// < data.txt
+		if(num > 0){
+			
+			//fp=stdin;
+			
+			if(!fp) exit(5);
+				
+			fgets(temp,100,stdin);
+			strtok(temp, "\n");
+
+			char *r;
+			char *ptr;
+				
+			r = strtok(temp," ");
+			min = strtol(r,&ptr,10);
+			
+			r = strtok(NULL," "),
+			max= strtol(r,&ptr,10);	
+		} 
+*/
 	}
 
 	if(erreur4==4) exit(erreur4);	
