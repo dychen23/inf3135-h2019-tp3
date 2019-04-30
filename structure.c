@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 void ajoutNoeud(noeud **tree, uint128_t key)
 {
@@ -37,8 +38,9 @@ void ajoutNoeud(noeud **tree, uint128_t key)
 
 //===========================================================================
 
-void afficherArbre(noeud *tree, FILE *fw)
+void afficherArbre(noeud *tree, FILE * fw)
 {
+   
     if(!tree) return;
 
     if(tree->left)  afficherArbre(tree->left, fw);
@@ -51,7 +53,7 @@ void afficherArbre(noeud *tree, FILE *fw)
 //===========================================================================
 
 
-void afficherArbreInverse(noeud *tree, FILE *fw)
+void afficherArbreInverse(noeud *tree, FILE * fw)
 {
     if(!tree) return;
 
@@ -106,9 +108,7 @@ uint128_t readU128(char const *string){
 
 	for(int i = len-1; i>=0; i--){
 
-		if(string[i] < 48 || string[i] > 57){
-			return -1;
-		}
+		if(!(isdigit(string[i]))) return -1;
 
 		uint128_t temp =(uint128_t) string[i]-48 ; // nombre ascii
 		temp *= mod; 
@@ -120,8 +120,8 @@ uint128_t readU128(char const *string){
 
 //==============================================================================
 
-void printU128(uint128_t n, FILE *fw){
-	
+void printU128(uint128_t n, FILE * fw){
+
 	int string[50];
 	short compteur=0;
 	uint128_t div=10;
@@ -132,15 +132,10 @@ void printU128(uint128_t n, FILE *fw){
 		compteur++;
 	}
 
-
 	for(int i = compteur-1; i>=0; --i){
 
-		
 		fprintf(fw,"%d",string[i]);
-		printf("%d",string[i]);
-
 	}
 		fprintf(fw,"\n");
-		printf("\n");
 }
 

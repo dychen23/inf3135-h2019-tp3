@@ -106,8 +106,6 @@ void verificationNombre(uint128_t *min, uint128_t *max,noeud **arbre){
 			}
 		}
 	}
-
-	//afficherArbre(arbre);
 }
 
 //==============================================================================

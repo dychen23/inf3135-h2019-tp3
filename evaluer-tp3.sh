@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function finish {
-	 kill -9 `ps -aux | grep "evaluer" | awk '{print $2}'`
+	 kill -9 `ps -aux | grep "ah991071" | grep "evaluer" | awk '{print $2}'`
 }
 
 if [ -z $1 ]; then
