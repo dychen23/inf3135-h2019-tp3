@@ -58,3 +58,5 @@ push :
 	git commit -m "."
 	git push
 
+valgrind:
+	valgrind ./tp3

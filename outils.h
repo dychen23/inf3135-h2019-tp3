@@ -4,8 +4,10 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-#include "structure.h"
+#ifndef STRUCTURE_H
 
+#include "structure.h"
+ 
 void verificationNombre(uint128_t *min, uint128_t *max, noeud **arbre);
 
 uint128_t estParfait(uint128_t n);
@@ -21,5 +23,7 @@ int ASCorDES(char *c);
 int verifierasc (char *c);
 
 void swap(uint128_t *min, uint128_t *max);
+
+#endif
 
 
